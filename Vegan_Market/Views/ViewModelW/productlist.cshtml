@@ -1,0 +1,368 @@
+﻿@model Vegan_Market.Models.ViewModel
+@{
+    ViewBag.Title = "productlist";
+    Layout = "~/Views/Shared/_Web_Layout.cshtml";
+}
+
+
+
+
+
+<aside id="notifications">
+    <div class="notifications-container container">
+    </div>
+</aside>
+<div class="container">
+    <div data-depth="4" class="breadcrumb-bg center breadcrumb-full" style=" background-color:#f4f1eb;background-image: url(); min-height:65px; ">
+        <div class="container">
+            <nav data-depth="4" class="breadcrumb hidden-sm-down">
+                @foreach (var product_detail in Model.Product)
+                {
+                   <ol>
+                        <li>
+                            <a href="@Url.Action("HomePage", "Home")"><span>Home</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "ViewModelW", new { id = product_detail.cate_no })"><span>@product_detail.Category.Cate_name</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("subcatelist", "ViewModelW", new { id = product_detail.sub_no })"><span>@product_detail.Sub_Category.sub_name</span></a>
+                        </li>
+                        <li>
+                            <span>@product_detail.product_name</span>
+                        </li>
+                    </ol>
+                } </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div id="content-wrapper" class="col-lg-12 col-xs-12 js-content-wrapper">
+            <section id="main" class="product-detail product_image_gallery product-image-gallery">
+                <div class="row">
+                    <div class="col-form_id-form_9367402777406408 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 col-sp-12">
+                        
+                        
+
+                        <div class="w3-content" style="max-width:1200px">
+                            <img class="mySlides" src="@ViewBag.picture1" style="width:627px;height:600px">
+                            <img class="mySlides" src="@ViewBag.picture2" style="width: 627px; height: 600px; display: none">
+                            <img class="mySlides" src="@ViewBag.picture3" style="width: 627px; height: 600px; display: none ">
+                            <img class="mySlides" src="@ViewBag.picture4" style="width: 627px; height: 600px; display: none ">
+
+                            <div class="w3-row-padding w3-section">
+                                <div class="w3-col s4">
+                                    <img class="demo w3-opacity w3-hover-opacity-off" src="@ViewBag.picture1" style="width: 100px; height: 100px; cursor: pointer" onclick="currentDiv(1)">
+                                </div>
+                                <div class="w3-col s4">
+                                    <img class="demo w3-opacity w3-hover-opacity-off" src="@ViewBag.picture2" style="width: 100px; height: 100px; cursor: pointer" onclick="currentDiv(2)">
+                                </div>
+                                <div class="w3-col s4">
+                                    <img class="demo w3-opacity w3-hover-opacity-off" src="@ViewBag.picture3" style="width: 100px; height: 100px; cursor: pointer" onclick="currentDiv(3)">
+                                </div>
+                                <div class="w3-col s4">
+                                    <img class="demo w3-opacity w3-hover-opacity-off" src="@ViewBag.picture4" style="width: 100px; height: 100px; cursor: pointer" onclick="currentDiv(3)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            function currentDiv(n) {
+                                showDivs(slideIndex = n);
+                            }
+
+                            function showDivs(n) {
+                                var i;
+                                var x = document.getElementsByClassName("mySlides");
+                                var dots = document.getElementsByClassName("demo");
+                                if (n > x.length) { slideIndex = 1 }
+                                if (n < 1) { slideIndex = x.length }
+                                for (i = 0; i < x.length; i++) {
+                                    x[i].style.display = "none";
+                                }
+                                for (i = 0; i < dots.length; i++) {
+                                    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+                                }
+                                x[slideIndex - 1].style.display = "block";
+                                dots[slideIndex - 1].className += " w3-opacity-off";
+                            }
+                        </script>
+
+                    </div><div class="col-form_id-form_15874367062488778 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 col-sp-12">
+                              <h1 class="h1 product-detail-name">@ViewBag.product_name</h1>
+    <div id="leo_product_reviews_block_extra" class="no-print">
+       
+        <ul class="reviews_advices">
+            <li>
+                <a href="javascript:void(0)" class="read-review">
+                    <i class="material-icons">&#xE0B9;</i>
+                    Read reviews (<span>@ViewBag.command_count</span>)
+                </a>
+            </li>
+            <li class="last">
+                <!-- Button trigger modal -->
+                @if (Session["customer"] != null)
+                {
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Yorum Yap
+                    </button>}
+                else
+                {
+                    <a href="@Url.Action("login_customer", "Home")">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Yorum Yap
+                        </button>
+                    </a>
+                }
+            </li>
+        </ul>
+    </div>
+    <div></div>
+                    @foreach (var product_price in Model.Product)
+                    {
+
+
+                          <div class="product-prices js-product-prices">
+                              @if (product_price.product_discount == false)
+                              {
+                                  <span aria-label="Regular price">@Convert.ToDouble(product_price.product_price) TL</span>
+
+                              }
+                              else
+                              {
+                                  <span style="text-decoration-color:inherit">İndirimli Fiyat :</span>
+                                  int? discount_txt = product_price.discount_text;
+
+                                  decimal price  = product_price.product_price - ((product_price.product_price * discount_txt.Value) / 100);
+                                  product_price.product_price = price;
+
+                                  <span class="price" aria-label="Price">
+                                      @(product_price.product_price)
+                                  </span>
+                              }</div>}
+    <div class="leo-more-cdown in_detail" data-idproduct="1"></div>
+    <div id="product-description-short-1" class="description-short"><p>@ViewBag.decription</p></div>
+
+    <div></div>
+    <div class="product-actions">
+        <form action="https://demo74.leotheme.com/prestashop/vt_oworganic/en/cart" method="post" id="add-to-cart-or-refresh">
+            <input type="hidden" name="token" value="3cdd8c5ee88bd551a74c3683752bffb9">
+            <input type="hidden" name="id_product" value="1" id="product_page_product_id">
+            <input type="hidden" name="id_customization" value="0" id="product_customization_id">
+
+            <section class="product-discounts js-product-discounts">
+            </section>
+            <div class="product-add-to-cart js-product-add-to-cart">
+           
+                <div class="product-quantity clearfix">
+                 
+                    @if (Session["customer"] != null)
+                    {
+                    foreach (var product1 in Model.Product)
+                    {
+                        <a href="@Url.Action("Addto_cart", "Shoppingbag", new { product_id = product1.product_id })" class="btn btn-primary btn-block" onClick="return GB_showCenter('sepetiniz',this.href,500,800)">SEPETE EKLE</a>
+                                }
+                            }
+                            else
+                            {
+                                <a href = "@Url.Action("login_customer", "Home")" class="btn btn-primary btn-block" >SEPETE EKLE</a>
+                    }
+                <div class="wishlist">
+                    @if (Session["customer"] != null)
+                    {
+                        foreach (var product2 in Model.Product)
+                        {
+                            <a href="@Url.Action("Add_wish", "WishList", new { product_id = product2.product_id })" title="Add to Wishlist">
+
+                                <span class="leo-wishlist-bt-content">
+                                    <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
+
+                                    <span class="name-btn-product text-add">Add to Wishlist</span>
+                                </span>
+                            </a>
+                        }
+                    }
+                    else
+                    {
+
+                        <a href="@Url.Action("login_customer","Home")" title="Add to Wishlist">
+
+                            <span class="leo-wishlist-bt-content">
+                                <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
+
+                                <span class="name-btn-product text-add">Add to Wishlist</span>
+                            </span>
+                        </a>
+
+                    }
+                </div>
+                  
+                </div>
+               
+            </div>
+            <input class="product-refresh ps-hidden-by-js" name="refresh" type="submit" value="Refresh">
+        </form>
+    </div>
+    <div></div>
+    <div class="line">
+        <div class="product-manufacturer">
+            <label class="label">Brand:</label>
+           
+
+            <span>
+                <a href="">@ViewBag.brand</a>
+            </span>
+        </div>
+        <div class="productcats">
+            <label class="label">Categories: </label>
+            @foreach (var product_details in Model.Product)
+            {
+
+
+                <ul>
+                    <li><a href="@Url.Action("HomePage", "Home")" title="Home">Home</a></li>
+                    <li><a href="@Url.Action("Index", "ViewModelW", new { id = product_details.cate_no })" title="Acne Blemishes">@product_details.Category.Cate_name</a></li>
+                    <li><a href="@Url.Action("subcatelist", "ViewModelW", new { id = product_details.sub_no })" title="Haircare">@ViewBag.subcate</a></li>
+                </ul>
+            }
+        </div>
+
+    </div>
+    <div></div>
+    <div class="product-additional-info js-product-additional-info">
+        <div class="social-sharing">
+            <span>Share</span>
+            <ul>
+                <li class="facebook icon-gray"><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdemo74.leotheme.com%2Fprestashop%2Fvt_oworganic%2Fen%2Fhaircare%2F1-hummingbird-printed-t-shirt.html" class="text-hide" title="Share" target="_blank" rel="noopener noreferrer">Share</a></li>
+                <li class="twitter icon-gray"><a href="https://twitter.com/intent/tweet?text=Hummingbird+printed+t-shirt%20https%3A%2F%2Fdemo74.leotheme.com%2Fprestashop%2Fvt_oworganic%2Fen%2Fhaircare%2F1-hummingbird-printed-t-shirt.html" class="text-hide" title="Tweet" target="_blank" rel="noopener noreferrer">Tweet</a></li>
+                <li class="pinterest icon-gray"><a href="https://www.pinterest.com/pin/create/button/?media=https%3A%2F%2Fdemo74leotheme.b-cdn.net%2Fprestashop%2Fvt_oworganic%2F35%2Fhummingbird-printed-t-shirt.jpg&amp;url=https%3A%2F%2Fdemo74.leotheme.com%2Fprestashop%2Fvt_oworganic%2Fen%2Fhaircare%2F1-hummingbird-printed-t-shirt.html" class="text-hide" title="Pinterest" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="leonextprevious-container clearfix">
+        <div class="leo-button-prev"></div>
+        <div class="leo-button-next"></div>
+    </div>
+</div><div class="col-form_id-form_4666379129988496 col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 col-sp-12">
+    <div class="product-tabs tabs">
+        <ul class="nav nav-tabs" role="tablist">
+            @*Yorumların sergilenceği yer*@
+
+            <li class="nav-item">
+                <a class="nav-link leo-product-show-review-title" data-toggle="tab" href="#leo-product-show-review-content">Reviews</a>
+            </li>
+        
+        </ul>
+        <div class="tab-content" id="tab-content">
+          
+
+            <div class="tab-pane fade in" id="leo-product-show-review-content">
+              Genel Oylama :  @ViewBag.ortalama<img src="~/image/star.png" />
+                <div id="product_reviews_block_tab">
+
+                    @foreach (var command in Model.Product_command)
+                    {
+
+                        <div class="review">
+
+                            <div class="review-info row">
+                                <div class="review_author col-sm-3">
+                                    <tr>Rating : @command.rating <img src="~/image/star.png" width="15" height="15" /> </tr>
+
+                                    <div class="review_author_infos">
+
+                                        <strong>@command.Customer.customer_name</strong>
+                                        <em>@command.command_date</em>
+                                    </div>
+                                </div>
+                                <div class="review_details col-sm-9">
+                                    <p class="title_block">
+                                        <strong>feedback</strong>
+                                    </p>
+                                    <p>@command.command_text</p>
+                                </div>
+                            </div>
+                            <div class="review_button">
+                                <ul>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    }
+                </div>
+            </div>
+
+            @foreach (var item in Model.Product)
+            {
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Yorum Yazınız </h1>
+
+                            </div>
+
+                            @using (Html.BeginForm("Command", "ViewModelW"))
+                            {
+                                @Html.AntiForgeryToken()
+
+
+                                <div class="modal-body">
+
+                                    <div class="reviews_note clearfix">
+
+                                        <div class="rate">
+                                            <input type="radio" id="star5" name="rating" value="5" />
+                                            <label for="star5" title="text">5 stars</label>
+                                            <input type="radio" id="star4" name="rating" value="4" />
+                                            <label for="star4" title="text">4 stars</label>
+                                            <input type="radio" id="star3" name="rating" value="3" />
+                                            <label for="star3" title="text">3 stars</label>
+                                            <input type="radio" id="star2" name="rating" value="2" />
+                                            <label for="star2" title="text">2 stars</label>
+                                            <input type="radio" id="star1" name="rating" value="1" />
+                                            <label for="star1" title="text">1 star</label>
+                                        </div>
+                                    </div>
+                                    <textarea class="form-control" name="command_text" placeholder="Yorum Yazınız.."></textarea>
+                                    <input type="hidden" name="product_no" value="@item.product_id" />
+                                    <input type="hidden" name="customer_no" value="@Session["customers"]" />
+                                    <input type="hidden" name="command_date" value="@DateTime.Now.ToShortDateString()" />
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                    <button type="submit" class="btn btn-secondary">Kaydet</button>
+
+                                </div>
+                                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+    <section class="product-accessories clearfix">
+        <p class="h5 products-section-title text-uppercase"></p>
+        
+                             </div>
+       
+    </section>
+     
+   
+</div>
+                </div>
+                <footer class="page-footer">
+                </footer>
+            </section>
+        </div>
+    </div>
+</div>

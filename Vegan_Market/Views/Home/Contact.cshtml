@@ -1,0 +1,126 @@
+﻿
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Web_Layout.cshtml";
+}
+
+<aside id="notifications">
+    <div class="notifications-container container">
+    </div>
+</aside>
+<div class="container">
+    <div data-depth="2" class="breadcrumb-bg center breadcrumb-full" style=" background-color:#f4f1eb;background-image: url(); min-height:65px; ">
+        <div class="container">
+            <nav data-depth="2" class="breadcrumb hidden-sm-down">
+                <ol>
+                    <li>
+                        <a href="@Url.Action("HomePage","Home")"><span>Home</span></a>
+                    </li>
+                    <li>
+                        <span>Contact us</span>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div id="left-column" class="col-xs-12 col-sm-4 col-md-3">
+            <div class="contact-rich">
+                <h4>Store information</h4>
+                <div class="block">
+                    <div class="icon"><i class="material-icons">&#xE55F;</i></div>
+                    <div class="data">Oworganic<br />16, Main street 2nd floor<br />Paris, Hawaii 75002<br />United States</div>
+                </div>
+                <hr />
+                <div class="block">
+                    <div class="icon"><i class="material-icons">&#xE0CD;</i></div>
+                    <div class="data">
+                        <span>Call us:</span><br />
+                        <a href="tel:010203040598">010203040598</a>
+                    </div>
+                </div>
+                <hr />
+                <div class="block">
+                    <div class="icon"><i class="material-icons">&#xE0DF;</i></div>
+                    <div class="data">
+                        <span>Fax:</span><br />
+                        0102030405
+                    </div>
+                </div>
+                <hr />
+                <div class="block">
+                    <div class="icon"><i class="material-icons">&#xE158;</i></div>
+                    <div class="data email">
+                        <span>Email us: burcu.miray@gmail.com</span><br />
+                        <script type="76c5ae4323d4dc9fbc98706f-text/javascript">document.write(unescape('%3c%61%20%68%72%65%66%3d%22%6d%61%69%6c%74%6f%3a%64%65%6d%6f%40%64%65%6d%6f%2e%63%6f%6d%22%20%3e%64%65%6d%6f%40%64%65%6d%6f%2e%63%6f%6d%3c%2f%61%3e'))</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content-wrapper" class="js-content-wrapper left-column col-xs-12 col-sm-12 col-md-8 col-lg-9">
+            <section id="main">
+                <section id="content" class="page-content card card-block">
+                    <section class="contact-form">
+                        <form action="https://demo74.leotheme.com/prestashop/vt_oworganic/en/contact-us" method="post" enctype="multipart/form-data">
+                            <section class="form-fields">
+                                <div class="form-group row">
+                                    <div class="col-md-9 col-md-offset-3">
+                                        <h3>Contact us</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="id_contact">Subject</label>
+                                    <div class="col-md-6">
+                                        <select name="id_contact" id="id_contact" class="form-control form-control-select">
+                                            <option value="2">Dilek ve Öneriler</option>
+                                            <option value="1">Ürün Hakkında</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="email">Email address</label>
+                                    <div class="col-md-6">
+                                        <input id="email" class="form-control" name="from" type="email" value="" placeholder="burcu.miray@gmail.com">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="file-upload">Attachment</label>
+                                    <div class="col-md-6">
+                                        <input id="file-upload" type="file" name="fileUpload" class="filestyle" data-buttonText="Choose file">
+                                    </div>
+                                    <span class="col-md-3 form-control-comment">
+                                        optional
+                                    </span>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="contactform-message">Message</label>
+                                    <div class="col-md-9">
+<textarea id="contactform-message" class="form-control" name="message" placeholder="How can we help?" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-md-3">
+                                    </div>
+                                </div>
+                            </section>
+                            <footer class="form-footer text-sm-right">
+                                <style>
+                                    input[name=url] {
+                                        display: none !important;
+                                    }
+                                </style>
+                                <input type="text" name="url" value="" />
+                                <input type="hidden" name="token" value="f626dc0bb6b779a858a2f2b31ed10129" />
+                                <input class="btn btn-primary" type="submit" name="submitMessage" value="Send">
+                            </footer>
+                        </form>
+                    </section>
+                </section>
+                <footer class="page-footer">
+                </footer>
+            </section>
+        </div>
+    </div>
+</div>
+

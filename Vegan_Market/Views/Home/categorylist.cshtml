@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Vegan_Market.Models.Category>
+<ul class="nav-links">
+    @foreach (var category in Model)
+    {
+
+        <li><a href="@Url.Action("Index","ViewModelW",new {id=category.Cate_id })">@category.Cate_name</a></li>
+      
+    }
+
+</ul>

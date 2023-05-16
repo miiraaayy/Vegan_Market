@@ -1,0 +1,66 @@
+﻿@model Vegan_Market.Models.Product_Command
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Product_Command</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.command_text)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.command_text)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.command_date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.command_date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.rating)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.rating)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.customer_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Customer.customer_name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Product.product_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Product.product_name)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.command_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

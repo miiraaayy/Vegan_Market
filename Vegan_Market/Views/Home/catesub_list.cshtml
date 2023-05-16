@@ -1,0 +1,49 @@
+﻿@model Vegan_Market.Models.ViewModel
+
+
+<div class="block_content">
+    @foreach (var cate in Model.Category)
+    {
+        <ul class="category-top-menu">
+            <li>
+                <ul class="category-sub-menu">
+
+                    <li data-depth="0">
+                        <a href="@Url.Action("Index", "ViewModelW", new { id = cate.Cate_id })">@cate.Cate_name</a>
+                        <div class="navbar-toggler collapse-icons" data-toggle="collapse" data-target="#sub-cate-@cate.Cate_id">
+                       
+                            <i class="material-icons add">&#xE145;</i>
+                            </div>
+                            
+                            <div class="collapse" id="sub-cate-@cate.Cate_id">
+                                @foreach (var subcate in Model.Sub_category.Where(x => x.cate_no1 == cate.Cate_id))
+                                {
+                                    <ul class="category-sub-menu">
+                                        <li data-depth="1">
+                                            <a class="category-sub-link" href="@Url.Action("subcatelist", "ViewModelW", new { id = subcate.sub_id })">@subcate.sub_name</a>
+                                        </li>
+                                    </ul>
+                                }
+                            </div>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

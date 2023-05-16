@@ -1,0 +1,1128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Aslan_Commerce_vtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AboutUs">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descript_txt_1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descript_txt_2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descript_txt_3" Type="nvarchar(max)" />
+          <Property Name="image_1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="image_2" Type="nvarchar" MaxLength="50" />
+          <Property Name="image_3" Type="nvarchar" MaxLength="50" />
+          <Property Name="image_4" Type="nvarchar" MaxLength="50" />
+          <Property Name="image_5" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="adress_id" />
+          </Key>
+          <Property Name="adress_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="town" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="customer_no" Type="int" Nullable="false" />
+          <Property Name="address_text" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AdminLogin">
+          <Key>
+            <PropertyRef Name="AdminLogin_id" />
+          </Key>
+          <Property Name="AdminLogin_id" Type="int" Nullable="false" />
+          <Property Name="admin_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_password" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="admin_repassword" Type="nvarchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="brand_id" />
+          </Key>
+          <Property Name="brand_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brand_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="brand_logo" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Cate_id" />
+          </Key>
+          <Property Name="Cate_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cate_name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cate_descript" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="call_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="e_mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax_txt" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="customer_surname" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="customer_phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_password" Type="nvarchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Name="FaqId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="question_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="answer_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Favourites">
+          <Key>
+            <PropertyRef Name="favourite_id" />
+          </Key>
+          <Property Name="favourite_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_no" Type="int" Nullable="false" />
+          <Property Name="product_no" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Footer">
+          <Key>
+            <PropertyRef Name="FooterId" />
+          </Key>
+          <Property Name="FooterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descript_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="location_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="location_head" Type="nvarchar" MaxLength="50" />
+          <Property Name="account_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="account_head" Type="nvarchar" MaxLength="50" />
+          <Property Name="main_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="main_head" Type="nvarchar" MaxLength="50" />
+          <Property Name="footer_menu_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="menu_head" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Nav">
+          <Key>
+            <PropertyRef Name="NavId" />
+          </Key>
+          <Property Name="NavId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="head_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="descript_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderT">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_no" Type="int" Nullable="false" />
+          <Property Name="order_date" Type="smalldatetime" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="order_num" Type="int" Nullable="false" />
+          <Property Name="product_no" Type="int" />
+          <Property Name="product_number" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_price" Type="money" Nullable="false" />
+          <Property Name="cate_no" Type="int" Nullable="false" />
+          <Property Name="sub_no" Type="int" Nullable="false" />
+          <Property Name="brand_no" Type="int" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="picture_1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="picture_2" Type="nvarchar" MaxLength="50" />
+          <Property Name="picture_3" Type="nvarchar" MaxLength="50" />
+          <Property Name="picture_4" Type="nvarchar" MaxLength="50" />
+          <Property Name="stock_no" Type="int" Nullable="false" />
+          <Property Name="product_discount" Type="bit" Nullable="false" />
+          <Property Name="barcode_no" Type="int" Nullable="false" />
+          <Property Name="discount_text" Type="int" />
+          <Property Name="product_num" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Command">
+          <Key>
+            <PropertyRef Name="command_id" />
+          </Key>
+          <Property Name="command_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_no" Type="int" Nullable="false" />
+          <Property Name="customer_no" Type="int" Nullable="false" />
+          <Property Name="command_text" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="command_date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="rating" Type="int" />
+        </EntityType>
+        <EntityType Name="SlideLogo">
+          <Key>
+            <PropertyRef Name="SlideLogoId" />
+          </Key>
+          <Property Name="SlideLogoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlideImage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SlideImage_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="SlideImage_2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stores">
+          <Key>
+            <PropertyRef Name="storesId" />
+          </Key>
+          <Property Name="storesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fabric_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="fabric_address" Type="nvarchar" MaxLength="50" />
+          <Property Name="fabric_worktime" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sub_Category">
+          <Key>
+            <PropertyRef Name="sub_id" />
+          </Key>
+          <Property Name="sub_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sub_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cate_no1" Type="int" Nullable="false" />
+          <Property Name="sub_picture" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="sub_descript" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="WebFooter">
+          <Key>
+            <PropertyRef Name="WebId" />
+          </Key>
+          <Property Name="WebId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contact_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="support_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_head" Type="nvarchar" MaxLength="50" />
+          <Property Name="support_head" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Address_Customer1">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="customer_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="customer_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="product_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="OrderT" Type="Self.OrderT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="OrderT">
+              <PropertyRef Name="customer_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderT" Type="Self.OrderT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="OrderT">
+              <PropertyRef Name="product_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="brand_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="brand_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Cate_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="cate_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Command_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Command" Type="Self.Product_Command" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="Product_Command">
+              <PropertyRef Name="customer_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Command_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Command" Type="Self.Product_Command" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Product_Command">
+              <PropertyRef Name="product_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Sub_Category">
+          <End Role="Sub_Category" Type="Self.Sub_Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sub_Category">
+              <PropertyRef Name="sub_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="sub_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Category_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sub_Category" Type="Self.Sub_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Cate_id" />
+            </Principal>
+            <Dependent Role="Sub_Category">
+              <PropertyRef Name="cate_no1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Aslan_Commerce_vtModelStoreContainer">
+          <EntitySet Name="AboutUs" EntityType="Self.AboutUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favourites" EntityType="Self.Favourites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Footer" EntityType="Self.Footer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nav" EntityType="Self.Nav" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderT" EntityType="Self.OrderT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Command" EntityType="Self.Product_Command" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SlideLogo" EntityType="Self.SlideLogo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stores" EntityType="Self.Stores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub_Category" EntityType="Self.Sub_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebFooter" EntityType="Self.WebFooter" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Address_Customer1" Association="Self.FK_Address_Customer1">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_Customer" Association="Self.FK_Favourites_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_Product" Association="Self.FK_Favourites_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="OrderT" EntitySet="OrderT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderT" EntitySet="OrderT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brand" Association="Self.FK_Product_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Command_Customer" Association="Self.FK_Product_Command_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Product_Command" EntitySet="Product_Command" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Command_Product" Association="Self.FK_Product_Command_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product_Command" EntitySet="Product_Command" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Sub_Category" Association="Self.FK_Product_Sub_Category">
+            <End Role="Sub_Category" EntitySet="Sub_Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Category_Category" Association="Self.FK_Sub_Category_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Sub_Category" EntitySet="Sub_Category" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Aslan_Commerce_vtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="adress_id" />
+          </Key>
+          <Property Name="adress_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="town" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_no" Type="Int32" Nullable="false" />
+          <Property Name="address_text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Address_Customer1" FromRole="Address" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="brand_id" />
+          </Key>
+          <Property Name="brand_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brand_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Brand" FromRole="Brand" ToRole="Product" />
+          <Property Name="brand_logo" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Cate_id" />
+          </Key>
+          <Property Name="Cate_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cate_name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Sub_Category" Relationship="Self.FK_Sub_Category_Category" FromRole="Category" ToRole="Sub_Category" />
+          <Property Name="Cate_descript" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_password" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Address_Customer1" FromRole="Customer" ToRole="Address" />
+          <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourites_Customer" FromRole="Customer" ToRole="Favourites" />
+          <NavigationProperty Name="OrderT" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="OrderT" />
+          <NavigationProperty Name="Product_Command" Relationship="Self.FK_Product_Command_Customer" FromRole="Customer" ToRole="Product_Command" />
+        </EntityType>
+        <EntityType Name="Favourites">
+          <Key>
+            <PropertyRef Name="favourite_id" />
+          </Key>
+          <Property Name="favourite_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_no" Type="Int32" Nullable="false" />
+          <Property Name="product_no" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Favourites_Customer" FromRole="Favourites" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Favourites_Product" FromRole="Favourites" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderT">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_no" Type="Int32" Nullable="false" />
+          <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="order_num" Type="Int32" Nullable="false" />
+          <Property Name="product_no" Type="Int32" />
+          <Property Name="product_number" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="OrderT" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Order_Product" FromRole="OrderT" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="product_price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="cate_no" Type="Int32" Nullable="false" />
+          <Property Name="sub_no" Type="Int32" Nullable="false" />
+          <Property Name="brand_no" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="picture_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="picture_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture_3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stock_no" Type="Int32" Nullable="false" />
+          <Property Name="product_discount" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Product_Brand" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourites_Product" FromRole="Product" ToRole="Favourites" />
+          <NavigationProperty Name="OrderT" Relationship="Self.FK_Order_Product" FromRole="Product" ToRole="OrderT" />
+          <NavigationProperty Name="Product_Command" Relationship="Self.FK_Product_Command_Product" FromRole="Product" ToRole="Product_Command" />
+          <NavigationProperty Name="Sub_Category" Relationship="Self.FK_Product_Sub_Category" FromRole="Product" ToRole="Sub_Category" />
+          <Property Name="barcode_no" Type="Int32" Nullable="false" />
+          <Property Name="discount_text" Type="Int32" />
+          <Property Name="product_num" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Command">
+          <Key>
+            <PropertyRef Name="command_id" />
+          </Key>
+          <Property Name="command_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_no" Type="Int32" Nullable="false" />
+          <Property Name="customer_no" Type="Int32" Nullable="false" />
+          <Property Name="command_text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="command_date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="rating" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Product_Command_Customer" FromRole="Product_Command" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Command_Product" FromRole="Product_Command" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Sub_Category">
+          <Key>
+            <PropertyRef Name="sub_id" />
+          </Key>
+          <Property Name="sub_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sub_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cate_no1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Sub_Category_Category" FromRole="Sub_Category" ToRole="Category" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Sub_Category" FromRole="Sub_Category" ToRole="Product" />
+          <Property Name="sub_picture" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="sub_descript" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Address_Customer1">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="customer_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="brand_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="brand_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Cate_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="cate_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sub_Category_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sub_Category" Type="Self.Sub_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Cate_id" />
+            </Principal>
+            <Dependent Role="Sub_Category">
+              <PropertyRef Name="cate_no1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="customer_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="OrderT" Type="Self.OrderT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="OrderT">
+              <PropertyRef Name="customer_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Command_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Command" Type="Self.Product_Command" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="Product_Command">
+              <PropertyRef Name="customer_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="product_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderT" Type="Self.OrderT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="OrderT">
+              <PropertyRef Name="product_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Command_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Command" Type="Self.Product_Command" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Product_Command">
+              <PropertyRef Name="product_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Sub_Category">
+          <End Role="Sub_Category" Type="Self.Sub_Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sub_Category">
+              <PropertyRef Name="sub_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="sub_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Aslan_Commerce_vtEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address" EntityType="Self.Address" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Favourites" EntityType="Self.Favourites" />
+          <EntitySet Name="OrderT" EntityType="Self.OrderT" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Product_Command" EntityType="Self.Product_Command" />
+          <EntitySet Name="Sub_Category" EntityType="Self.Sub_Category" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Address_Customer1" Association="Self.FK_Address_Customer1">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brand" Association="Self.FK_Product_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sub_Category_Category" Association="Self.FK_Sub_Category_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Sub_Category" EntitySet="Sub_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_Customer" Association="Self.FK_Favourites_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="OrderT" EntitySet="OrderT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Command_Customer" Association="Self.FK_Product_Command_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Product_Command" EntitySet="Product_Command" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_Product" Association="Self.FK_Favourites_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderT" EntitySet="OrderT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Command_Product" Association="Self.FK_Product_Command_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product_Command" EntitySet="Product_Command" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Sub_Category" Association="Self.FK_Product_Sub_Category">
+            <End Role="Sub_Category" EntitySet="Sub_Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <EntitySet Name="AdminLogin" EntityType="Aslan_Commerce_vtModel.AdminLogin" />
+          <EntitySet Name="AboutUs" EntityType="Aslan_Commerce_vtModel.AboutUs" />
+          <EntitySet Name="Contact" EntityType="Aslan_Commerce_vtModel.Contact" />
+          <EntitySet Name="FAQ" EntityType="Aslan_Commerce_vtModel.FAQ" />
+          <EntitySet Name="Footer" EntityType="Aslan_Commerce_vtModel.Footer" />
+          <EntitySet Name="Nav" EntityType="Aslan_Commerce_vtModel.Nav" />
+          <EntitySet Name="SlideLogo" EntityType="Aslan_Commerce_vtModel.SlideLogo" />
+          <EntitySet Name="Stores" EntityType="Aslan_Commerce_vtModel.Stores" />
+          <EntitySet Name="WebFooter" EntityType="Aslan_Commerce_vtModel.WebFooter" />
+        </EntityContainer>
+        <EntityType Name="AdminLogin">
+          <Key>
+            <PropertyRef Name="AdminLogin_id" />
+          </Key>
+          <Property Name="AdminLogin_id" Type="Int32" Nullable="false" />
+          <Property Name="admin_email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="admin_password" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="admin_repassword" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AboutUs">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descript_txt_1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="descript_txt_2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="descript_txt_3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image_1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image_3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image_5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="call_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="e_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Name="FaqId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="question_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="answer_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Footer">
+          <Key>
+            <PropertyRef Name="FooterId" />
+          </Key>
+          <Property Name="FooterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descript_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="location_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="location_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="account_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="account_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="main_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="main_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="footer_menu_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="menu_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Nav">
+          <Key>
+            <PropertyRef Name="NavId" />
+          </Key>
+          <Property Name="NavId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="head_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descript_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SlideLogo">
+          <Key>
+            <PropertyRef Name="SlideLogoId" />
+          </Key>
+          <Property Name="SlideLogoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlideImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SlideImage_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SlideImage_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Stores">
+          <Key>
+            <PropertyRef Name="storesId" />
+          </Key>
+          <Property Name="storesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fabric_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fabric_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fabric_worktime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WebFooter">
+          <Key>
+            <PropertyRef Name="WebId" />
+          </Key>
+          <Property Name="WebId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contact_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="support_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="support_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Aslan_Commerce_vtModelStoreContainer" CdmEntityContainer="Aslan_Commerce_vtEntities">
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="adress_id" ColumnName="adress_id" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="town" ColumnName="town" />
+                <ScalarProperty Name="customer_no" ColumnName="customer_no" />
+                <ScalarProperty Name="address_text" ColumnName="address_text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brand">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="brand_logo" ColumnName="brand_logo" />
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+                <ScalarProperty Name="brand_name" ColumnName="brand_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Cate_descript" ColumnName="Cate_descript" />
+                <ScalarProperty Name="Cate_id" ColumnName="Cate_id" />
+                <ScalarProperty Name="Cate_name" ColumnName="Cate_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="customer_surname" ColumnName="customer_surname" />
+                <ScalarProperty Name="customer_phone" ColumnName="customer_phone" />
+                <ScalarProperty Name="customer_email" ColumnName="customer_email" />
+                <ScalarProperty Name="customer_password" ColumnName="customer_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favourites">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Favourites">
+              <MappingFragment StoreEntitySet="Favourites">
+                <ScalarProperty Name="favourite_id" ColumnName="favourite_id" />
+                <ScalarProperty Name="customer_no" ColumnName="customer_no" />
+                <ScalarProperty Name="product_no" ColumnName="product_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderT">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.OrderT">
+              <MappingFragment StoreEntitySet="OrderT">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="customer_no" ColumnName="customer_no" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="order_num" ColumnName="order_num" />
+                <ScalarProperty Name="product_no" ColumnName="product_no" />
+                <ScalarProperty Name="product_number" ColumnName="product_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="product_num" ColumnName="product_num" />
+                <ScalarProperty Name="discount_text" ColumnName="discount_text" />
+                <ScalarProperty Name="barcode_no" ColumnName="barcode_no" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="cate_no" ColumnName="cate_no" />
+                <ScalarProperty Name="sub_no" ColumnName="sub_no" />
+                <ScalarProperty Name="brand_no" ColumnName="brand_no" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="picture_1" ColumnName="picture_1" />
+                <ScalarProperty Name="picture_2" ColumnName="picture_2" />
+                <ScalarProperty Name="picture_3" ColumnName="picture_3" />
+                <ScalarProperty Name="picture_4" ColumnName="picture_4" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="product_discount" ColumnName="product_discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Command">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Product_Command">
+              <MappingFragment StoreEntitySet="Product_Command">
+                <ScalarProperty Name="command_id" ColumnName="command_id" />
+                <ScalarProperty Name="product_no" ColumnName="product_no" />
+                <ScalarProperty Name="customer_no" ColumnName="customer_no" />
+                <ScalarProperty Name="command_text" ColumnName="command_text" />
+                <ScalarProperty Name="command_date" ColumnName="command_date" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub_Category">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Sub_Category">
+              <MappingFragment StoreEntitySet="Sub_Category">
+                <ScalarProperty Name="sub_descript" ColumnName="sub_descript" />
+                <ScalarProperty Name="sub_picture" ColumnName="sub_picture" />
+                <ScalarProperty Name="sub_id" ColumnName="sub_id" />
+                <ScalarProperty Name="sub_name" ColumnName="sub_name" />
+                <ScalarProperty Name="cate_no1" ColumnName="cate_no1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminLogin">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.AdminLogin">
+              <MappingFragment StoreEntitySet="AdminLogin">
+                <ScalarProperty Name="admin_repassword" ColumnName="admin_repassword" />
+                <ScalarProperty Name="admin_password" ColumnName="admin_password" />
+                <ScalarProperty Name="admin_email" ColumnName="admin_email" />
+                <ScalarProperty Name="AdminLogin_id" ColumnName="AdminLogin_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AboutUs">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.AboutUs">
+              <MappingFragment StoreEntitySet="AboutUs">
+                <ScalarProperty Name="image_5" ColumnName="image_5" />
+                <ScalarProperty Name="image_4" ColumnName="image_4" />
+                <ScalarProperty Name="image_3" ColumnName="image_3" />
+                <ScalarProperty Name="image_2" ColumnName="image_2" />
+                <ScalarProperty Name="image_1" ColumnName="image_1" />
+                <ScalarProperty Name="descript_txt_3" ColumnName="descript_txt_3" />
+                <ScalarProperty Name="descript_txt_2" ColumnName="descript_txt_2" />
+                <ScalarProperty Name="descript_txt_1" ColumnName="descript_txt_1" />
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="fax_txt" ColumnName="fax_txt" />
+                <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+                <ScalarProperty Name="call_txt" ColumnName="call_txt" />
+                <ScalarProperty Name="location_txt" ColumnName="location_txt" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQ">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.FAQ">
+              <MappingFragment StoreEntitySet="FAQ">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="answer_txt" ColumnName="answer_txt" />
+                <ScalarProperty Name="question_txt" ColumnName="question_txt" />
+                <ScalarProperty Name="FaqId" ColumnName="FaqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Footer">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Footer">
+              <MappingFragment StoreEntitySet="Footer">
+                <ScalarProperty Name="menu_head" ColumnName="menu_head" />
+                <ScalarProperty Name="footer_menu_txt" ColumnName="footer_menu_txt" />
+                <ScalarProperty Name="main_head" ColumnName="main_head" />
+                <ScalarProperty Name="main_txt" ColumnName="main_txt" />
+                <ScalarProperty Name="account_head" ColumnName="account_head" />
+                <ScalarProperty Name="account_txt" ColumnName="account_txt" />
+                <ScalarProperty Name="location_head" ColumnName="location_head" />
+                <ScalarProperty Name="location_txt" ColumnName="location_txt" />
+                <ScalarProperty Name="descript_txt" ColumnName="descript_txt" />
+                <ScalarProperty Name="FooterId" ColumnName="FooterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nav">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Nav">
+              <MappingFragment StoreEntitySet="Nav">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="descript_txt" ColumnName="descript_txt" />
+                <ScalarProperty Name="head_txt" ColumnName="head_txt" />
+                <ScalarProperty Name="NavId" ColumnName="NavId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlideLogo">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.SlideLogo">
+              <MappingFragment StoreEntitySet="SlideLogo">
+                <ScalarProperty Name="SlideImage_2" ColumnName="SlideImage_2" />
+                <ScalarProperty Name="SlideImage_1" ColumnName="SlideImage_1" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="SlideImage" ColumnName="SlideImage" />
+                <ScalarProperty Name="SlideLogoId" ColumnName="SlideLogoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Stores">
+              <MappingFragment StoreEntitySet="Stores">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="fabric_worktime" ColumnName="fabric_worktime" />
+                <ScalarProperty Name="fabric_address" ColumnName="fabric_address" />
+                <ScalarProperty Name="fabric_name" ColumnName="fabric_name" />
+                <ScalarProperty Name="storesId" ColumnName="storesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebFooter">
+            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.WebFooter">
+              <MappingFragment StoreEntitySet="WebFooter">
+                <ScalarProperty Name="support_head" ColumnName="support_head" />
+                <ScalarProperty Name="contact_head" ColumnName="contact_head" />
+                <ScalarProperty Name="support_txt" ColumnName="support_txt" />
+                <ScalarProperty Name="contact_txt" ColumnName="contact_txt" />
+                <ScalarProperty Name="WebId" ColumnName="WebId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Vegan_Market.Models.Brand>
+
+
+@foreach (var item in Model)
+{
+    if (!string.IsNullOrWhiteSpace(item.brand_logo))
+    {
+        <div class="slick-slide  first">
+            <div class="item">
+                <div class="manufacturer-container manufacturer-block" >
+                    <div class="left-block" >
+                        <div class="manufacturer-image-container image">
+                            <a title="Studio Design" href="brand/1-studio-design.html">
+
+                                <img class="img-fluid" src="@item.brand_logo" alt="@item.brand_name" />
+                                <p class="name-manufacturer">@item.brand_name</p>
+
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     }
+
+ }

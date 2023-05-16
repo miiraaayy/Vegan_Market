@@ -1,0 +1,138 @@
+﻿@model Vegan_Market.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.picture_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.picture_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.picture_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.picture_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.picture_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.picture_3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.picture_4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.picture_4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stock_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stock_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_discount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.barcode_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.barcode_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.discount_text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.discount_text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand.brand_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand.brand_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Cate_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Cate_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sub_Category.sub_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sub_Category.sub_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

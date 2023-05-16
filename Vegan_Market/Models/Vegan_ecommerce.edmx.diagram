@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b43cf3f4a77f4a39aa54d9c16243948d" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Address" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Brand" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Category" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Customer" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Favourites" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.OrderT" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Product" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Product_Command" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Sub_Category" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Address_Customer1" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Sub_Category_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Favourites_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Command_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Favourites_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Order_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Command_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Sub_Category" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.AdminLogin" Width="1.5" PointX="2.25" PointY="3.875" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.AboutUs" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Contact" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.FAQ" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Footer" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Nav" Width="1.5" PointX="12.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.SlideLogo" Width="1.5" PointX="7.375" PointY="12.75" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Stores" Width="1.5" PointX="9.375" PointY="12.75" />
+        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.WebFooter" Width="1.5" PointX="11.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

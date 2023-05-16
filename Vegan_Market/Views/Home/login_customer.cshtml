@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "login_customer";
+    Layout = "~/Views/Shared/_Web_Layout.cshtml";
+}
+
+
+<aside id="notifications">
+    <div class="notifications-container container">
+    </div>
+</aside>
+<div class="container">
+    <div data-depth="2" class="breadcrumb-bg center breadcrumb-full" style=" background-color:#f4f1eb;background-image: url(); min-height:65px; ">
+        <div class="container">
+            <nav data-depth="2" class="breadcrumb hidden-sm-down">
+                <ol>
+                    <li>
+                        <a href="@Url.Action("HomePage","Home")"><span>Home</span></a>
+                    </li>
+                    <li>
+                        <span>Giriş yapınız</span>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div id="content-wrapper" class="col-lg-12 col-xs-12 js-content-wrapper">
+            <section id="main">
+                <header class="page-header">
+                    <h1>
+                        Giriş Yapınız
+                    </h1>
+                </header>
+                <section id="content" class="page-content card card-block">
+                    <section class="login-form">
+                        @using (Html.BeginForm())
+                        {
+                        <form >
+                            <section>
+                                <input type="hidden" name="back" value="login6654.html">
+                                <div class="form-group row ">
+                                    <label class="col-md-3 form-control-label required" for="field-email">
+                                        Email
+                                    </label>
+                                    <div class="col-md-6 js-input-column">
+                                        @Html.TextBox("customer_email", "", new { @class = "form-control", placeholder = "E-mail", required = true })
+                                    </div>
+                                    <div class="col-md-3 form-control-comment">
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label class="col-md-3 form-control-label required" for="field-password">
+                                        Şifre
+                                    </label>
+                                    <div class="col-md-6 js-input-column">
+                                        <div class="input-group js-parent-focus">
+                                            @Html.Password("customer_password", "", new { @class = "form-control", placeholder = "Şifreniz", required = true ,@type="password"})
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 form-control-comment">
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-footer text-sm-center clearfix" >
+                                    @ViewBag.uyari
+                                </div>
+                            </section>
+                            <footer class="form-footer text-sm-center clearfix">
+                                <input type="submit" value="Sign In" class="form-control-submit lgl-form-bt lql-register-bt btn btn-primary" />
+                            </footer>
+                        </form>
+                        }</section>
+                    <hr />
+                   
+                    <div class="form-footer text-sm-center clearfix">
+                        <a href="password-recovery.html" rel="nofollow">
+                            Forgot your password?
+                        </a>
+                    </div>
+                    <div class="form-footer text-sm-center clearfix">
+                        <a href="@Url.Action("Create","Home")">
+                            No account? Create one here
+                        </a>
+                    </div>
+</div>

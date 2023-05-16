@@ -1,0 +1,66 @@
+﻿@model Vegan_Market.Models.Address
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Address</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.country)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.country)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.city)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.city)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.town)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.town)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.address_text)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.address_text)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.customer_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Customer.customer_name)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.adress_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
