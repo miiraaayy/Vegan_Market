@@ -18,7 +18,7 @@ namespace Vegan_Market.Models
 
         public IEnumerable<Customer> Customers { get; set; }
 
-
+     
     
     }
 }

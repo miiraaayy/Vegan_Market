@@ -10,7 +10,7 @@ namespace Vegan_Market.Controllers
     public class ShoppingbagController : Controller
     {
         Aslan_Commerce_vtEntities db = new Aslan_Commerce_vtEntities();
-   
+  
         public ActionResult AOrderList()
         {
             var orderlist = db.OrderT.ToList();
@@ -25,6 +25,7 @@ namespace Vegan_Market.Controllers
                 ourbag = new Shoppingcart();
                 Session["ourbag"] = ourbag;
             }
+          
             return ourbag;
         }
         // GET: Shoppingcart
@@ -32,6 +33,7 @@ namespace Vegan_Market.Controllers
         {
 
             ViewBag.customer_no = Session["customers"];
+          
             ViewBag.order_message = order_message;
             return View(Bringthebag());
         }
@@ -44,6 +46,7 @@ namespace Vegan_Market.Controllers
            
             var product_num = product_number ?? 0;
             var product = db.Product.FirstOrDefault(x => x.product_id == product_id);
+
             if(product != null)
             {
                 Bringthebag().Add_cart(product,product_num);
@@ -68,6 +71,20 @@ namespace Vegan_Market.Controllers
             }
             return RedirectToAction("index");
         }
+
+        public ActionResult orderlist(int id)
+        {
+            var list_order = db.OrderT.Where(x => x.customer_no == id).ToList();
+            return View(list_order);
+        }
+
+
+        public ActionResult Siparisteslim(string order_message)
+        {
+            ViewBag.order_message = order_message;
+            return View();
+        }
+
         public ActionResult clear_Cart(int? product_id)
         {
             var product = db.Product.FirstOrDefault(x => x.product_id == product_id);
@@ -108,10 +125,12 @@ namespace Vegan_Market.Controllers
                 };
                 db.OrderT.Add(bag_register);
                 db.SaveChanges();
+           
             }
+            Bringthebag().Clear_cart();
             string order_message = "Sipariş alındı Sipariş no=" + new_order_num;
 
-            return RedirectToAction("Index", "Shoppingbag", new { order_message });
+            return RedirectToAction("Siparisteslim", "Shoppingbag", new { order_message });
         }
     }
 }

@@ -13,8 +13,10 @@ namespace Vegan_Market.Models
 
         public List<Cart> Shoppingbag { get => shoppingbag;}
 
+      
+
         
-  
+
         public void Add_cart(Product product,byte product_number)
         {
             

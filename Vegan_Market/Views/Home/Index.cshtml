@@ -2814,6 +2814,12 @@
                                                 }
                                                 else
                                                 {
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="@Url.Action("orderlist","Shoppingbag",new { id=Session["customers"]})">Tüm Siparişlerim</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="@Url.Action("AdresList","Addresses")">Adres Bilgilerim</a>
+                                                    </li>
 
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="@Url.Action("safe_out","Home")">Güvenli Çıkış</a>
@@ -2892,7 +2898,7 @@
                                                     }
                                                     else
                                                     {
-                                                        <a class="ap-btn-wishlist" href="@Url.Action("Index","Favourites")" title="Wishlist" rel="nofollow">
+                                                        <a class="ap-btn-wishlist" href="@Url.Action("Index","WishList")" title="Wishlist" rel="nofollow">
                                                             <i class="lar la-heart"></i>
                                                             <span class="ap-total-wishlist ap-total"></span>
                                                         </a>

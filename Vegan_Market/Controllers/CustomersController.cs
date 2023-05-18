@@ -20,7 +20,7 @@ namespace Vegan_Market.Controllers
         {
             return View(await db.Customer.ToListAsync());
         }
-
+        
         // GET: Customers/Details/5
         public async Task<ActionResult> Details(int? id)
         {

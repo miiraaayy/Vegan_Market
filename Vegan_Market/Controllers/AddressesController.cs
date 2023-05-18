@@ -37,6 +37,23 @@ namespace Vegan_Market.Controllers
             return View(address);
         }
 
+
+        public ActionResult AddresCheck(int customer_no)
+        {
+
+            var exist_adres = db.Address.FirstOrDefault(x => x.customer_no == customer_no);
+            if (exist_adres == null)
+            {
+                return RedirectToAction("Create");
+            }
+            else
+            {
+                return RedirectToAction("AddresList", new { adres_id = customer_no });
+            }
+
+        }
+
+
         // GET: Addresses/Create
         public ActionResult Create()
         {
@@ -58,8 +75,8 @@ namespace Vegan_Market.Controllers
             {
                 db.Address.Add(address);
                 await db.SaveChangesAsync();
-                Session["address"] = address;
-                return RedirectToAction("Take_order", "Shoppingbag");
+          
+                return RedirectToAction("AddresList",new { adres_id=address.customer_no});
 
             }
          
@@ -67,19 +84,57 @@ namespace Vegan_Market.Controllers
             return View(address);
         }
 
-        public async  Task<ActionResult> AddresList(int adress_id)
+        public async Task<ActionResult> AddresList(int adres_id)
         {
-            var address = db.Address.Where(x=>x.customer_no == adress_id).ToList();
+            var address = db.Address.Where(x => x.customer_no == adres_id).ToList();
+
             return View(address);
         }
 
+
+
+        // GET: Addresses/Create
+        public ActionResult New_Adres()
+        {
+            ViewBag.customer_no = Session["customers"];
+
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> New_Adres([Bind(Include = "adress_id,country,city,town,address_text,customer_no")] Address address)
+        {
+            ViewBag.customer_no = Session["customers"];
+            if (ModelState.IsValid)
+            {
+                db.Address.Add(address);
+                await db.SaveChangesAsync();
+
+                return RedirectToAction("AdresList");
+
+            }
+
+
+            return View(address);
+        }
+
+
+        public async Task<ActionResult> AdresList()
+        {
+            var address = db.Address.Include(a => a.Customer);
+            return View(await address.ToListAsync());
+        }
+
+     
 
         public async Task<ActionResult> remove_Adress(int? id)
         {
             Address address = await db.Address.FindAsync(id);
             db.Address.Remove(address);
             await db.SaveChangesAsync();
-            return RedirectToAction("AddresList");
+            return RedirectToAction("AdresList");
         }
 
         // GET: Addresses/Edit/5
@@ -95,7 +150,7 @@ namespace Vegan_Market.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.customer_no = new SelectList(db.Customer, "customer_id", "customer_name", address.customer_no);
+          
             return View(address);
         }
 
@@ -111,8 +166,8 @@ namespace Vegan_Market.Controllers
             {
                 db.Entry(address).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                Session["address"] = address;
-                return RedirectToAction("Index");
+               
+                return RedirectToAction("AddresList",new { adres_id=address.customer_no});
             }
     
             return View(address);

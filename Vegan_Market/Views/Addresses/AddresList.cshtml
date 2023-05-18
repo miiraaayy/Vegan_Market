@@ -37,93 +37,93 @@
                 </header>
                 <section id="content" class="page-content page-cms page-cms-8">
                     <div class="container container-parent"></div> <div data-elementor-type="post" data-elementor-id="32" class="elementor elementor-32" data-elementor-settings="[]">
-                        <div class="elementor-inner">
-                            <div class="elementor-section-wrap">
-                                <section class="elementor-element elementor-element-e4111b2 elementor-section-boxed elementor-section-height-default elementor-section-height-inner-default elementor-section elementor-top-section" data-id="e4111b2" data-element_type="section">
-                                    <div class="elementor-container elementor-column-gap-no">
-                                        <div class="elementor-row">
+                                                                       <div class="elementor-inner">
+                                                                         
+                                                                           <div class="elementor-section-wrap">
+                                                                               <section class="elementor-element elementor-element-e4111b2 elementor-section-boxed elementor-section-height-default elementor-section-height-inner-default elementor-section elementor-top-section" data-id="e4111b2" data-element_type="section">
+                                                                                   <div class="elementor-container elementor-column-gap-no">
+                                                                                       <div class="elementor-row">
 
-                                            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
-                                                <thead>
-                                                    <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                                                        <th class="w-10px pe-2">
-                                                            Seç
-                                                        </th>
+                                                                                           <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
+                                                                                               <thead>
+                                                                                                   <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+                                                                                                       <th class="w-10px pe-2">
+                                                                                                           Seç
+                                                                                                       </th>
 
-                                                        <th class="min-w-200px">Ülke</th>
-                                                        <th class="text-end min-w-100px"></th>
-                                                        <th class="text-end min-w-70px">Şehir</th>
+                                                                                                       <th class="min-w-200px">Ülke</th>
+                                                                                                       <th class="text-end min-w-100px"></th>
+                                                                                                       <th class="text-end min-w-70px">Şehir</th>
 
-                                                        <th class="text-end min-w-100px"></th>
-                                                        <th class="text-end min-w-100px">İlçe</th>
-                                                        <th class="text-end min-w-100px">Adres</th>
+                                                                                                       <th class="text-end min-w-100px"></th>
+                                                                                                       <th class="text-end min-w-100px">İlçe</th>
+                                                                                                       <th class="text-end min-w-100px">Adres</th>
 
-                                                        <th class="text-end min-w-70px"></th>
-                                                    </tr>
-                                                </thead>
-                                              @foreach (var adress in Model)
-                                              {
-
-
-
-                                                    <tbody class="fw-semibold text-gray-600">
-                                                        <tr>
-                                                            <td>
-                                                                <input id="Radio1" type="radio" />
-                                                            </td>
-                                                            <td>
-                                                                @adress.country
-                                                            </td>
-                                                            <td>
-                                                               
-                                                                                                                                   
-                                                            </td>
-                                                            <td class="text-end pe-0" data-order="25">
-                                                                @adress.city
-                                                            </td>
-                                                            <td class="text-end pe-0">
-                                                                
-                                                            </td>
-                                                            <td class="text-end pe-0">
-                                                                @adress.town
-                                                            </td>
-                                                            <td class="text-end pe-0">
-                                                               @adress.address_text
-                                                            </td>
-                                                            <td class="text-end pe-0">
-                                                                @Html.ActionLink("Edit", "Edit", new { id = adress.adress_id }) |
-                                                                @Html.ActionLink("Delete", "remove_Adress", new { id = adress.adress_id })
-
-                                                            </td>
-
-
-                                                        </tr>
+                                                                                                       <th class="text-end min-w-70px"></th>
+                                                                                                       <th><a href="@Url.Action("Create","Addresses")" class="btn btn-primary" style="width:150px;height:30px;align-content:center; display: flex; align-items: center; justify-content: center;"> Adres Oluştur</a></th>
+                                                                                                   </tr>
+                                                                                               </thead>
+                                                                                               @foreach (var adress in Model)
+                                                                                               {
 
 
 
+                                                                                                   <tbody class="fw-semibold text-gray-600">
+                                                                                                       <tr>
+                                                                                                           <td>
+                                                                                                              <input  type="radio" name="adressec" checked="true"/>
+                                                                                                           </td>
+                                                                                                           <td>
+                                                                                                               @adress.country
+                                                                                                           </td>
+                                                                                                           <td>
+                                                                                                           </td>
+                                                                                                           <td class="text-end pe-0" data-order="25">
+                                                                                                               @adress.city
+                                                                                                           </td>
+                                                                                                           <td class="text-end pe-0">
+                                                                                                           </td>
+                                                                                                           <td class="text-end pe-0">
+                                                                                                               @adress.town
+                                                                                                           </td>
+                                                                                                           <td class="text-end pe-0">
+                                                                                                               @adress.address_text
+                                                                                                           </td>
+                                                                                                           <td class="text-end pe-0">
+                                                                                                             
 
 
-                                                    </tbody>
+                                                                                                           </td>
+                                                                                                           <td >
+                                                                                                               @Html.ActionLink("Düzenle", "Edit", new { id = adress.adress_id }) 
+                                                                                                           </td>
+
+                                                                                                       </tr>
 
 
-                                              }
 
 
 
-                                                    <tr><td colspan="8" align="right"><a href="@Url.Action("Take_order", "Shoppingbag")" class="btn btn-primary btn-block">Sepeti Onayla</a></td></tr>
+                                                                                                   </tbody>
 
 
-                                                  
-                                              
-                                            </table>
+                                                                                               }
 
-                                        </div>
-                                    </div>
-                                </section>
+                                                                                               
+                                                                                               <tr><td colspan="9" align="right"><a href="@Url.Action("Take_order", "Shoppingbag")" class="btn btn-primary btn-block">Sepeti Onayla</a></td></tr>
 
 
-                            </div>
-                        </div>
+
+
+                                                                                           </table>
+
+                                                                                       </div>
+                                                                                   </div>
+                                                                               </section>
+
+
+                                                                           </div>
+                                                                       </div>
                     </div>
                 </section>
                 <footer class="page-footer">

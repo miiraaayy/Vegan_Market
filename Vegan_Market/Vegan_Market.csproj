@@ -467,6 +467,11 @@
     <Content Include="Views\WebFooters\Index.cshtml" />
     <Content Include="Views\WishList\Index.cshtml" />
     <Content Include="Views\Addresses\AddresList.cshtml" />
+    <Content Include="Views\Addresses\AddresCheck.cshtml" />
+    <Content Include="Views\Addresses\AdresList.cshtml" />
+    <Content Include="Views\Addresses\New_Adres.cshtml" />
+    <Content Include="Views\Shoppingbag\Siparisteslim.cshtml" />
+    <Content Include="Views\Shoppingbag\orderlist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="aboutusimg\" />

@@ -1,8 +1,11 @@
 ﻿@model Vegan_Market.Models.Address
-
 @{
+    ViewBag.Title = "New_Adres";
     Layout = "~/Views/Shared/_Web_Layout.cshtml";
 }
+
+
+<!DOCTYPE html>
 
 
 <aside id="notifications">
@@ -18,7 +21,6 @@
             {
                 @Html.AntiForgeryToken()
 
-                @Html.HiddenFor(x=>x.adress_id)
                 <div class="form-horizontal">
                     <h4>Address</h4>
                     <hr />
@@ -86,3 +88,4 @@
 
     </div>
 </div>
+
