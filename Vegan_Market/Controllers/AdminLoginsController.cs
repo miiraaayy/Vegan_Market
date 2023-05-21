@@ -18,7 +18,35 @@ namespace Vegan_Market.Controllers
         // GET: AdminLogins
         public async Task<ActionResult> Index()
         {
-            return View(await db.AdminLogin.ToListAsync());
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Index(AdminLogin adminLogin)
+        {
+            string message = "";
+            var admin = db.AdminLogin.FirstOrDefault(x => x.admin_email == adminLogin.admin_email && x.admin_password == adminLogin.admin_password);
+            if (admin != null)
+            {
+                Session["admin"] = admin;
+
+                Session["admin_name"] = admin.admin_email;
+
+                return RedirectToAction("Index", "Product");
+            }
+            else
+            {
+                message = "Yanlış E-mail veya Şifre";
+                ViewBag.uyari = message;
+                return View(new { message });
+            }
+        }
+
+        public ActionResult safeout()
+        {
+            Session.RemoveAll();
+            Session.Abandon();
+            return RedirectToAction("Index");
         }
 
         // GET: AdminLogins/Details/5

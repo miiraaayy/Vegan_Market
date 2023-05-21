@@ -37,7 +37,6 @@
           <Property Name="AdminLogin_id" Type="int" Nullable="false" />
           <Property Name="admin_email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="admin_password" Type="nvarchar" MaxLength="12" Nullable="false" />
-          <Property Name="admin_repassword" Type="nvarchar" MaxLength="12" Nullable="false" />
         </EntityType>
         <EntityType Name="Brand">
           <Key>
@@ -782,7 +781,6 @@
           <Property Name="AdminLogin_id" Type="Int32" Nullable="false" />
           <Property Name="admin_email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="admin_password" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="admin_repassword" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AboutUs">
           <Key>
@@ -1000,7 +998,6 @@
           <EntitySetMapping Name="AdminLogin">
             <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.AdminLogin">
               <MappingFragment StoreEntitySet="AdminLogin">
-                <ScalarProperty Name="admin_repassword" ColumnName="admin_repassword" />
                 <ScalarProperty Name="admin_password" ColumnName="admin_password" />
                 <ScalarProperty Name="admin_email" ColumnName="admin_email" />
                 <ScalarProperty Name="AdminLogin_id" ColumnName="AdminLogin_id" />

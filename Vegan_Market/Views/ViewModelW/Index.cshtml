@@ -2,6 +2,36 @@
 @{ ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Web_Layout.cshtml"; }
 
+
+
+
+<style>
+
+    .input-wrapper {
+        position: relative;
+    }
+
+        .input-wrapper input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+
+    .custom-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+</style>
+
 <aside id="notifications">
     <div class="notifications-container container">
     </div>
@@ -37,11 +67,11 @@
 
                         @foreach (var item in Model.Sub_category)
                         {
-            <li>
+                            <li>
 
-                <ul class="category-sub-menu"><li data-depth="0"><a href="@Url.Action("subcatelist", "ViewModelW",new { id=item.sub_id})">@item.sub_name</a></li></ul>
-            </li>
-}
+                                <ul class="category-sub-menu"><li data-depth="0"><a href="@Url.Action("subcatelist", "ViewModelW",new { id=item.sub_id})">@item.sub_name</a></li></ul>
+                            </li>
+                        }
 
 
                     </ul>
@@ -58,9 +88,9 @@
                 <div id="search_filters">
                     <p class="text-uppercase h6 hidden-sm-down">Filter By</p>
                     <section class="facet clearfix">
-                        <p class="h6 facet-title hidden-sm-down">Categories</p>
+                        <p class="h6 facet-title hidden-sm-down">Alt Kategoriler</p>
                         <div class="title hidden-md-up" data-target="#facet_65899" data-toggle="collapse">
-                            <p class="h6 facet-title">Categories</p>
+                            <p class="h6 facet-title">Alt Kategoriler</p>
                             <span class="navbar-toggler collapse-icons">
                                 <i class="material-icons add">&#xE313;</i>
                                 <i class="material-icons remove">&#xE316;</i>
@@ -71,20 +101,21 @@
                             {
 
 
-                            <li>
-                                <label class="facet-label" for="facet_input_65899_0">
-                                    <span class="custom-checkbox">
-                                        <input id="facet_input_65899_0" data-search-url="https://demo74.leotheme.com/prestashop/vt_oworganic/en/3-acne-blemishes?q=Categories-Haircare" type="checkbox">
-                                        <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-                                    </span>
-                                    <a href="@Url.Action("subcatelist","ViewModelW", new { id=sub_cate.sub_id})" class="_gray-darker search-link js-search-link" rel="nofollow">
-                                        @sub_cate.sub_name
-                                        <span class="magnitude">(1)</span>
-                                    </a>
-                                </label>
-                            </li>
+                                <li>
+                                    <label class="facet-label" for="facet_input_65899_0">
+                                        <span class="custom-checkbox">
+                                            <input id="facet_input_65899_0" type="checkbox">
+                                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                        </span>
+                                        <a href="@Url.Action("subcatelist","ViewModelW", new { id=sub_cate.sub_id})" class="category-sub-link" rel="nofollow">
+                                            @sub_cate.sub_name
 
-                            }   </ul>
+                                        </a>
+                                    </label>
+                                </li>
+
+                            }
+                        </ul>
                     </section>
 
 
@@ -92,46 +123,66 @@
                     <section class="facet clearfix">
                         <p class="h6 facet-title hidden-sm-down">Availability</p>
                         <div class="title hidden-md-up" data-target="#facet_18373" data-toggle="collapse">
-                            <p class="h6 facet-title">Availability</p>
+                            <p class="h6 facet-title">Mevcut Olan</p>
                             <span class="navbar-toggler collapse-icons">
                                 <i class="material-icons add">&#xE313;</i>
                                 <i class="material-icons remove">&#xE316;</i>
                             </span>
                         </div>
                         <ul id="facet_18373" class="collapse">
-                          
+
                             <li>
                                 <label class="facet-label" for="facet_input_18373_1">
                                     <span class="custom-checkbox">
                                         <input id="facet_input_18373_1" data-search-url="https://demo74.leotheme.com/prestashop/vt_oworganic/en/3-acne-blemishes?q=Availability-In+stock" type="checkbox">
                                         <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
                                     </span>
-                                    <a href="3-acne-blemishes7740.html?q=Availability-In+stock" class="_gray-darker search-link js-search-link" rel="nofollow">
-                                        In stock
-                                        <span class="magnitude">(1)</span>
+
+                                    <a href="@Url.Action("Instock","ViewModelW",new { id= ViewBag.cate_id})" class="category-sub-link" rel="nofollow">
+                                        Stoktakiler
+
                                     </a>
                                 </label>
                             </li>
                         </ul>
-                    </section>
-                    <section class="facet clearfix">
-                        <p class="h6 facet-title hidden-sm-down">Price</p>
-                        <div class="title hidden-md-up" data-target="#facet_8343" data-toggle="collapse">
-                            <p class="h6 facet-title">Price</p>
-                            <span class="navbar-toggler collapse-icons">
-                                <i class="material-icons add">&#xE313;</i>
-                                <i class="material-icons remove">&#xE316;</i>
-                            </span>
-                        </div>
-                        <ul id="facet_8343" class="faceted-slider collapse" data-slider-min="19" data-slider-max="36" data-slider-id="8343" data-slider-values="null" data-slider-unit="$" data-slider-label="Price" data-slider-specifications="{&quot;symbol&quot;:[&quot;.&quot;,&quot;,&quot;,&quot;;&quot;,&quot;%&quot;,&quot;-&quot;,&quot;+&quot;,&quot;E&quot;,&quot;\u00d7&quot;,&quot;\u2030&quot;,&quot;\u221e&quot;,&quot;NaN&quot;],&quot;currencyCode&quot;:&quot;USD&quot;,&quot;currencySymbol&quot;:&quot;$&quot;,&quot;numberSymbols&quot;:[&quot;.&quot;,&quot;,&quot;,&quot;;&quot;,&quot;%&quot;,&quot;-&quot;,&quot;+&quot;,&quot;E&quot;,&quot;\u00d7&quot;,&quot;\u2030&quot;,&quot;\u221e&quot;,&quot;NaN&quot;],&quot;positivePattern&quot;:&quot;\u00a4#,##0.00&quot;,&quot;negativePattern&quot;:&quot;-\u00a4#,##0.00&quot;,&quot;maxFractionDigits&quot;:2,&quot;minFractionDigits&quot;:2,&quot;groupingUsed&quot;:true,&quot;primaryGroupSize&quot;:3,&quot;secondaryGroupSize&quot;:3}" data-slider-encoded-url="3-acne-blemishes.html">
+
+                        <ul id="facet_17154" class="collapse">
+
+
                             <li>
-                                <p id="facet_label_8343">
-                                    $19.00 - $36.00
-                                </p>
-                                <div id="slider-range_8343"></div>
+                                <label class="facet-label" for="facet_input_17154_1">
+                                    <span class="custom-checkbox">
+                                        <input id="facet_input_17154_1" type="checkbox">
+                                        <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                    </span>
+
+
+                                    <a href="@Url.Action("Sales", "ViewModelW",new { id=ViewBag.cate_id})" class="category-link" rel="nofollow">
+                                        İndirimli Ürünler
+
+                                    </a>
+
+
+                                </label>
                             </li>
                         </ul>
                     </section>
+
+                    <form action="/ViewModelW/Filter" method="post">
+                        <input type="hidden" id="cate_id" name="cate_id" value="@ViewBag.cate_id" />
+                        <p class="h6 facet-title">Fiyat</p>
+
+                        <div class="input-wrapper">
+                            <input type="text" id="min-price" name="minPrice" placeholder="Minimum Fiyat" />
+                        </div>
+                        <br />
+                        <div class="input-wrapper">
+                            <input type="text" id="max-price" name="maxPrice" placeholder="Maximum Fiyat" />
+                        </div>
+                        <br />
+
+                        <input type="submit" value="Filtrele" class="custom-button" />
+                    </form>
                 </div>
             </div>
         </div>
@@ -146,27 +197,28 @@
                         </div>
                     </div>
                 </div>
-               
+
 
 
                 <div id="subcategories" class="card card-block hidden-sm-down">
 
                     <h2 class="subcategory-heading">Subcategories</h2>
-                  
+
                     <ul class="subcategories-list">
                         @foreach (var sub_Category in Model.Sub_category)
                         {
-                    <li>
-                        <div class="subcategory-image">
-                            <a href="@Url.Action("subcatelist", "ViewModelW",new { id=sub_Category.sub_id})" title="@sub_Category.sub_name" class="img">
-                                <img class="img-fluid" src="@sub_Category.sub_picture" alt="@sub_Category.sub_name" loading="lazy" width="350" height="300" />
-                            </a>
-                        </div>
-                        <h5><a class="subcategory-name" href="4-haircare.html">@sub_Category.sub_name</a></h5>
-                        <div class="cat_desc"><p>@sub_Category.sub_descript</p></div>
-                    </li>
+                            <li>
+                                <div class="subcategory-image">
+                                    <a href="@Url.Action("subcatelist", "ViewModelW",new { id=sub_Category.sub_id})" title="@sub_Category.sub_name" class="img">
+                                        <img class="img-fluid" src="@sub_Category.sub_picture" alt="@sub_Category.sub_name" loading="lazy" width="350" height="300" />
+                                    </a>
+                                </div>
+                                <h5><a class="subcategory-name" href="4-haircare.html">@sub_Category.sub_name</a></h5>
+                                <div class="cat_desc"><p>@sub_Category.sub_descript</p></div>
+                            </li>
 
-                        }</ul>
+                        }
+                    </ul>
                 </div>
                 <section id="products">
                     <div id="js-product-list-top" class="products-selection">
@@ -178,12 +230,12 @@
 
 
 
-                                <p>There are @ViewBag.productnum products.</p>
+                                <p>Toplam  @ViewBag.productnum ürün var.</p>
                             </div>
                             <div class="col-md-6 col-lg-3" id="btn_view_product" data-mode="grid" data-col-xl="3" data-col-lg="3" data-col-md="2" data-col-sm="2" data-col-xs="1" data-col-sp="1">
                                 <span class="grid-select grid-select-list view-list " data-col="list"></span>
                                 <span class="grid-select grid-select-grid view-1 " data-col="12"></span>
-                                <span class="grid-select grid-select-grid view-2 "  data-col="6"></span>
+                                <span class="grid-select grid-select-grid view-2 " data-col="6"></span>
                                 <span class="grid-select grid-select-grid view-3 active" data-col="4"></span>
                                 <span class="grid-select grid-select-grid view-4 " data-col="3"></span>
                                 <span class="grid-select grid-select-grid view-5 " data-col="2-4"></span>
@@ -241,98 +293,98 @@
                                 <div class="row leo-product-ajax">
                                     @foreach (var product in Model.Product)
                                     {
-                                <div class="ajax_block_product col-sp-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 first-in-line last-line first-item-of-tablet-line last-item-of-mobile-line">
+                                        <div class="ajax_block_product col-sp-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 first-in-line last-line first-item-of-tablet-line last-item-of-mobile-line">
 
 
-                                    <article class="product-miniature js-product-miniature" data-id-product="2" data-id-product-attribute="9">
-                                        <div class="thumbnail-container">
-                                            <div class="product-image">
-                                                <a href="@Url.Action("productlist","ViewModelW",new { id =product.product_id})" class="thumbnail product-thumbnail">
-                                                    <img class="img-fluid" src="@product.picture_1"alt="">
-                                                </a>
-                                                <ul class="product-flags">
-                                                    @if (product.product_discount == true)
-                                                    {
-                                                    <li class="product-flag discount">-@product.discount_text%</li>
-                                                    }
-                                                </ul>
-                                              
-                                                    @if (Session["customer"] != null)
-                                                    {
-                                                        <a href="@Url.Action("Addto_cart", "Shoppingbag", new { product_id = product.product_id })" class="btn btn-primary btn-block" >ADD TO CART</a>
-                                                     }
+                                            <article class="product-miniature js-product-miniature" data-id-product="2" data-id-product-attribute="9">
+                                                <div class="thumbnail-container">
+                                                    <div class="product-image">
+                                                        <a href="@Url.Action("productlist","ViewModelW",new { id =product.product_id})" class="thumbnail product-thumbnail">
+                                                            <img class="img-fluid" src="@product.picture_1" alt="">
+                                                        </a>
+                                                        <ul class="product-flags">
+                                                            @if (product.product_discount == true)
+                                                            {
+                                                                <li class="product-flag discount">-@product.discount_text%</li>
+                                                            }
+                                                        </ul>
 
-
-                                                    else
-                                                    {
-                                                        <a href="@Url.Action("login_customer", "Home")" class="btn btn-primary btn-block" >ADD TO CART</a>
-                                                    }
-
-                                               
-                                                <div class="buttons-top">
-                                                    <div class="wishlist">
                                                         @if (Session["customer"] != null)
                                                         {
-                                                            <a href="@Url.Action("Add_wish", "WishList", new { product_id = product.product_id })" title="Add to Wishlist">
-
-                                                                <span class="leo-wishlist-bt-content">
-                                                                    <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
-
-                                                                    <span class="name-btn-product text-add">Add to Wishlist</span>
-                                                                </span>
-                                                            </a>
+                                                            <a href="@Url.Action("Addto_cart", "Shoppingbag", new { product_id = product.product_id })" class="btn btn-primary btn-block">ADD TO CART</a>
                                                         }
+
 
                                                         else
                                                         {
-                                                            <a href="@Url.Action("login_customer", "Home")" title="Add to Wishlist">
-
-                                                                <span class="leo-wishlist-bt-content">
-                                                                    <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
-
-                                                                    <span class="name-btn-product text-add">Add to Wishlist</span>
-                                                                </span>
-                                                            </a>
+                                                            <a href="@Url.Action("login_customer", "Home")" class="btn btn-primary btn-block">ADD TO CART</a>
                                                         }
 
-                                                    </div>
-                                                 
-                                                </div>
-                                            </div>
-                                            <div class="product-meta">
-                                                <h3 class="h3 product-title"><a href="@Url.Action("", "", new { id = product.product_id })">@product.product_name</a></h3>
-                                                <div class="product-price-and-shipping">
 
-                                                    @if (product.product_discount == false)
-                                                    {
-                                                        <span aria-label="Regular price">@Convert.ToDouble(product.product_price)</span>
+                                                        <div class="buttons-top">
+                                                            <div class="wishlist">
+                                                                @if (Session["customer"] != null)
+                                                                {
+                                                                    <a href="@Url.Action("Add_wish", "WishList", new { product_id = product.product_id })" title="Add to Wishlist">
 
-                                                    }
-                                                    else
-                                                    {
-                                                        <span class="regular-price" aria-label="Regular price">@product.product_price</span>
-                                                        int? discount_txt = product.discount_text;
+                                                                        <span class="leo-wishlist-bt-content">
+                                                                            <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
 
-                                                        decimal price = product.product_price - ((product.product_price * discount_txt.Value) / 100);
-                                                        product.product_price = price;
-                                                       
-                                                        <span class="price" aria-label="Price">
-                                                            @Convert.ToDouble(product.product_price)
-                                                        </span>
+                                                                            <span class="name-btn-product text-add">Add to Wishlist</span>
+                                                                        </span>
+                                                                    </a>
+                                                                }
 
-                                                    }
+                                                                else
+                                                                {
+                                                                    <a href="@Url.Action("login_customer", "Home")" title="Add to Wishlist">
 
-                                                </div>
-                                            </div>
-                                    </article>
-                                </div>}
+                                                                        <span class="leo-wishlist-bt-content">
+                                                                            <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
+
+                                                                            <span class="name-btn-product text-add">Add to Wishlist</span>
+                                                                        </span>
+                                                                    </a>
+                                                                }
 
                                                             </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-meta">
+                                                        <h3 class="h3 product-title"><a href="@Url.Action("productlist", "ViewModelW", new { id = product.product_id })">@product.product_name</a></h3>
+                                                        <div class="product-price-and-shipping">
+
+                                                            @if (product.product_discount == false)
+                                                            {
+                                                                <span aria-label="Regular price">@Convert.ToDouble(product.product_price)</span>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="regular-price" aria-label="Regular price">@product.product_price</span>
+                                                                int? discount_txt = product.discount_text;
+
+                                                                decimal price = product.product_price - ((product.product_price * discount_txt.Value) / 100);
+                                                                product.product_price = price;
+
+                                                                <span class="price" aria-label="Price">
+                                                                    @Convert.ToDouble(product.product_price)
+                                                                </span>
+
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                            </article>
+                                        </div>}
+
+                                </div>
                             </div>
                         </div>
                         <nav class="pagination" data-total="2">
                             <div id="pagination_summary" class="col-md-4 done">
-                              
+
                             </div>
                             <div class="col-md-6 offset-md-2 pr-0">
                             </div>

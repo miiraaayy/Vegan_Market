@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Vegan_Market.Models.OrderT>
 
 @{
-    ViewBag.Title = "AOrderList";
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 }
 
@@ -50,6 +50,20 @@
         border: 1px solid #ccc;
         border-radius: 4px;
     }
+
+    .custom-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        .custom-button:hover {
+            background-color: #45a049;
+        }
 </style>
 <!--begin::Content wrapper-->
 <div class="d-flex flex-column flex-column-fluid">
@@ -134,20 +148,27 @@
                     <!--end::Card title-->
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                     
 
-                            <div class="filter-form">
-                                <form action="@Url.Action("DateOrder", "Shoppingbag")" method="get">
-                                    <label for="startDate">Başlangıç Tarihi:</label>
-                                    <input type="date" name="startDate" id="startDate" required>
 
-                                    <label for="endDate">Bitiş Tarihi:</label>
-                                    <input type="date" name="endDate" id="endDate" required>
+                        <div class="filter-form">
+                            <form action="@Url.Action("DateOrder", "Shoppingbag")" method="get">
+                                <label for="startDate">Başlangıç Tarihi:</label>
+                                <input type="date" name="startDate" id="startDate" required>
 
-                                    <input type="submit" value="Filtrele">
-                                </form>
-                            </div>
-                     
+                                <label for="endDate">Bitiş Tarihi:</label>
+                                <input type="date" name="endDate" id="endDate" required>
+
+                                <input type="submit" value="Filtrele">
+                            </form>
+                        </div>
+
+                        <a href="@Url.Action("AOrderList","Shoppingbag")" class="btn-active-success">
+                            <!--begin::Avatar-->
+                            <!--end::Avatar-->
+                            <!--begin::Name-->
+                            <input type="submit" value="Siparişlere Dön" class="custom-button" />
+                            <!--end::Name-->
+                        </a>
 
                     </div>
                     <!--end::Card toolbar-->
@@ -181,49 +202,49 @@
                             {
 
 
-                            <tr>
-                                <td>
-                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="1" />
-                                    </div>
-                                </td>
-                                <td data-kt-ecommerce-order-filter="order_id">
-                                    <a class="text-gray-800 text-hover-primary fw-bold">
-                                        @orderT.order_num
-                                    </a>
-                                </td>
-
-                                <td data-kt-ecommerce-order-filter="order_id">
-                                    <a class="text-gray-800 text-hover-primary fw-bold">
-                                        @orderT.Product.product_name
-                                    </a>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-
-
-                                        <div class="ms-5">
-                                            <!--begin::Title-->
-                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bold">@orderT.Customer.customer_name</a>
-                                            <!--end::Title-->
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                            <input class="form-check-input" type="checkbox" value="1" />
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="text-end" data-order="2023-03-22">
-                                    <span class="fw-bold">@orderT.order_date</span>
-                                </td>
-                                <td class="text-end pe-0">
-                                    <span class="fw-bold">@orderT.product_number</span>
-                                </td>
+                                    </td>
+                                    <td data-kt-ecommerce-order-filter="order_id">
+                                        <a class="text-gray-800 text-hover-primary fw-bold">
+                                            @orderT.order_num
+                                        </a>
+                                    </td>
 
-                                <td class="text-end pe-0">
-                                    <span class="fw-bold">@orderT.price</span>
-                                </td>
+                                    <td data-kt-ecommerce-order-filter="order_id">
+                                        <a class="text-gray-800 text-hover-primary fw-bold">
+                                            @orderT.Product.product_name
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
 
 
-                              
-                            
-                            </tr>
+                                            <div class="ms-5">
+                                                <!--begin::Title-->
+                                                <a class="text-gray-800 text-hover-primary fs-5 fw-bold">@orderT.Customer.customer_name</a>
+                                                <!--end::Title-->
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end" data-order="2023-03-22">
+                                        <span class="fw-bold">@orderT.order_date</span>
+                                    </td>
+                                    <td class="text-end pe-0">
+                                        <span class="fw-bold">@orderT.product_number</span>
+                                    </td>
+
+                                    <td class="text-end pe-0">
+                                        <span class="fw-bold">@orderT.price</span>
+                                    </td>
+
+
+
+
+                                </tr>
 
                             }
                         </tbody>

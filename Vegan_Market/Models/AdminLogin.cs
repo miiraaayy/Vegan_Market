@@ -17,6 +17,5 @@ namespace Vegan_Market.Models
         public int AdminLogin_id { get; set; }
         public string admin_email { get; set; }
         public string admin_password { get; set; }
-        public string admin_repassword { get; set; }
     }
 }

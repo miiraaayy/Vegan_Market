@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<Vegan_Market.Models.Product_Command>
 
 @{
-    ViewBag.Title = "Product_Command";
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Admin_Layout.cshtml";
 }
+
 <style>
     .filter-form {
         display: flex;
@@ -43,11 +44,26 @@
         #search-button:hover {
             background-color: #45a049;
         }
+
     #customerName {
         padding: 8px;
         border: 1px solid #ccc;
         border-radius: 4px;
     }
+
+    .custom-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        .custom-button:hover {
+            background-color: #45a049;
+        }
 </style>
 <!--begin::Content wrapper-->
 <div class="d-flex flex-column flex-column-fluid">
@@ -88,22 +104,22 @@
                     <!--begin::Card title-->
                     <div class="card-title">
                         <!--begin::Search-->
-                  
-                   
+
                         <form action="@Url.Action("Search", "Product_Command")" method="get">
-                          
-                                <input type="text" id="customerName" name="customerName" placeholder="Müşteri adı girin...">
+
+                            <input type="text" id="customerName" name="customerName" placeholder="Müşteri adı girin...">
 
 
-                                <button type="submit" id="search-button">Ara</button>
-                       
+                            <button type="submit" id="search-button">Ara</button>
+
                         </form>
-                            
+
                         <!--end::Search-->
                     </div>
                     <!--end::Card title-->
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+
 
 
                         <div class="filter-form">
@@ -119,6 +135,13 @@
                         </div>
 
 
+                        <a href="@Url.Action("Product_Command","Product_Command")" class="btn-active-success">
+                            <!--begin::Avatar-->
+                            <!--end::Avatar-->
+                            <!--begin::Name-->
+                            <input type="submit" value="Yorumlara Dön" class="custom-button" />
+                            <!--end::Name-->
+                        </a>
                     </div>
                     <!--end::Card toolbar-->
                 </div>
@@ -142,9 +165,9 @@
                                 <th class="min-w-100px text-end fs-7">Date</th>
                             </tr>
                         </thead>
-
-                        @foreach (var command in Model)
-                        {
+                       
+                            @foreach (var command in Model)
+                            {
                             <tbody>
 
                                 <tr>
@@ -189,7 +212,9 @@
 
 
                             </tbody>
-                        }
+                            }
+
+           
                     </table>
                     <!--end::Table-->
                 </div>
@@ -205,6 +230,6 @@
 
 
 
-  
+
 </div>
 <!--end::Content wrapper-->

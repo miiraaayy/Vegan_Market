@@ -1,10 +1,11 @@
 ﻿@model Vegan_Market.Models.ViewModel
 @{
-    ViewBag.Title = "HomePage";
+    ViewBag.Title = "Filter_categories";
     Layout = "~/Views/Shared/_Web_Layout.cshtml";
 }
+
 <style>
-  
+
     .input-wrapper {
         position: relative;
     }
@@ -28,16 +29,6 @@
         font-size: 14px;
         cursor: pointer;
     }
-
-      .checkbox-wrapper {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
-  .checkbox-wrapper label {
-    font-size: 14px;
-    vertical-align: middle;
-  }
 </style>
 <aside id="notifications">
     <div class="notifications-container container">
@@ -82,30 +73,28 @@
                                 <i class="material-icons remove">&#xE316;</i>
                             </span>
                         </div>
+                        <ul id="facet_62794" class="collapse">
+                            @foreach (var category in Model.Category)
+                            {
+                                <li>
+                                    <label class="facet-label">
+                                        <span class="custom-checkbox">
+                                            <input type="checkbox" class="category-checkbox" data-category-id="@category.Cate_id">
+                                            <span class="checkbox-custom"></span>
+                                        </span>
+                                        <a href="@Url.Action("Filter_categories","Home",new { id=category.Cate_id})" class="category-link" data-category-id="@category.Cate_id">
+                                            @category.Cate_name
 
-                    
-        <ul id="facet_62794" class="collapse">
-            @foreach (var category in Model.Category)
-            {
-                <li>
-                    <label class="facet-label">
-                        <span class="custom-checkbox">
-                            <input id="facet_input_86257_0" data-search-url="https://demo74.leotheme.com/prestashop/vt_oworganic/en/2-home?plist_key=plist1843727881&amp;q=Brand-Graphic+Corner" type="checkbox">
-                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-                        </span>
-                        <a href="@Url.Action("Filter_categories","Home",new { id=category.Cate_id})" class="category-link" rel="nofollow">
-                            @category.Cate_name
-
-                        </a>
-                    </label>
-                </li>
-            }
-        </ul>
+                                        </a>
+                                    </label>
+                                </li>
+                            }
+                        </ul>
                     </section>
                     <section class="facet clearfix">
                         <p class="h6 facet-title hidden-sm-down">Availability</p>
                         <div class="title hidden-md-up" data-target="#facet_17154" data-toggle="collapse">
-                            <p class="h6 facet-title">Mevcut Olan</p>
+                            <p class="h6 facet-title">Availability</p>
                             <span class="navbar-toggler collapse-icons">
                                 <i class="material-icons add">&#xE313;</i>
                                 <i class="material-icons remove">&#xE316;</i>
@@ -121,7 +110,7 @@
                                         <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
                                     </span>
                                     <a href="@Url.Action("Instock","Home")" class="category-link" rel="nofollow">
-                                        Stoktakiler
+                                        Stokta
 
                                     </a>
 
@@ -179,22 +168,22 @@
                             }
                         </ul>
                     </section>
-                 
 
-                <form action="/Home/Filter" method="post">
-                    <p class="h6 facet-title">Fiyat</p>
 
-                    <div class="input-wrapper">
-                        <input type="text" id="min-price" name="minPrice" placeholder="Minimum Fiyat" />
-                    </div>
-                     <br />
-                    <div class="input-wrapper">
-                        <input type="text" id="max-price" name="maxPrice" placeholder="Maximum Fiyat" />
-                    </div>
-                    <br />
-            
-                    <input type="submit" value="Filtrele" class="custom-button" />
-                </form>
+                    <form action="/Home/Filter" method="post">
+                        <p>Fiyat</p>
+
+                        <div class="input-wrapper">
+                            <input type="text" id="min-price" name="minPrice" placeholder="Minimum Fiyat" />
+                        </div>
+                        <br />
+                        <div class="input-wrapper">
+                            <input type="text" id="max-price" name="maxPrice" placeholder="Maximum Fiyat" />
+                        </div>
+                        <br />
+
+                        <input type="submit" value="Filtrele" class="custom-button" />
+                    </form>
 
                 </div>
             </div>
@@ -216,7 +205,7 @@
                     <div id="js-product-list-top" class="products-selection">
                         <div class="row">
                             <div class="col-md-6 col-lg-3 hidden-md-down total-products ">
-                                <p>Toplam @ViewBag.count tane ürün var.</p>
+                                <p>Toplam @ViewBag.category_count tane ürün var.</p>
                             </div>
                             <div class="col-md-6 col-lg-3" id="btn_view_product" data-mode="grid" data-col-xl="3" data-col-lg="3" data-col-md="2" data-col-sm="2" data-col-xs="1" data-col-sp="1">
                                 <span class="grid-select grid-select-list view-list" data-col="list"></span>
@@ -305,8 +294,8 @@
                                                                     </span>
                                                                 </a>
                                                             </div>
-                                                         
-                                                         
+
+
                                                         </div>
                                                     </div>
                                                     <div class="product-meta">
@@ -404,6 +393,10 @@
 
 
     </script>
-  
+
 </div>
+
+
+
+
 

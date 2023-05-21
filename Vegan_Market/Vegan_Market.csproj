@@ -221,6 +221,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin_sign_img\300-1.jpg" />
+    <Content Include="admin_sign_img\bg4-dark.jpg" />
+    <Content Include="admin_sign_img\bg4.jpg" />
+    <Content Include="admin_sign_img\custom-3.svg" />
     <Content Include="App_Data\Aslan_Commerce_vt.mdf" />
     <Content Include="App_Data\Aslan_Commerce_vt_log.ldf">
       <DependentUpon>Aslan_Commerce_vt.mdf</DependentUpon>
@@ -341,6 +345,8 @@
       <DependentUpon>Vegan_ecommerce.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.6.4.intellisense.js" />
+    <Content Include="Scripts\general.js" />
+    <Content Include="Scripts\generals.js" />
     <Content Include="Scripts\jquery-3.6.4.js" />
     <Content Include="Scripts\jquery-3.6.4.min.js" />
     <Content Include="Scripts\jquery-3.6.4.slim.js" />
@@ -388,7 +394,6 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Home\categorylist.cshtml" />
     <Content Include="Views\Shared\_Web_Layout.cshtml" />
-    <Content Include="Views\Home\HomePage.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Faq.cshtml" />
     <Content Include="Views\Home\Stores.cshtml" />
@@ -419,11 +424,6 @@
     <Content Include="Views\Addresses\Edit.cshtml" />
     <Content Include="Views\Addresses\Index.cshtml" />
     <Content Include="Views\ViewModelW\consent_shoppingbag.cshtml" />
-    <Content Include="Views\Product_Command\Create.cshtml" />
-    <Content Include="Views\Product_Command\Delete.cshtml" />
-    <Content Include="Views\Product_Command\Details.cshtml" />
-    <Content Include="Views\Product_Command\Edit.cshtml" />
-    <Content Include="Views\Product_Command\Index.cshtml" />
     <Content Include="Views\AdminLogins\Create.cshtml" />
     <Content Include="Views\AdminLogins\Delete.cshtml" />
     <Content Include="Views\AdminLogins\Details.cshtml" />
@@ -431,8 +431,6 @@
     <Content Include="Views\AdminLogins\Index.cshtml" />
     <Content Include="Views\Shoppingbag\AOrderList.cshtml" />
     <Content Include="Views\Product_Command\Product_Command.cshtml" />
-    <Content Include="Views\Home\AllProduct.cshtml" />
-    <Content Include="Views\Home\AllBrand.cshtml" />
     <Content Include="Views\SlideLogoes\Create.cshtml" />
     <Content Include="Views\SlideLogoes\Delete.cshtml" />
     <Content Include="Views\SlideLogoes\Edit.cshtml" />
@@ -472,6 +470,24 @@
     <Content Include="Views\Addresses\New_Adres.cshtml" />
     <Content Include="Views\Shoppingbag\Siparisteslim.cshtml" />
     <Content Include="Views\Shoppingbag\orderlist.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="Views\Home\Filter_categories.cshtml" />
+    <Content Include="Views\Home\Sales.cshtml" />
+    <Content Include="Views\Home\Instock.cshtml" />
+    <Content Include="Views\Home\Filter_brand.cshtml" />
+    <Content Include="Views\Home\Filter.cshtml" />
+    <Content Include="Views\ViewModelW\Instock.cshtml" />
+    <Content Include="Views\ViewModelW\Sales.cshtml" />
+    <Content Include="Views\ViewModelW\Filter.cshtml" />
+    <Content Include="Views\ViewModelW\Sales_subs.cshtml" />
+    <Content Include="Views\ViewModelW\Instock_subs.cshtml" />
+    <Content Include="Views\ViewModelW\Filters.cshtml" />
+    <Content Include="Views\Shoppingbag\DateOrder.cshtml" />
+    <Content Include="Views\Product_Command\DateCommand.cshtml" />
+    <Content Include="Views\Product_Command\Search.cshtml" />
+    <Content Include="Views\Product_Command\NoResults.cshtml" />
+    <Content Include="Views\Shoppingbag\Search.cshtml" />
+    <Content Include="Views\Shoppingbag\NoResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="aboutusimg\" />

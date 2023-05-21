@@ -1,6 +1,7 @@
 ﻿@model Vegan_Market.Models.ViewModel
+
 @{
-    ViewBag.Title = "subcatelist";
+    ViewBag.Title = "Instock_subs";
     Layout = "~/Views/Shared/_Web_Layout.cshtml";
 }
 
@@ -32,6 +33,7 @@
         cursor: pointer;
     }
 </style>
+
 <aside id="notifications">
     <div class="notifications-container container">
     </div>
@@ -45,10 +47,13 @@
                         <a href="@Url.Action("HomePage", "Home")"><span>Home</span></a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index", "ViewModelW", new { id = ViewBag.cate_id })"><span>@ViewBag.catename</span></a>
+                        <a href="@Url.Action("Index","ViewModelW",new { id =ViewBag.cate_id})"><span>@ViewBag.catename</span></a>
                     </li>
                     <li>
                         <span>@ViewBag.subcatename</span>
+                    </li>
+                    <li>
+                        <span>Stoktakiler</span>
                     </li>
                 </ol>
             </nav>
@@ -327,4 +332,5 @@
         </div>
     </div>
 </div>
+
 

@@ -58,62 +58,75 @@ namespace Vegan_Market.Controllers
 
             if (ModelState.IsValid)
             {
-
-                foreach (HttpPostedFileBase files in file)
+                try
                 {
-
-
-                    if (file != null)
+                    foreach (HttpPostedFileBase files in file)
                     {
 
-                        if (files.ContentLength > 0)//dosya transfer olduysa
+
+                        if (file != null)
                         {
-                            String uzanti = Path.GetExtension(files.FileName);
-                            if (uzanti.Equals(".jpg") || uzanti.Equals(".jpeg") || uzanti.Equals(".jfif") || uzanti.Equals(".png"))
+
+                            if (files.ContentLength > 0)//dosya transfer olduysa
                             {
+                                String uzanti = Path.GetExtension(files.FileName);
+                                if (uzanti.Equals(".jpg") || uzanti.Equals(".jpeg") || uzanti.Equals(".jfif") || uzanti.Equals(".png"))
+                                {
 
-                                var dosya_adi = Path.GetFileName(files.FileName);
-                                String yol = Path.Combine(Server.MapPath("~/image"), dosya_adi);
-                                files.SaveAs(yol);
+                                    var dosya_adi = Path.GetFileName(files.FileName);
+                                    String yol = Path.Combine(Server.MapPath("~/image"), dosya_adi);
+                                    files.SaveAs(yol);
 
-                                if (product.picture_1 == null)
-                                {
-                                    product.picture_1 = "/image/" + dosya_adi;
-                                    continue;
-                                }
-                                else if (product.picture_2 == null)
-                                {
-                                    product.picture_2 = "/image/" + dosya_adi;
-                                    continue;
-                                }
-                                else if (product.picture_3 == null)
-                                {
-                                    product.picture_3 = "/image/" + dosya_adi;
-                                    continue;
-                                }
-                                else if (product.picture_4 == null)
-                                {
-                                    product.picture_4 = "/image/" + dosya_adi;
-                                    break;
-                                }
+                                    if (product.picture_1 == null)
+                                    {
+                                        product.picture_1 = "/image/" + dosya_adi;
+                                        continue;
+                                    }
+                                    else if (product.picture_2 == null)
+                                    {
+                                        product.picture_2 = "/image/" + dosya_adi;
+                                        continue;
+                                    }
+                                    else if (product.picture_3 == null)
+                                    {
+                                        product.picture_3 = "/image/" + dosya_adi;
+                                        continue;
+                                    }
+                                    else if (product.picture_4 == null)
+                                    {
+                                        product.picture_4 = "/image/" + dosya_adi;
+                                        continue;
+                                    }
 
+                                    else
+                                    {
+                                        return ViewBag.exception = "En fazla 4 fotoğraf seçebilirsiniz";
+                                    }
+
+                                }
 
 
                             }
-
-
                         }
+
+
                     }
+
 
 
                     db.Product.Add(product);
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
+
+                }
+                catch (Exception )
+                {
+                    
+                    ViewBag.exception =" En fazla 4 fotoğraf seçebilirsiniz";
+                    
                 }
 
-            
-
-
+               
 
             }
             ViewBag.brand_no = new SelectList(db.Brand, "brand_id", "brand_name", product.brand_no);

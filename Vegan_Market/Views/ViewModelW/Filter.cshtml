@@ -1,6 +1,6 @@
-﻿@model Vegan_Market.Models.ViewModel
+﻿@model Vegan_Market.Models.ViewModel 
 @{
-    ViewBag.Title = "subcatelist";
+    ViewBag.Title = "Filter";
     Layout = "~/Views/Shared/_Web_Layout.cshtml";
 }
 
@@ -32,34 +32,53 @@
         cursor: pointer;
     }
 </style>
+
 <aside id="notifications">
     <div class="notifications-container container">
     </div>
 </aside>
 <div class="container">
-    <div data-depth="3" class="breadcrumb-bg center breadcrumb-full" style=" background-color:#f4f1eb;background-image: url(); min-height:65px; ">
+    <div data-depth="2" class="breadcrumb-bg center breadcrumb-full" style=" background-color:#f4f1eb;background-image: url(); min-height:65px; ">
         <div class="container">
-            <nav data-depth="3" class="breadcrumb hidden-sm-down">
+
+            <nav data-depth="2" class="breadcrumb hidden-sm-down">
+
+
                 <ol>
                     <li>
                         <a href="@Url.Action("HomePage", "Home")"><span>Home</span></a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index", "ViewModelW", new { id = ViewBag.cate_id })"><span>@ViewBag.catename</span></a>
+                        @ViewBag.catename
                     </li>
+
                     <li>
-                        <span>@ViewBag.subcatename</span>
+                        <span>Fiyat Aralığı</span>
                     </li>
+
                 </ol>
+
             </nav>
         </div>
     </div>
     <div class="row">
         <div id="left-column" class="sidebar col-xs-12 col-sm-12 col-md-4 col-lg-3">
             <div class="block-categories block">
-                <p class="title_block text-uppercase h6 hidden-sm-down">@ViewBag.subcatename</p>
+                <p class="title_block text-uppercase h6 hidden-sm-down">@ViewBag.catename</p>
                 <div class="block_content">
+
+
                     <ul class="category-top-menu">
+
+                        @foreach (var item in Model.Sub_category)
+                        {
+                            <li>
+
+                                <ul class="category-sub-menu"><li data-depth="0"><a href="@Url.Action("subcatelist", "ViewModelW",new { id=item.sub_id})">@item.sub_name</a></li></ul>
+                            </li>
+                        }
+
+
                     </ul>
                 </div>
             </div>
@@ -73,32 +92,65 @@
                 </div>
                 <div id="search_filters">
                     <p class="text-uppercase h6 hidden-sm-down">Filter By</p>
+                    <section class="facet clearfix">
+                        <p class="h6 facet-title hidden-sm-down">Alt Kategoriler</p>
+                        <div class="title hidden-md-up" data-target="#facet_65899" data-toggle="collapse">
+                            <p class="h6 facet-title">Alt Kategoriler</p>
+                            <span class="navbar-toggler collapse-icons">
+                                <i class="material-icons add">&#xE313;</i>
+                                <i class="material-icons remove">&#xE316;</i>
+                            </span>
+                        </div>
+                        <ul id="facet_65899" class="collapse">
+                            @foreach (var sub_cate in Model.Sub_category)
+                            {
+
+
+                                <li>
+                                    <label class="facet-label" for="facet_input_65899_0">
+                                        <span class="custom-checkbox">
+                                            <input id="facet_input_65899_0" type="checkbox">
+                                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                        </span>
+                                        <a href="@Url.Action("subcatelist","ViewModelW", new { id=sub_cate.sub_id})" class="category-sub-link" rel="nofollow">
+                                            @sub_cate.sub_name
+
+                                        </a>
+                                    </label>
+                                </li>
+
+                            }
+                        </ul>
+                    </section>
+
 
 
                     <section class="facet clearfix">
                         <p class="h6 facet-title hidden-sm-down">Mevcut Olan</p>
-                        <div class="title hidden-md-up" data-target="#facet_4120" data-toggle="collapse">
+                        <div class="title hidden-md-up" data-target="#facet_18373" data-toggle="collapse">
                             <p class="h6 facet-title">Mevcut Olan</p>
                             <span class="navbar-toggler collapse-icons">
                                 <i class="material-icons add">&#xE313;</i>
                                 <i class="material-icons remove">&#xE316;</i>
                             </span>
                         </div>
-                        <ul id="facet_4120" class="collapse">
+                        <ul id="facet_18373" class="collapse">
 
                             <li>
-                                <label class="facet-label" for="facet_input_4120_1">
+                                <label class="facet-label" for="facet_input_18373_1">
                                     <span class="custom-checkbox">
-                                        <input id="facet_input_4120_1" data-search-url="https://demo74.leotheme.com/prestashop/vt_oworganic/en/4-haircare?q=Availability-In+stock" type="checkbox">
+                                        <input id="facet_input_18373_1" data-search-url="https://demo74.leotheme.com/prestashop/vt_oworganic/en/3-acne-blemishes?q=Availability-In+stock" type="checkbox">
                                         <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
                                     </span>
-                                    <a href="@Url.Action("Instock_subs", "ViewModelW", new { id=ViewBag.sub_id })" class="category-link" rel="nofollow">
+
+                                    <a href="@Url.Action("Instock","ViewModelW",new { id= ViewBag.cate_id})" class="category-sub-link" rel="nofollow">
                                         Stoktakiler
 
                                     </a>
                                 </label>
                             </li>
                         </ul>
+
                         <ul id="facet_17154" class="collapse">
 
 
@@ -110,7 +162,7 @@
                                     </span>
 
 
-                                    <a href="@Url.Action("Sales_subs", "ViewModelW",new { id=ViewBag.sub_id})" class="category-link" rel="nofollow">
+                                    <a href="@Url.Action("Sales", "ViewModelW",new { id=ViewBag.cate_id})" class="category-link" rel="nofollow">
                                         İndirimli Ürünler
 
                                     </a>
@@ -120,9 +172,10 @@
                             </li>
                         </ul>
                     </section>
-                    <form action="/ViewModelW/Filters" method="post">
-                        <input type="hidden" id="sub_id" name="sub_id" value="@ViewBag.sub_id" />
-                        <p class="h6 facet-title">Fiyat</p>
+
+                    <form action="/ViewModelW/Filter" method="post">
+                        <input type="hidden" id="cate_id" name="cate_id" value="@ViewBag.cate_id" />
+                        <p class="h6 facet-title hidden-sm-down">Fiyat</p>
 
                         <div class="input-wrapper">
                             <input type="text" id="min-price" name="minPrice" placeholder="Minimum Fiyat" />
@@ -142,30 +195,55 @@
             <section id="main" class="category-1967383214">
                 <div id="js-product-list-header">
                     <div class="block-category card card-block">
-
-
-                        <h1 class="h1">@ViewBag.subcatename</h1>
+                        <h1 class="h1">@ViewBag.catename</h1>
                         <div class="block-category-inner">
-                            <div id="category-description" class="text-muted"><p>@ViewBag.subcatdespt</p></div>
-                            <div class="category-cover">
-                                <img src="@ViewBag.subpicture" alt="@ViewBag.subcatename" loading="lazy">
-                            </div>
+                            <div id="category-description" class="text-muted"><p>@ViewBag.catedescript</p></div>
+
                         </div>
                     </div>
                 </div>
+
+
+
+                <div id="subcategories" class="card card-block hidden-sm-down">
+
+                    <h2 class="subcategory-heading">Subcategories</h2>
+
+                    <ul class="subcategories-list">
+                        @foreach (var sub_Category in Model.Sub_category)
+                        {
+                            <li>
+                                <div class="subcategory-image">
+                                    <a href="@Url.Action("subcatelist", "ViewModelW",new { id=sub_Category.sub_id})" title="@sub_Category.sub_name" class="img">
+                                        <img class="img-fluid" src="@sub_Category.sub_picture" alt="@sub_Category.sub_name" loading="lazy" width="350" height="300" />
+                                    </a>
+                                </div>
+                                <h5><a class="subcategory-name" href="4-haircare.html">@sub_Category.sub_name</a></h5>
+                                <div class="cat_desc"><p>@sub_Category.sub_descript</p></div>
+                            </li>
+
+                        }
+                    </ul>
+                </div>
                 <section id="products">
                     <div id="js-product-list-top" class="products-selection">
+
+
+
                         <div class="row">
                             <div class="col-md-6 col-lg-3 hidden-md-down total-products ">
-                                <p>Toplam @ViewBag.product_number ürün var.</p>
+
+
+
+                                <p>Toplam @ViewBag.count ürün var.</p>
                             </div>
                             <div class="col-md-6 col-lg-3" id="btn_view_product" data-mode="grid" data-col-xl="3" data-col-lg="3" data-col-md="2" data-col-sm="2" data-col-xs="1" data-col-sp="1">
-                                <span class="grid-select grid-select-list view-list" data-col="list"></span>
-                                <span class="grid-select grid-select-grid view-1" data-col="12"></span>
-                                <span class="grid-select grid-select-grid view-2" data-col="6"></span>
+                                <span class="grid-select grid-select-list view-list " data-col="list"></span>
+                                <span class="grid-select grid-select-grid view-1 " data-col="12"></span>
+                                <span class="grid-select grid-select-grid view-2 " data-col="6"></span>
                                 <span class="grid-select grid-select-grid view-3 active" data-col="4"></span>
-                                <span class="grid-select grid-select-grid view-4" data-col="3"></span>
-                                <span class="grid-select grid-select-grid view-5" data-col="2-4"></span>
+                                <span class="grid-select grid-select-grid view-4 " data-col="3"></span>
+                                <span class="grid-select grid-select-grid view-5 " data-col="2-4"></span>
                             </div>
                             <div class="col-md-6 col-lg-6 grid-selecting">
                                 <div class="row sort-by-row">
@@ -175,22 +253,22 @@
                                             Relevance <i class="material-icons float-xs-right">&#xE5C5;</i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a rel="nofollow" href="4-haircaree563.html?order=product.sales.desc" class="select-list js-search-link">
+                                            <a rel="nofollow" href="3-acne-blemishese563.html?order=product.sales.desc" class="select-list js-search-link">
                                                 Best sellers
                                             </a>
-                                            <a rel="nofollow" href="4-haircaref917.html?order=product.position.asc" class="select-list current js-search-link">
+                                            <a rel="nofollow" href="3-acne-blemishesf917.html?order=product.position.asc" class="select-list current js-search-link">
                                                 Relevance
                                             </a>
-                                            <a rel="nofollow" href="4-haircarefe2d.html?order=product.name.asc" class="select-list js-search-link">
+                                            <a rel="nofollow" href="3-acne-blemishesfe2d.html?order=product.name.asc" class="select-list js-search-link">
                                                 Name, A to Z
                                             </a>
-                                            <a rel="nofollow" href="4-haircare0279.html?order=product.name.desc" class="select-list js-search-link">
+                                            <a rel="nofollow" href="3-acne-blemishes0279.html?order=product.name.desc" class="select-list js-search-link">
                                                 Name, Z to A
                                             </a>
-                                            <a rel="nofollow" href="4-haircare8eb3.html?order=product.price.asc" class="select-list js-search-link">
+                                            <a rel="nofollow" href="3-acne-blemishes8eb3.html?order=product.price.asc" class="select-list js-search-link">
                                                 Price, low to high
                                             </a>
-                                            <a rel="nofollow" href="4-haircare04e6.html?order=product.price.desc" class="select-list js-search-link">
+                                            <a rel="nofollow" href="3-acne-blemishes04e6.html?order=product.price.desc" class="select-list js-search-link">
                                                 Price, high to low
                                             </a>
                                         </div>
@@ -203,8 +281,9 @@
                                 </div>
                             </div>
                             <div class="col-sm-12 hidden-md-up text-sm-center text-xs-center showing">
-                                Showing 1-1 of 1 item(s)
+                                Showing 1-2 of 2 item(s)
                             </div>
+
                         </div>
                     </div>
                     <div class="hidden-sm-down">
@@ -219,36 +298,32 @@
                                 <div class="row leo-product-ajax">
                                     @foreach (var product in Model.Product)
                                     {
+                                        <div class="ajax_block_product col-sp-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 first-in-line last-line first-item-of-tablet-line last-item-of-mobile-line">
 
 
-                                        <div class="ajax_block_product col-sp-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 first-in-line last-line first-item-of-tablet-line last-item-of-mobile-line last-mobile-line">
-                                            <article class="product-miniature js-product-miniature" data-id-product="1" data-id-product-attribute="1">
+                                            <article class="product-miniature js-product-miniature" data-id-product="2" data-id-product-attribute="9">
                                                 <div class="thumbnail-container">
                                                     <div class="product-image">
-                                                        <a href="@Url.Action("productlist","ViewModelW",new { id=product.product_id})" class="thumbnail product-thumbnail">
+                                                        <a href="@Url.Action("productlist","ViewModelW",new { id =product.product_id})" class="thumbnail product-thumbnail">
                                                             <img class="img-fluid" src="@product.picture_1" alt="">
                                                         </a>
                                                         <ul class="product-flags">
                                                             @if (product.product_discount == true)
                                                             {
-
                                                                 <li class="product-flag discount">-@product.discount_text%</li>
-
                                                             }
                                                         </ul>
-                                                        <div class="functional-buttons clearfix">
 
-                                                            @if (Session["customer"] != null)
-                                                            {
-                                                                <a href="@Url.Action("Addto_cart", "Shoppingbag", new { product_id = product.product_id })" class="btn btn-primary btn-block" onClick="return GB_showCenter('SEPETİNİZ',this.href,500,800)">ADD TO CART</a>
-                                                            }
+                                                        @if (Session["customer"] != null)
+                                                        {
+                                                            <a href="@Url.Action("Addto_cart", "Shoppingbag", new { product_id = product.product_id })" class="btn btn-primary btn-block">Sepete Ekle</a>
+                                                        }
 
 
-                                                            else
-                                                            {
-                                                                <a href="@Url.Action("login_customer", "Home")" class="btn btn-primary btn-block">ADD TO CART</a>
-                                                            }
-                                                        </div>
+                                                        else
+                                                        {
+                                                            <a href="@Url.Action("login_customer", "Home")" class="btn btn-primary btn-block">Sepete Ekle</a>
+                                                        }
 
 
                                                         <div class="buttons-top">
@@ -260,7 +335,7 @@
                                                                         <span class="leo-wishlist-bt-content">
                                                                             <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
 
-                                                                            <span class="name-btn-product text-add">Add to Wishlist</span>
+                                                                            <span class="name-btn-product text-add">Favorilere Ekle</span>
                                                                         </span>
                                                                     </a>
                                                                 }
@@ -272,7 +347,7 @@
                                                                         <span class="leo-wishlist-bt-content">
                                                                             <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
 
-                                                                            <span class="name-btn-product text-add">Add to Wishlist</span>
+                                                                            <span class="name-btn-product text-add">Favorilere Ekle</span>
                                                                         </span>
                                                                     </a>
                                                                 }
@@ -282,8 +357,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-meta">
-                                                        <h3 class="h3 product-title"><a href="@Url.Action("productlist","ViewModelW",new { id=product.product_id})">@product.product_name</a></h3>
+                                                        <h3 class="h3 product-title"><a href="@Url.Action("productlist", "ViewModelW", new { id = product.product_id })">@product.product_name</a></h3>
                                                         <div class="product-price-and-shipping">
+
                                                             @if (product.product_discount == false)
                                                             {
                                                                 <span aria-label="Regular price">@Convert.ToDouble(product.product_price)</span>
@@ -291,7 +367,7 @@
                                                             }
                                                             else
                                                             {
-                                                                <span class="regular-price" aria-label="Regular price">@Convert.ToDouble(product.product_price)</span>
+                                                                <span class="regular-price" aria-label="Regular price">@product.product_price</span>
                                                                 int? discount_txt = product.discount_text;
 
                                                                 decimal price = product.product_price - ((product.product_price * discount_txt.Value) / 100);
@@ -302,16 +378,16 @@
                                                                 </span>
 
                                                             }
+
                                                         </div>
                                                     </div>
-                                                </div>
                                             </article>
-                                        </div>
-                                    }
+                                        </div>}
+
                                 </div>
                             </div>
                         </div>
-                        <nav class="pagination" data-total="1">
+                        <nav class="pagination" data-total="2">
                             <div id="pagination_summary" class="col-md-4 done">
 
                             </div>
@@ -326,5 +402,77 @@
             </section>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            // Kategori checkbox'larına tıklandığında
+            $(".category-checkbox").change(function () {
+                // Seçilen kategori checkbox'larını toplayın
+                var selectedCategories = [];
+                $(".category-checkbox:checked").each(function () {
+                    selectedCategories.push($(this).data("category-id"));
+                });
+
+                // AJAX isteği göndererek filtreleme yapın ve sonuçları alın
+                $.ajax({
+                    url: "/Home/Filter_categories", // Filtreleme işlemini gerçekleştirecek Controller Action'ın URL'i
+                    type: "GET",
+                    data: { categoryIds: selectedCategories },
+                    success: function (data) {
+                        // Filtrelenmiş sonuçları göstermek için uygun bir alanı güncelleyin
+                        $("#filtered-results").html(data);
+                    },
+                    error: function () {
+                        alert("Filtreleme işlemi sırasında bir hata oluştu.");
+                    }
+                });
+            });
+        });
+
+
+    </script>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

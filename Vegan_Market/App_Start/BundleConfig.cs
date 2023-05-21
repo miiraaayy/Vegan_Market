@@ -36,7 +36,9 @@ namespace Vegan_Market
                        "~/Scripts/bottom-d90a5145.js",
                        "~/Scripts/rocket-loader.min.js",
                        "~/Scripts/jquery.rateyo.min.js",
-                       "~/Scripts/jquery.min.js"
+                       "~/Scripts/jquery.min.js",
+                             "~/Scripts/general.js",
+                                "~/Scripts/generals.js"
 
 
 

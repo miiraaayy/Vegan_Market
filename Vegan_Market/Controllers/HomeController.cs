@@ -11,6 +11,7 @@ namespace Vegan_Market.Controllers
     {
         Aslan_Commerce_vtEntities vegan_entities = new Aslan_Commerce_vtEntities();
         ViewModel vm = new ViewModel();
+     
         public ActionResult Index()
         {
             vm.Category = vegan_entities.Category.ToList();
@@ -19,17 +20,61 @@ namespace Vegan_Market.Controllers
 
             return View(vm);
         }
-       
-        
-        public ActionResult HomePage()
+   
+        public void Lists()
         {
             vm.Category = vegan_entities.Category.ToList();
             vm.Sub_category = vegan_entities.Sub_Category.ToList();
             vm.Brand = vegan_entities.Brand.ToList();
+        }
+        public ActionResult HomePage()
+        {
+            Lists();
             vm.Product = vegan_entities.Product.ToList();
-            
+            ViewBag.count = vegan_entities.Product.Count();
+           
+            return View(vm);
+        }
 
+    
+        public ActionResult Filter_categories(int id)
+        {
+            Lists();
+            vm.Product = vegan_entities.Product.Where(x =>x.cate_no==id).ToList();
+            ViewBag.category_count = vegan_entities.Product.Where(x => x.cate_no == id).Count();
 
+            return View(vm);
+        }
+
+        public ActionResult Instock()
+        {
+            Lists();
+            vm.Product = vegan_entities.Product.Where(p => p.product_num >0).ToList();
+            ViewBag.count = vegan_entities.Product.Where(p => p.product_num > 0).Count();
+            return View(vm);
+        }
+
+        public ActionResult Sales()
+        {
+            Lists();
+            vm.Product = vegan_entities.Product.Where(p => p.product_discount == true).ToList();
+            ViewBag.count = vegan_entities.Product.Where(p => p.product_discount == true).Count();
+            return View(vm);
+        }
+        public ActionResult Filter_brand(int id)
+        {
+            Lists();
+            vm.Product = vegan_entities.Product.Where(x => x.brand_no == id).ToList();
+            ViewBag.count = vegan_entities.Product.Where(x => x.brand_no == id).Count();
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult Filter(int minPrice, int maxPrice)
+        {
+            Lists();
+            vm.Product = vegan_entities.Product
+           .Where(p => p.product_price >= minPrice && p.product_price <= maxPrice)
+           .ToList();
             return View(vm);
         }
         public ActionResult catesub_list()

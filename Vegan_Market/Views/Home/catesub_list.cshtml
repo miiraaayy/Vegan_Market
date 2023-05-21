@@ -11,21 +11,29 @@
                     <li data-depth="0">
                         <a href="@Url.Action("Index", "ViewModelW", new { id = cate.Cate_id })">@cate.Cate_name</a>
                         <div class="navbar-toggler collapse-icons" data-toggle="collapse" data-target="#sub-cate-@cate.Cate_id">
-                       
+
                             <i class="material-icons add">&#xE145;</i>
-                            </div>
+                       
+                        </div>
                             
-                            <div class="collapse" id="sub-cate-@cate.Cate_id">
-                                @foreach (var subcate in Model.Sub_category.Where(x => x.cate_no1 == cate.Cate_id))
-                                {
-                                    <ul class="category-sub-menu">
-                                        <li data-depth="1">
-                                            <a class="category-sub-link" href="@Url.Action("subcatelist", "ViewModelW", new { id = subcate.sub_id })">@subcate.sub_name</a>
-                                        </li>
-                                    </ul>
-                                }
+                        <div class="collapse" id="sub-cate-@cate.Cate_id">
+                            <div class="navbar-toggler collapse-icons" data-toggle="collapse" data-target="#sub-cate-@cate.Cate_id">
+
+                                <i class="material-icons minus" style="display: inline-block;">&#xE15B;</i>
                             </div>
-                    </li>
+                            @foreach (var subcate in Model.Sub_category.Where(x => x.cate_no1 == cate.Cate_id))
+                            {
+
+                                <ul class="category-sub-menu">
+                                    <li data-depth="1">
+
+                                        <a class="category-sub-link" href="@Url.Action("subcatelist", "ViewModelW", new { id = subcate.sub_id })">@subcate.sub_name</a>
+
+                                    </li>
+                                </ul>
+                            }
+                        </div>
+</li>
 
                 </ul>
             </li>

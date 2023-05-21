@@ -16,6 +16,38 @@ namespace Vegan_Market.Controllers
             var orderlist = db.OrderT.ToList();
             return View(orderlist);
         }
+
+        public ActionResult Search(string customerName)
+        {
+            if (string.IsNullOrEmpty(customerName))
+            {
+                ViewBag.Message = "Müşteri adı girilmedi.";
+                return View("NoResults");
+            }
+
+            var results = db.OrderT
+                .Where(r => r.Customer.customer_name.Contains(customerName))
+                .ToList();
+
+            if (results.Count == 0)
+            {
+                ViewBag.Message = "Bu üyenin hiç siparişi yoktur.";
+                return View("NoResults");
+            }
+            return View(results);
+        }
+        public ActionResult NoResults()
+        {
+            return View();
+        }
+
+        public ActionResult DateOrder(DateTime? startDate, DateTime? endDate)
+        {
+            endDate = endDate?.AddDays(1); //Bitiş tarihini saatten dolayı almadığı için böyle bir şey ekledik.Bitiş tarihini bir sonraki gün alsın ki girdiğim bitiş tarihinide  kabul etsin ve listelesin.
+            var result = db.OrderT.Where(r => r.order_date >= startDate && r.order_date < endDate).ToList();
+            return View(result);
+        }
+
         public Shoppingcart Bringthebag()
         {
                  
