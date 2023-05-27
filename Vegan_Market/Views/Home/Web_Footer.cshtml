@@ -1,0 +1,213 @@
+﻿@model Vegan_Market.Models.ViewModel
+
+
+@if (Model != null)
+{
+
+
+
+    foreach (var footer in Model.WebFooters)
+    {
+
+
+        <div data-elementor-type="post" data-elementor-id="2" class="elementor elementor-2" data-elementor-settings="[]">
+            <div class="elementor-inner">
+                <div class="elementor-section-wrap">
+                    <section class="elementor-element elementor-element-119cab6 elementor-section-full_width elementor-section-height-default elementor-section-height-inner-default elementor-section elementor-top-section" data-id="119cab6" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-row">
+                                <div class="elementor-element elementor-element-bd5f7ae elementor-column elementor-col-33 elementor-top-column" data-id="bd5f7ae" data-element_type="column">
+                                    <div class="elementor-column-wrap  elementor-element-populated">
+                                        <div class="elementor-widget-wrap">
+                                            <div class="elementor-element elementor-element-0d70494 LeoBlockLink-toggle-none elementor-widget elementor-widget-LeoBlockLink" data-id="0d70494" data-element_type="widget" data-widget_type="LeoBlockLink.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="LeoBlockLink">
+                                                        <div class="linklist-toggle h6" data-toggle="linklist-widget">
+                                                            <div class="title_block">@footer.support_head</div>
+                                                            <span class="icon-toggle fa fa-angle-down"></span>
+                                                        </div>
+                                                        <div class="linklist-menu">
+                                                            <ul class="list-items vertical">
+                                                                <li class="list-item vertical">
+                                                                    <a class='item-text' href="@Url.Action("Faq", "Home")">
+                                                                        @footer.support_txt
+                                                                    </a>
+                                                                </li>
+                                                                <li class="list-item vertical">
+                                                                    <a class='item-text' href="#">
+                                                                        @footer.support_txt_1
+                                                                    </a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-6743d1a elementor-column elementor-col-33 elementor-top-column" data-id="6743d1a" data-element_type="column">
+                                    <div class="elementor-column-wrap  elementor-element-populated">
+                                        <div class="elementor-widget-wrap">
+                                            <div class="elementor-element elementor-element-799e582 elementor-widget elementor-widget-heading" data-id="799e582" data-element_type="widget" data-widget_type="heading.default">
+                                                <div class="elementor-widget-container">
+                                                    <h2 class="elementor-heading-title elementor-size-default">Keep In Touch</h2>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-2a8efc6 elementor-widget elementor-widget-text-editor" data-id="2a8efc6" data-element_type="widget" data-widget_type="text-editor.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-text-editor elementor-clearfix"><p>We promise we won't write to you often</p></div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-7dafee5 footer-newletter elementor-widget elementor-widget-LeoModule" data-id="7dafee5" data-element_type="widget" data-widget_type="LeoModule.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="block_newsletter" id="blockEmailSubscription_displayViaLeoelements">
+                                                        <div class="row">
+                                                            <p id="block-newsletter-label" class="col-md-5 col-xs-12">Get our latest news and special sales</p>
+                                                            <div class="col-md-7 col-xs-12">
+                                                                <form action="https://demo74.leotheme.com/prestashop/vt_oworganic/en/#blockEmailSubscription_displayViaLeoelements" method="post">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="input-wrapper">
+                                                                                <input name="email" type="email" value="" placeholder="Your email address" aria-labelledby="block-newsletter-label" required>
+                                                                            </div>
+                                                                            <button class="btn btn-outline float-xs-right" name="submitNewsletter" type="submit" value="Subscribe">
+                                                                                <i class="fas fa-paper-plane"></i><span>Subscribe</span>
+                                                                            </button>
+                                                                            <input type="hidden" name="blockHookName" value="displayViaLeoelements" />
+                                                                            <input type="hidden" name="action" value="0">
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                        <div class="col-xs-12">
+                                                                            <p>You may unsubscribe at any moment. For that purpose, please find our contact info in the legal notice.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-aaf0f3f elementor-column elementor-col-33 elementor-top-column" data-id="aaf0f3f" data-element_type="column">
+                                    <div class="elementor-column-wrap  elementor-element-populated">
+                                        <div class="elementor-widget-wrap">
+                                            <div class="elementor-element elementor-element-6ab2897 elementor-widget elementor-widget-heading" data-id="6ab2897" data-element_type="widget" data-widget_type="heading.default">
+                                                <div class="elementor-widget-container">
+                                                    <h2 class="elementor-heading-title elementor-size-default">@footer.contact_head</h2>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-fde7507 elementor-drop-cap-yes elementor-drop-cap-view-default elementor-widget elementor-widget-text-editor" data-id="fde7507" data-element_type="widget" data-settings="{&quot;drop_cap&quot;:&quot;yes&quot;}" data-widget_type="text-editor.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-text-editor elementor-clearfix"></div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-b206284 elementor-widget elementor-widget-text-editor" data-id="b206284" data-element_type="widget" data-widget_type="text-editor.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-text-editor elementor-clearfix"><p>@footer.contact_txt</p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="elementor-element elementor-element-a82cd12 elementor-section-height-min-height elementor-section-boxed elementor-section-height-inner-default elementor-section-items-middle elementor-section elementor-top-section" data-id="a82cd12" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                        <div class="elementor-container elementor-column-gap-no">
+                            <div class="elementor-row">
+                                <div class="elementor-element elementor-element-6e11de9 elementor-column elementor-col-33 elementor-top-column" data-id="6e11de9" data-element_type="column">
+                                    <div class="elementor-column-wrap  elementor-element-populated">
+                                        <div class="elementor-widget-wrap">
+                                            <div class="elementor-element elementor-element-354a43e elementor-shape-rounded elementor-widget elementor-widget-social-icons" data-id="354a43e" data-element_type="widget" data-widget_type="social-icons.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-social-icons-wrapper">
+                                                        <a href="#" class="elementor-icon elementor-social-icon elementor-social-icon-facebook elementor-repeater-item-26cb766" target="_blank">
+                                                            <span class="elementor-screen-only">Facebook</span>
+                                                            <i class="fab fa-facebook"></i>
+                                                        </a>
+                                                        <a href="#" class="elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-repeater-item-617d704" target="_blank">
+                                                            <span class="elementor-screen-only">Twitter</span>
+                                                            <i class="fab fa-twitter"></i>
+                                                        </a>
+                                                        <a href="#" class="elementor-icon elementor-social-icon elementor-social-icon-google-plus elementor-repeater-item-224d76c" target="_blank">
+                                                            <span class="elementor-screen-only">Google-plus</span>
+                                                            <i class="fab fa-google-plus"></i>
+                                                        </a>
+                                                        <a href="#" class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-8a6c023" target="_blank">
+                                                            <span class="elementor-screen-only">Youtube</span>
+                                                            <i class="fab fa-youtube"></i>
+                                                        </a>
+                                                        <a href="#" class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-7a5bba0" target="_blank">
+                                                            <span class="elementor-screen-only">Instagram</span>
+                                                            <i class="fab fa-instagram"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-e3d36f7 elementor-column elementor-col-33 elementor-top-column" data-id="e3d36f7" data-element_type="column">
+                                    <div class="elementor-column-wrap  elementor-element-populated">
+                                        <div class="elementor-widget-wrap">
+                                            <div class="elementor-element elementor-element-df68a21 elementor-widget elementor-widget-text-editor" data-id="df68a21" data-element_type="widget" data-widget_type="text-editor.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-text-editor elementor-clearfix"><p>© 2023, <strong><a title="" href="#">Oworganic</a></strong>. <a href="#">Powered by Prestashop</a></p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-4df03e7 elementor-column elementor-col-33 elementor-top-column" data-id="4df03e7" data-element_type="column">
+                                    <div class="elementor-column-wrap  elementor-element-populated">
+                                        <div class="elementor-widget-wrap">
+                                            <div class="elementor-element elementor-element-e7585ef elementor-widget__width-auto elementor-widget elementor-widget-image" data-id="e7585ef" data-element_type="widget" data-widget_type="image.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-image">
+                                                        <img src="https://cdn.shopify.com/s/files/1/0577/9675/5633/files/vt_oworganic_svg4.svg?v=1671554008" title="" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-2345d11 elementor-widget__width-auto elementor-widget elementor-widget-image" data-id="2345d11" data-element_type="widget" data-widget_type="image.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-image">
+                                                        <img src="https://cdn.shopify.com/s/files/1/0577/9675/5633/files/vt_oworganic_svg5.svg?v=1671554008" title="" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-8274688 elementor-widget__width-auto elementor-widget elementor-widget-image" data-id="8274688" data-element_type="widget" data-widget_type="image.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-image">
+                                                        <img src="https://cdn.shopify.com/s/files/1/0577/9675/5633/files/vt_oworganic_svg6.svg?v=1671554008" title="" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-98760c7 elementor-widget__width-auto elementor-widget elementor-widget-image" data-id="98760c7" data-element_type="widget" data-widget_type="image.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-image">
+                                                        <img src="https://cdn.shopify.com/s/files/1/0577/9675/5633/files/vt_oworganic_svg7.svg?v=1671554008" title="" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-031abe3 elementor-widget__width-auto elementor-widget elementor-widget-image" data-id="031abe3" data-element_type="widget" data-widget_type="image.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-image">
+                                                        <img src="https://cdn.shopify.com/s/files/1/0577/9675/5633/files/vt_oworganic_svg8.svg?v=1671554008" title="" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    }
+}

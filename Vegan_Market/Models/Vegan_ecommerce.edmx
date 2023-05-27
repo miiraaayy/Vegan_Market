@@ -59,10 +59,10 @@
             <PropertyRef Name="ContactId" />
           </Key>
           <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="location_txt" Type="nvarchar" MaxLength="50" />
-          <Property Name="call_txt" Type="nvarchar" MaxLength="50" />
-          <Property Name="e_mail" Type="nvarchar" MaxLength="50" />
-          <Property Name="fax_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="location_txt" Type="nvarchar(max)" />
+          <Property Name="call_txt" Type="nvarchar(max)" />
+          <Property Name="e_mail" Type="nvarchar(max)" />
+          <Property Name="fax_txt" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -80,9 +80,8 @@
             <PropertyRef Name="FaqId" />
           </Key>
           <Property Name="FaqId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="question_txt" Type="nvarchar" MaxLength="50" />
-          <Property Name="answer_txt" Type="nvarchar" MaxLength="50" />
-          <Property Name="image" Type="nvarchar" MaxLength="50" />
+          <Property Name="question_txt" Type="nvarchar(max)" />
+          <Property Name="answer_txt" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Favourites">
           <Key>
@@ -97,8 +96,8 @@
             <PropertyRef Name="FooterId" />
           </Key>
           <Property Name="FooterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="descript_txt" Type="nvarchar" MaxLength="50" />
-          <Property Name="location_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="descript_txt" Type="nvarchar(max)" />
+          <Property Name="location_txt" Type="nvarchar(max)" />
           <Property Name="location_head" Type="nvarchar" MaxLength="50" />
           <Property Name="account_txt" Type="nvarchar" MaxLength="50" />
           <Property Name="account_head" Type="nvarchar" MaxLength="50" />
@@ -106,15 +105,22 @@
           <Property Name="main_head" Type="nvarchar" MaxLength="50" />
           <Property Name="footer_menu_txt" Type="nvarchar" MaxLength="50" />
           <Property Name="menu_head" Type="nvarchar" MaxLength="50" />
+          <Property Name="account_txt_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="main_txt_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="main_txt_3" Type="nvarchar" MaxLength="50" />
+          <Property Name="footer_menu_txt_1" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Nav">
           <Key>
             <PropertyRef Name="NavId" />
           </Key>
           <Property Name="NavId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="head_txt" Type="nvarchar" MaxLength="50" />
-          <Property Name="descript_txt" Type="nvarchar" MaxLength="50" />
+          <Property Name="head_txt" Type="nvarchar(max)" />
+          <Property Name="descript_txt" Type="nvarchar(max)" />
           <Property Name="image" Type="nvarchar" MaxLength="50" />
+          <Property Name="image_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="head_txt_2" Type="nvarchar(max)" />
+          <Property Name="descript_txt_2" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="OrderT">
           <Key>
@@ -175,9 +181,9 @@
             <PropertyRef Name="storesId" />
           </Key>
           <Property Name="storesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fabric_name" Type="nvarchar" MaxLength="50" />
-          <Property Name="fabric_address" Type="nvarchar" MaxLength="50" />
-          <Property Name="fabric_worktime" Type="nvarchar" MaxLength="50" />
+          <Property Name="fabric_name" Type="nvarchar(max)" />
+          <Property Name="fabric_address" Type="nvarchar(max)" />
+          <Property Name="fabric_worktime" Type="nvarchar(max)" />
           <Property Name="image" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Sub_Category">
@@ -205,10 +211,11 @@
             <PropertyRef Name="WebId" />
           </Key>
           <Property Name="WebId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="contact_txt" Type="nvarchar" MaxLength="50" />
-          <Property Name="support_txt" Type="nvarchar" MaxLength="50" />
-          <Property Name="contact_head" Type="nvarchar" MaxLength="50" />
-          <Property Name="support_head" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_txt" Type="nvarchar(max)" />
+          <Property Name="support_txt" Type="nvarchar(max)" />
+          <Property Name="contact_head" Type="nvarchar(max)" />
+          <Property Name="support_head" Type="nvarchar(max)" />
+          <Property Name="support_txt_1" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_Address_Customer1">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1">
@@ -801,27 +808,26 @@
             <PropertyRef Name="ContactId" />
           </Key>
           <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="location_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="call_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="e_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fax_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="location_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="call_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="e_mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fax_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FAQ">
           <Key>
             <PropertyRef Name="FaqId" />
           </Key>
           <Property Name="FaqId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="question_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="answer_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="question_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="answer_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Footer">
           <Key>
             <PropertyRef Name="FooterId" />
           </Key>
           <Property Name="FooterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descript_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="location_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descript_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="location_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="location_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="account_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="account_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -829,15 +835,22 @@
           <Property Name="main_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="footer_menu_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="menu_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="account_txt_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="main_txt_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="main_txt_3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="footer_menu_txt_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Nav">
           <Key>
             <PropertyRef Name="NavId" />
           </Key>
           <Property Name="NavId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="head_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="descript_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="head_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="descript_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="head_txt_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="descript_txt_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SlideLogo">
           <Key>
@@ -854,9 +867,9 @@
             <PropertyRef Name="storesId" />
           </Key>
           <Property Name="storesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fabric_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fabric_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fabric_worktime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fabric_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fabric_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fabric_worktime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="WebFooter">
@@ -864,10 +877,11 @@
             <PropertyRef Name="WebId" />
           </Key>
           <Property Name="WebId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="contact_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="support_txt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="contact_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="support_head" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="support_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contact_head" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="support_head" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="support_txt_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1033,7 +1047,6 @@
           <EntitySetMapping Name="FAQ">
             <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.FAQ">
               <MappingFragment StoreEntitySet="FAQ">
-                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="answer_txt" ColumnName="answer_txt" />
                 <ScalarProperty Name="question_txt" ColumnName="question_txt" />
                 <ScalarProperty Name="FaqId" ColumnName="FaqId" />
@@ -1043,6 +1056,10 @@
           <EntitySetMapping Name="Footer">
             <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Footer">
               <MappingFragment StoreEntitySet="Footer">
+                <ScalarProperty Name="footer_menu_txt_1" ColumnName="footer_menu_txt_1" />
+                <ScalarProperty Name="main_txt_3" ColumnName="main_txt_3" />
+                <ScalarProperty Name="main_txt_1" ColumnName="main_txt_1" />
+                <ScalarProperty Name="account_txt_1" ColumnName="account_txt_1" />
                 <ScalarProperty Name="menu_head" ColumnName="menu_head" />
                 <ScalarProperty Name="footer_menu_txt" ColumnName="footer_menu_txt" />
                 <ScalarProperty Name="main_head" ColumnName="main_head" />
@@ -1059,6 +1076,9 @@
           <EntitySetMapping Name="Nav">
             <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Nav">
               <MappingFragment StoreEntitySet="Nav">
+                <ScalarProperty Name="descript_txt_2" ColumnName="descript_txt_2" />
+                <ScalarProperty Name="head_txt_2" ColumnName="head_txt_2" />
+                <ScalarProperty Name="image_1" ColumnName="image_1" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="descript_txt" ColumnName="descript_txt" />
                 <ScalarProperty Name="head_txt" ColumnName="head_txt" />
@@ -1091,6 +1111,7 @@
           <EntitySetMapping Name="WebFooter">
             <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.WebFooter">
               <MappingFragment StoreEntitySet="WebFooter">
+                <ScalarProperty Name="support_txt_1" ColumnName="support_txt_1" />
                 <ScalarProperty Name="support_head" ColumnName="support_head" />
                 <ScalarProperty Name="contact_head" ColumnName="contact_head" />
                 <ScalarProperty Name="support_txt" ColumnName="support_txt" />

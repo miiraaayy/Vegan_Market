@@ -65,7 +65,7 @@
     <!--begin::Content-->
     <div id="kt_app_content" class="app-content  flex-column-fluid ">
 
-        @using (Html.BeginForm("Create", "FAQs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm())
         {
 
             @Html.AntiForgeryToken()
@@ -106,16 +106,7 @@
                                     <!--end::Input-->
                                     <!--begin::Description-->
                                     <!--end::Description-->
-                                    <!--begin::Label-->
-                                    <label class="required form-label">Image</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    @Html.TextBox("file", "", new { type = "file", multiple = "multiple" })
-                                    @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
-                                    <!--end::Input-->
-                                    <!--begin::Description-->
-                                    <div class="text-muted fs-7">A fabric phone  is required and recommended to be unique.</div>
-                                    <!--end::Description-->
+                                
 
 
                                 </div>
@@ -155,24 +146,6 @@
         }
     </div>
     <!--end::Content-->
-    <script language="JavaScript">
-        const images = document.getElementById("file"),
-            preview = document.getElementById("resim_goster");
-
-        images.addEventListener("change", function () {
-            preview.innerHTML = "";
-            [...this.files].map((file) => {
-                const reader = new FileReader();
-                reader.addEventListener("load", function () {
-                    const image = new Image();
-                    image.height = 100;
-                    image.title = file.name;
-                    image.src = this.result;
-                    preview.appendChild(image);
-                });
-                reader.readAsDataURL(file);
-            });
-        });
-    </script>
+  
 </div>
 <!--end::Content wrapper-->

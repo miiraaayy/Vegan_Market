@@ -1,0 +1,123 @@
+﻿@model Vegan_Market.Models.Footer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Footer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descript_txt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descript_txt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location_txt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location_txt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location_head)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location_head)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_txt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_txt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_head)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_head)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_txt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_txt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_head)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_head)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.footer_menu_txt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.footer_menu_txt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menu_head)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menu_head)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_txt_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_txt_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_txt_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_txt_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.main_txt_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.main_txt_3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.footer_menu_txt_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.footer_menu_txt_1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FooterId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

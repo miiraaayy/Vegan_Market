@@ -119,6 +119,12 @@
                                     <!--begin::Input-->
                                     @Html.EditorFor(model => model.support_txt, new { htmlAttributes = new { @class = "form-control", placeholder = "Support  text or other things" } })
                                     <!--end::Input-->
+                                    <!--begin::Label-->
+                                    <label class="required form-label">Support Text-2</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    @Html.EditorFor(model => model.support_txt_1, new { htmlAttributes = new { @class = "form-control", placeholder = "Support  text or other things" } })
+                                    <!--end::Input-->
                                     <!--begin::Description-->
                                     <!--end::Description-->
 
@@ -161,5 +167,6 @@
             <!--end::Content container-->
         </div>
         <!--end::Content-->
-    }  </div>
+    }
+</div>
 <!--end::Content wrapper-->

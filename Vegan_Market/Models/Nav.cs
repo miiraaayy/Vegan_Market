@@ -18,5 +18,8 @@ namespace Vegan_Market.Models
         public string head_txt { get; set; }
         public string descript_txt { get; set; }
         public string image { get; set; }
+        public string image_1 { get; set; }
+        public string head_txt_2 { get; set; }
+        public string descript_txt_2 { get; set; }
     }
 }

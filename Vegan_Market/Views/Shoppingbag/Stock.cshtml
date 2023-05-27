@@ -1,0 +1,88 @@
+﻿@model Vegan_Market.Models.Shoppingcart
+@{
+    ViewBag.Title = "Stock";
+    Layout = "~/Views/Shared/_Web_Layout.cshtml";
+}
+
+
+@Scripts.Render("~/bundles/jquery")
+<script>
+    $(document).on('click', '.number-spinner button', function () {
+        var btn = $(this),
+            oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+            newVal = 0;
+
+        if (btn.attr('data-dir') == 'up') {
+            newVal = parseInt(oldValue) + 1;
+        } else {
+            if (oldValue > 1) {
+                newVal = parseInt(oldValue) - 1;
+            } else {
+                newVal = 1;
+            }
+        }
+        btn.closest('.number-spinner').find('input').val(newVal);
+    });
+</script>
+
+<aside id="notifications">
+    <div class="notifications-container container">
+    </div>
+</aside>
+<div class="container">
+    <div data-depth="2" class="breadcrumb-bg center breadcrumb-full" style=" background-color:#f4f1eb;background-image: url(); min-height:65px; ">
+        <div class="container">
+            <nav data-depth="2" class="breadcrumb hidden-sm-down">
+                <ol>
+                    <li>
+                        <a href="@Url.Action("Index","Home")"><span>Home</span></a>
+                    </li>
+                    <li>
+                        <span>Sepet</span>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div id="content-wrapper" class="col-lg-12 col-xs-12 js-content-wrapper">
+            <section id="main">
+                <header class="page-header">
+                    <h1>
+                        Sepet
+                    </h1>
+                    <p>@ViewBag.order_message</p>
+                </header>
+                <section id="content" class="page-content page-cms page-cms-8">
+                    <div class="container container-parent"></div> <div data-elementor-type="post" data-elementor-id="32" class="elementor elementor-32" data-elementor-settings="[]">
+                        <div class="elementor-inner">
+                            <div class="elementor-section-wrap">
+                                <section class="elementor-element elementor-element-e4111b2 elementor-section-boxed elementor-section-height-default elementor-section-height-inner-default elementor-section elementor-top-section" data-id="e4111b2" data-element_type="section">
+                                    <div class="elementor-container elementor-column-gap-no">
+                                        <div class="elementor-row">
+
+                                            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
+                                                 
+
+                                                <p style="font-size:50px;">@ViewBag.Message</p>
+
+
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </section>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <footer class="page-footer">
+                </footer>
+            </section>
+        </div>
+    </div>
+</div>
+
+

@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Vegan_Market.Models.Stores>
+
 @{
     ViewBag.Title = "Stores";
     Layout = "~/Views/Shared/_Web_Layout.cshtml";
@@ -32,237 +33,43 @@
                 </header>
                 <section id="content" class="page-content page-stores">
                     <article id="store-1" class="store-item card">
-                        <div class="store-item-container clearfix">
-                            <div class="col-md-3 store-picture hidden-sm-down">
-                                <img src="~/image/vegan_store1.jpg" alt="Dade County" title="Dade County">
+                        @foreach (var item in Model)
+                        {
+
+
+                            <div class="store-item-container clearfix">
+                                <div class="col-md-3 store-picture hidden-sm-down">
+                                    <img src="@item.image" alt="Dade County" title="Dade County">
+                                </div>
+                                <div class="col-md-5 col-sm-7 col-xs-12 store-description">
+                                    <p class="h3 card-title">@item.fabric_name</p>
+                                    <address>@item.fabric_address</address>
+                                </div>
+                                <div class="col-md-4 col-sm-5 col-xs-12 divide-left">
+                                    <table>
+                                        <tr>
+
+                                            <td>
+                                                <ul>
+                                                    <li>@item.fabric_worktime</li>
+                                                </ul>
+                                            </td>
+
+
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="col-md-5 col-sm-7 col-xs-12 store-description">
-                                <p class="h3 card-title">Dade County</p>
-                                <address>3030 SW 8th St Miami<br />Miami, Florida 33135<br />United States</address>
-                            </div>
-                            <div class="col-md-4 col-sm-5 col-xs-12 divide-left">
-                                <table>
-                                    <tr>
-                                        <th>Mon.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tue.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Wed.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Thu.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Fri.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sat.</th>
-                                        <td>
-                                            <ul>
-                                                <li>10:00AM - 04:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sun.</th>
-                                        <td>
-                                            <ul>
-                                                <li>10:00AM - 04:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <footer id="about-1" class="collapse">
-                            <div class="store-item-footer divide-top">
-                                <ul class="card-block">
-                                </ul>
-                            </div>
-                        </footer>
+                            <footer id="about-1" class="collapse">
+                                <div class="store-item-footer divide-top">
+                                    <ul class="card-block">
+                                    </ul>
+                                </div>
+                            </footer>
+                        }
                     </article>
-                    <article id="store-2" class="store-item card">
-                        <div class="store-item-container clearfix">
-                            <div class="col-md-3 store-picture hidden-sm-down">
-                                <img src="~/image/vegan_store1.jpg"  alt="E Fort Lauderdale" title="E Fort Lauderdale">
-                            </div>
-                            <div class="col-md-5 col-sm-7 col-xs-12 store-description">
-                                <p class="h3 card-title">E Fort Lauderdale</p>
-                                <address>1000 Northeast 4th Ave Fort Lauderdale<br />Miami, Florida 33304<br />United States</address>
-                            </div>
-                            <div class="col-md-4 col-sm-5 col-xs-12 divide-left">
-                                <table>
-                                    <tr>
-                                        <th>Mon.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tue.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Wed.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Thu.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Fri.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sat.</th>
-                                        <td>
-                                            <ul>
-                                                <li>10:00AM - 04:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sun.</th>
-                                        <td>
-                                            <ul>
-                                                <li>10:00AM - 04:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <footer id="about-2" class="collapse">
-                            <div class="store-item-footer divide-top">
-                                <ul class="card-block">
-                                </ul>
-                            </div>
-                        </footer>
-                    </article>
-                    <article id="store-3" class="store-item card">
-                        <div class="store-item-container clearfix">
-                            <div class="col-md-3 store-picture hidden-sm-down">
-                                <img src="~/image/vegan_store1.jpg"  alt="Pembroke Pines" title="Pembroke Pines">
-                            </div>
-                            <div class="col-md-5 col-sm-7 col-xs-12 store-description">
-                                <p class="h3 card-title">Pembroke Pines</p>
-                                <address>11001 Pines Blvd Pembroke Pines<br />Miami, Florida 33026<br />United States</address>
-                            </div>
-                            <div class="col-md-4 col-sm-5 col-xs-12 divide-left">
-                                <table>
-                                    <tr>
-                                        <th>Mon.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tue.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Wed.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Thu.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Fri.</th>
-                                        <td>
-                                            <ul>
-                                                <li>09:00AM - 07:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sat.</th>
-                                        <td>
-                                            <ul>
-                                                <li>10:00AM - 04:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sun.</th>
-                                        <td>
-                                            <ul>
-                                                <li>10:00AM - 04:00PM</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <footer id="about-3" class="collapse">
-                            <div class="store-item-footer divide-top">
-                                <ul class="card-block">
-                                </ul>
-                            </div>
-                        </footer>
-                    </article>
-                
+                  
+
                 </section>
                 <footer class="page-footer">
                 </footer>

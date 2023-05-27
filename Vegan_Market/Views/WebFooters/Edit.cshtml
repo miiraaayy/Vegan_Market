@@ -85,7 +85,7 @@
                                     <h2>General</h2>
                                 </div>
                             </div>
-                            @Html.HiddenFor(model=>model.WebId)
+                            @Html.HiddenFor(model => model.WebId)
                             <!--end::Card header-->
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
@@ -120,6 +120,12 @@
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     @Html.EditorFor(model => model.support_txt, new { htmlAttributes = new { @class = "form-control", placeholder = "Support  text or other things" } })
+                                    <!--end::Input-->
+                                    <!--begin::Label-->
+                                    <label class="required form-label">Support Text-2</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    @Html.EditorFor(model => model.support_txt_1, new { htmlAttributes = new { @class = "form-control", placeholder = "Support  text or other things" } })
                                     <!--end::Input-->
                                     <!--begin::Description-->
                                     <!--end::Description-->

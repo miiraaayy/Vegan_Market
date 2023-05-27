@@ -94,86 +94,74 @@
                 </div>
                 <div id="search_filters">
                     <p class="text-uppercase h6 hidden-sm-down">Filter By</p>
-                    <section class="facet clearfix">
-                        <p class="h6 facet-title hidden-sm-down">Alt Kategoriler</p>
-                        <div class="title hidden-md-up" data-target="#facet_65899" data-toggle="collapse">
-                            <p class="h6 facet-title">Alt Kategoriler</p>
-                            <span class="navbar-toggler collapse-icons">
-                                <i class="material-icons add">&#xE313;</i>
-                                <i class="material-icons remove">&#xE316;</i>
-                            </span>
-                        </div>
-                        <ul id="facet_65899" class="collapse">
-                            @foreach (var sub_cate in Model.Sub_category)
-                            {
+                    <form action="/ViewModelW/All_Filter" method="post">
+                        <section class="facet clearfix">
+                            <p class="h6 facet-title hidden-sm-down">Alt Kategoriler</p>
+                            <div class="title hidden-md-up" data-target="#facet_65899" data-toggle="collapse">
+                                <p class="h6 facet-title">Alt Kategoriler</p>
+                                <span class="navbar-toggler collapse-icons">
+                                    <i class="material-icons add">&#xE313;</i>
+                                    <i class="material-icons remove">&#xE316;</i>
+                                </span>
+                            </div>
+                            <ul id="facet_65899" class="collapse">
+                                @foreach (var sub_cate in Model.Sub_category)
+                                {
+                                    <li>
+                                        <label class="facet-label">
+                                            <span class="custom-checkbox">
+                                                <input id="@sub_cate.sub_id" name="sub_category_ids" type="checkbox" value="@sub_cate.sub_id">
+                                                <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                            </span>
+                                            <a href="@Url.Action("subcatelist", "ViewModelW", new { id = sub_cate.sub_id })" class="category-sub-link" rel="nofollow">
+                                                @sub_cate.sub_name
+                                            </a>
+                                        </label>
+                                    </li>
+                                }
+                            </ul>
+                        </section>
 
-
+                        <section class="facet clearfix">
+                            <p class="h6 facet-title hidden-sm-down">Availability</p>
+                            <div class="title hidden-md-up" data-target="#facet_18373" data-toggle="collapse">
+                                <p class="h6 facet-title">Mevcut Olan</p>
+                                <span class="navbar-toggler collapse-icons">
+                                    <i class="material-icons add">&#xE313;</i>
+                                    <i class="material-icons remove">&#xE316;</i>
+                                </span>
+                            </div>
+                            <ul id="facet_18373" class="collapse">
                                 <li>
-                                    <label class="facet-label" for="facet_input_65899_0">
+                                    <label class="facet-label">
                                         <span class="custom-checkbox">
-                                            <input id="facet_input_65899_0" type="checkbox">
+                                            <input id="facet_input_18373_1" name="stocks" type="checkbox" value="0">
                                             <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
                                         </span>
-                                        <a href="@Url.Action("subcatelist","ViewModelW", new { id=sub_cate.sub_id})" class="category-sub-link" rel="nofollow">
-                                            @sub_cate.sub_name
-
+                                        <a href="@Url.Action("Instock", "ViewModelW", new { id = ViewBag.cate_id })" class="category-sub-link" rel="nofollow">
+                                            Stoktakiler
                                         </a>
                                     </label>
                                 </li>
-
-                            }
-                        </ul>
-                    </section>
-
-
-
-                    <section class="facet clearfix">
-                        <p class="h6 facet-title hidden-sm-down">Mevcut Olan</p>
-                        <div class="title hidden-md-up" data-target="#facet_18373" data-toggle="collapse">
-                            <p class="h6 facet-title">Mevcut Olan</p>
-                            <span class="navbar-toggler collapse-icons">
-                                <i class="material-icons add">&#xE313;</i>
-                                <i class="material-icons remove">&#xE316;</i>
-                            </span>
-                        </div>
-                        <ul id="facet_18373" class="collapse">
-
-                            <li>
-                                <label class="facet-label" for="facet_input_18373_1">
-                                    <span class="custom-checkbox">
-                                        <input id="facet_input_18373_1" data-search-url="https://demo74.leotheme.com/prestashop/vt_oworganic/en/3-acne-blemishes?q=Availability-In+stock" type="checkbox">
-                                        <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-                                    </span>
-
-                                    <a href="@Url.Action("Instock","ViewModelW",new { id= ViewBag.cate_id})" class="category-sub-link" rel="nofollow">
-                                        Stoktakiler
-
-                                    </a>
-                                </label>
-                            </li>
-                        </ul>
-
-                        <ul id="facet_17154" class="collapse">
+                                <li>
+                                    <label class="facet-label">
+                                        <span class="custom-checkbox">
+                                            <input id="facet_input_18373_2" name="availability" type="checkbox" value="true">
+                                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                        </span>
+                                        <a href="@Url.Action("Sales", "ViewModelW", new { id = ViewBag.cate_id })" class="category-sub-link" rel="nofollow">
+                                            İndirimli Ürünler
+                                        </a>
+                                    </label>
+                                </li>
+                            </ul>
+                        </section>
 
 
-                            <li>
-                                <label class="facet-label" for="facet_input_17154_1">
-                                    <span class="custom-checkbox">
-                                        <input id="facet_input_17154_1" type="checkbox">
-                                        <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-                                    </span>
+                        <input type="submit" value="Uygula" class="custom-button" />
 
 
-                                    <a href="@Url.Action("Sales", "ViewModelW",new { id=ViewBag.cate_id})" class="category-link" rel="nofollow">
-                                        İndirimli Ürünler
-
-                                    </a>
-
-
-                                </label>
-                            </li>
-                        </ul>
-                    </section>
+                    </form>
 
                     <form action="/ViewModelW/Filter" method="post">
                         <input type="hidden" id="cate_id" name="cate_id" value="@ViewBag.cate_id" />

@@ -111,11 +111,12 @@
                                 <th class="min-w-200px">Description</th>
                                 <th class="text-end min-w-100px">Location Text</th>
                                 <th class="text-end min-w-70px">Account Text</th>
-
+                                <th class="text-end min-w-70px">Account Text-2</th>
                                 <th class="text-end min-w-100px">Main Text</th>
+                                <th class="text-end min-w-100px">Main Text-2</th>
+                                <th class="text-end min-w-100px">Main Text-3</th>
                                 <th class="text-end min-w-100px">Menu Text</th>
-                                <th class="text-end min-w-100px"></th>
-
+                                <th class="text-end min-w-100px">Menu Text-2</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                         </thead>
@@ -137,18 +138,29 @@
                                     <td class="text-end pe-0">
                                         @footer.location_head
                                     </td>
-                                   
+
                                     <td class="text-end pe-0">
                                         @footer.account_txt
+                                    </td>
+                                    <td class="text-end pe-0">
+                                        @footer.account_txt_1
                                     </td>
                                     <td class="text-end pe-0">
                                         @footer.main_txt
                                     </td>
                                     <td class="text-end pe-0">
+                                        @footer.main_txt_1
+                                    </td>
+                                    <td class="text-end pe-0">
+                                        @footer.main_txt_3
+                                    </td>
+                                    <td class="text-end pe-0">
                                         @footer.footer_menu_txt
                                     </td>
+                                    <td class="text-end pe-0">
+                                        @footer.footer_menu_txt_1
+                                    </td>
 
-                                    <td></td>
 
                                     <td class="text-end">
                                         <a href="#" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
@@ -164,7 +176,7 @@
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                @Html.ActionLink("Delete", "Delete", new { id = footer.FooterId})
+                                                @Html.ActionLink("Delete", "Delete", new { id = footer.FooterId })
                                             </div>
                                             <!--end::Menu item-->
                                         </div>

@@ -19,5 +19,6 @@ namespace Vegan_Market.Models
         public string support_txt { get; set; }
         public string contact_head { get; set; }
         public string support_head { get; set; }
+        public string support_txt_1 { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿ 
 @model Vegan_Market.Models.ViewModel 
-    @using Vegan_Market.Models;
+   
 @{
     ViewBag.Title = "Home Page";
     Layout = null;
@@ -2648,7 +2648,7 @@
                                                                                                                 </div>
                                                                                                                 <div class="widget-inner">
                                                                                                                     <div id="tabs357384804" class="panel-group">
-                                                                                                                      @{ Html.RenderAction("categorylist", "Home");}
+                                                                                                                        @{ Html.RenderAction("categorylist", "Home");}
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -2656,42 +2656,48 @@
                                                                                                     </div>
                                                                                                 </div>
 
-                                                                                                <div class="mega-col col-md-3">
-                                                                                                    <div class="mega-col-inner ">
-                                                                                                        <div class="leo-widget" data-id_widget="1676803363">
-                                                                                                            <div class="widget-html">
-                                                                                                                <div class="widget-inner">
-                                                                                                                    <div class="menu_banner2">
-                                                                                                                        <a href="#"><img src="~/image/kil_maskesi.jpeg"  alt="banner menu 2" /></a>
-                                                                                                                        <div class="image_des">
-                                                                                                                            <p>Dermokil Siyah Nokta Ve Pürüz Karşıtı Maske 75ML</p>
-                                                                                                                            <span>Ciltte biriken yağ ve kiri temizler, cilde nem desteği sağlar.</span>
-                                                                                                                     
+                                                                                                @foreach (var nav in Model.Navs)
+                                                                                                {
+                                                                                                    <div class="mega-col col-md-3">
+
+                                                                                                        <div class="mega-col-inner ">
+
+                                                                                                            <div class="leo-widget" data-id_widget="1676803363">
+                                                                                                                <div class="widget-html">
+                                                                                                                    <div class="widget-inner">
+
+
+                                                                                                                        <div class="menu_banner2">
+                                                                                                                            <a href="#"><img src="@nav.image" alt="banner menu 2" /></a>
+                                                                                                                            <div class="image_des">
+                                                                                                                                <p>@nav.head_txt</p>
+                                                                                                                                <span>@nav.descript_txt</span>
+
+                                                                                                                            </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                </div>
-                                                                                                <div class="mega-col col-md-3">
-                                                                                                    <div class="mega-col-inner ">
-                                                                                                        <div class="leo-widget" data-id_widget="1676803470">
-                                                                                                            <div class="widget-html">
-                                                                                                                <div class="widget-inner">
-                                                                                                                    <div class="menu_banner3">
-                                                                                                                        <a href="#"><img src="~/image/glutensiz_makarna.jpg" alt="banner menu 3" /></a>
-                                                                                                                        <div class="image_des">
-                                                                                                                            <p>Glutensiz Bezelye Makarnası 200gr</p>
-                                                                                                                            <span>Talya Foods makarnaya yeni ve farklı bir bakış açısı kazandırıyor.</span>
+                                                                                                    <div class="mega-col col-md-3">
+                                                                                                        <div class="mega-col-inner ">
+                                                                                                            <div class="leo-widget" data-id_widget="1676803470">
+                                                                                                                <div class="widget-html">
+                                                                                                                    <div class="widget-inner">
+                                                                                                                        <div class="menu_banner3">
+                                                                                                                            <a href="#"><img src="@nav.image_1" alt="banner menu 3" /></a>
+                                                                                                                            <div class="image_des">
+                                                                                                                                <p>@nav.head_txt_2</p>
+                                                                                                                                <span>@nav.descript_txt_2</span>
+                                                                                                                            </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                </div>
-                                                                                            </div>
+                                                                                                }</div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </li>
@@ -2779,8 +2785,12 @@
                                 <div class="elementor-element elementor-element-471017a elementor-widget elementor-widget-LeoGenCode" data-id="471017a" data-element_type="widget" data-widget_type="LeoGenCode.default">
                                     <div class="elementor-widget-container">
                                         <div class="header_logo">
-                                            <a href="https://demo74.leotheme.com/prestashop/vt_oworganic/">
-                                                <img class="logo img-fluid" src="../../../../demo74leotheme.b-cdn.net/prestashop/vt_oworganic/img/logo-1670755011.jpg" alt="Burcu Miray">
+                                            <a href="@Url.Action("HomePage","Home")">
+                                                @foreach (var logo in Model.SlideLogos)
+                                                {
+                                                    <img  src="~/logo/@logo.Logo" alt="Burcu Miray">
+
+                                                }
                                             </a>
                                         </div>
                                     </div>
@@ -2818,7 +2828,7 @@
                                                         <a class="nav-link" href="@Url.Action("orderlist","Shoppingbag",new { id=Session["customers"]})">Tüm Siparişlerim</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="@Url.Action("AdresList","Addresses")">Adres Bilgilerim</a>
+                                                        <a class="nav-link" href="@Url.Action("AdresList","Addresses",new { id=Session["customers"]})">Adres Bilgilerim</a>
                                                     </li>
 
                                                     <li class="nav-item">
@@ -2835,18 +2845,17 @@
                                     <div class="elementor-element elementor-element-08dd2da hidden_input elementor-widget elementor-widget-LeoModule" data-id="08dd2da" data-element_type="widget" data-widget_type="LeoModule.default">
                                         <div class="elementor-widget-container">
 
-                                            <div id="leo_search_block_top" class="block exclusive">
+                                            <div id="leo_search_block_top" class="">
                                                 <p class="title_block">Search here...</p>
-                                                <form method="get" action="https://demo74.leotheme.com/prestashop/vt_oworganic/en/index.php?controller=productsearch" id="leosearchtopbox" data-label-suggestion="Suggestion" data-search-for="Search for" data-in-category="in category" data-products-for="Products For" data-label-products="Products" data-view-all="View all">
-                                                    <input type="hidden" name="fc" value="module" />
-                                                    <input type="hidden" name="module" value="leoproductsearch" />
-                                                    <input type="hidden" name="controller" value="productsearch" />
-                                                    <input type="hidden" name="txt_not_found" value="No products found">
-                                                    <input type="hidden" name="leoproductsearch_static_token" value="3cdd8c5ee88bd551a74c3683752bffb9" />
-                                                    <div class="block_content clearfix leoproductsearch-content">
+                                                <form method="get" action="/Home/Search" id="leosearchtopbox" data-label-suggestion="Suggestion" data-search-for="Search for" data-in-category="in category" data-products-for="Products For" data-label-products="Products" data-view-all="View all">
+                                                 
+                                                    
+                                                    
+                                                    
+                                                     <div class="block_content clearfix leoproductsearch-content">
                                                         <div class="leoproductsearch-result">
                                                             <div class="leoproductsearch-loading cssload-speeding-wheel"></div>
-                                                            <input class="search_query form-control grey" type="text" id="leo_search_query_top" name="search_query" data-content='[&quot;Search Products...&quot;]' value="" placeholder="Search" />
+                                                            <input class="search_query form-control grey"  id="product_name" name="product_name" data-content='[&quot;Search Products...&quot;]'  placeholder="Search" />
                                                             <div class="ac_results lps_results"></div>
                                                         </div>
                                                         <button type="submit" id="leo_search_top_button" class="btn btn-default button button-small"><span><i class="material-icons search">search</i></span></button>
@@ -2954,13 +2963,24 @@
                                                                             <div class="bannercontainer banner-fullwidth" style="padding: 0px;margin: 0px;">
                                                                                 <div class="iview iview-group-64196f2f7b1dc-4">
 
-                                                                                    <div class="slide_config " data-leo_image="https://static.ticimax.cloud/35298/Uploads/Slider/peynir-52.jpg?t=20230410190607" data-leo_pausetime="5000" data-leo_thumbnail="/prestashop/vt_oworganic/modules/leoslideshow/views/img/white50.png" data-leo_background="image">
+                                                                                    @foreach (var item in Model.SlideLogos)
+                                                                                    {
+                                                                                        <div class="slide_config " data-leo_image="@item.SlideImage_1" data-leo_pausetime="5000" data-leo_thumbnail="/prestashop/vt_oworganic/modules/leoslideshow/views/img/white50.png" data-leo_background="image">
 
-                                                                                    </div>
+                                                                                        </div>
 
-                                                                                    <div class="slide_config " data-leo_image="https://static.ticimax.cloud/35298/Uploads/Slider/fomilk-3-al-2-ode-63.jpg?t=20230406183756" data-leo_pausetime="50" data-leo_thumbnail="/prestashop/vt_oworganic/modules/leoslideshow/views/img/white50.png" data-leo_background="image">
+                                                                                        <div class="slide_config " data-leo_image="@item.SlideImage" data-leo_pausetime="50" data-leo_thumbnail="/prestashop/vt_oworganic/modules/leoslideshow/views/img/white50.png" data-leo_background="image">
 
-                                                                                    </div>
+                                                                                        </div>
+                                                                                       
+                                                                                    }
+                                                                                    @* <div class="slide_config " data-leo_image="https://static.ticimax.cloud/35298/Uploads/Slider/peynir-52.jpg?t=20230410190607" data-leo_pausetime="5000" data-leo_thumbnail="/prestashop/vt_oworganic/modules/leoslideshow/views/img/white50.png" data-leo_background="image">
+
+        </div>
+
+        <div class="slide_config " data-leo_image="https://static.ticimax.cloud/35298/Uploads/Slider/fomilk-3-al-2-ode-63.jpg?t=20230406183756" data-leo_pausetime="50" data-leo_thumbnail="/prestashop/vt_oworganic/modules/leoslideshow/views/img/white50.png" data-leo_background="image">
+
+        </div>*@
                                                                                 </div>@*Slider bitişi*@
                                                                             </div>
                                                                             <script type="b65480f4f74341f8cc1c4769-text/javascript">
@@ -3511,6 +3531,10 @@
         </div>
         </div>
         </section>
+        @foreach (var footer in Model.Footers)
+        {
+
+
         <footer id="footer" class="footer-container js-footer">
             <div class="footer-top">
                 <div class="container">
@@ -3537,7 +3561,7 @@
                                                         </div>
                                                         <div class="elementor-element elementor-element-a505378 elementor-widget elementor-widget-text-editor" data-id="a505378" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix"><p>Apparently we had reached a great height in the atmosphere, for the sky was a dead black and there a stars.</p></div>
+                                                                <div class="elementor-text-editor elementor-clearfix"><p>@footer.descript_txt</p></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -3548,17 +3572,17 @@
                                                     <div class="elementor-widget-wrap">
                                                         <div class="elementor-element elementor-element-11b0d68 elementor-widget elementor-widget-heading" data-id="11b0d68" data-element_type="widget" data-widget_type="heading.default">
                                                             <div class="elementor-widget-container">
-                                                                <h2 class="elementor-heading-title elementor-size-default">LOCATE US</h2>
+                                                                <h2 class="elementor-heading-title elementor-size-default">@footer.location_head</h2>
                                                             </div>
                                                         </div>
                                                         <div class="elementor-element elementor-element-14539d5 elementor-widget elementor-widget-text-editor" data-id="14539d5" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix"><p> DOSAB, Mustafa Karaer Caddesi,/ Çiğdem 2 Sokak No:1,<br />16245 Osmangazi/Bursa</p></div>
+                                                                <div class="elementor-text-editor elementor-clearfix"><p>@footer.location_txt</p></div>
                                                             </div>
                                                         </div>
                                                         <div class="elementor-element elementor-element-ad71b36 elementor-widget elementor-widget-text-editor" data-id="ad71b36" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix"><p>Phone: (0224) 261 12 11</p></div>
+                                                                <div class="elementor-text-editor elementor-clearfix"><p></p></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -3571,26 +3595,22 @@
                                                             <div class="elementor-widget-container">
                                                                 <div class="LeoBlockLink">
                                                                     <div class="linklist-toggle h6" data-toggle="linklist-widget">
-                                                                        <div class="title_block">ACCOUNT</div>
+                                                                        <div class="title_block">@footer.account_head</div>
                                                                         <span class="icon-toggle fa fa-angle-down"></span>
                                                                     </div>
                                                                     <div class="linklist-menu">
                                                                         <ul class="list-items vertical">
                                                                             <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    Manage Account
+                                                                                <a class='item-text' href="@Url.Action("About","Home")">
+                                                                                 @footer.account_txt
                                                                                 </a>
                                                                             </li>
                                                                             <li class="list-item vertical">
                                                                                 <a class='item-text' href="#">
-                                                                                    Saved Items
+                                                                                    @footer.account_txt_1
                                                                                 </a>
                                                                             </li>
-                                                                            <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    About us
-                                                                                </a>
-                                                                            </li>
+                                                                          
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -3606,41 +3626,27 @@
                                                             <div class="elementor-widget-container">
                                                                 <div class="LeoBlockLink">
                                                                     <div class="linklist-toggle h6" data-toggle="linklist-widget">
-                                                                        <div class="title_block">MAIN MENU</div>
+                                                                        <div class="title_block">@footer.main_head</div>
                                                                         <span class="icon-toggle fa fa-angle-down"></span>
                                                                     </div>
                                                                     <div class="linklist-menu">
                                                                         <ul class="list-items vertical">
                                                                             <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    Layout
+                                                                                <a class='item-text' href="@Url.Action("Sales","Home")">
+                                                                                   @footer.main_txt
                                                                                 </a>
                                                                             </li>
                                                                             <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    Shop[sale]
+                                                                                <a class='item-text' href="@Url.Action("Stores","Home")">
+                                                                                    @footer.main_txt_1
                                                                                 </a>
                                                                             </li>
                                                                             <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    Pages
+                                                                                <a class='item-text' href="@Url.Action("HomePage","Home")">
+                                                                                    @footer.main_txt_3
                                                                                 </a>
                                                                             </li>
-                                                                            <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    Blog
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    Lookbook
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    Buy now
-                                                                                </a>
-                                                                            </li>
+                                                                         
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -3656,26 +3662,22 @@
                                                             <div class="elementor-widget-container">
                                                                 <div class="LeoBlockLink">
                                                                     <div class="linklist-toggle h6" data-toggle="linklist-widget">
-                                                                        <div class="title_block">FOOTER MENU</div>
+                                                                        <div class="title_block">@footer.menu_head</div>
                                                                         <span class="icon-toggle fa fa-angle-down"></span>
                                                                     </div>
                                                                     <div class="linklist-menu">
                                                                         <ul class="list-items vertical">
                                                                             <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    Returns Policy
+                                                                                <a class='item-text' href="@Url.Action("Return_Policy","Home")">
+                                                                                   @footer.footer_menu_txt
                                                                                 </a>
                                                                             </li>
                                                                             <li class="list-item vertical">
                                                                                 <a class='item-text' href="#">
-                                                                                    Track Your Order
+                                                                                    @footer.account_txt_1
                                                                                 </a>
                                                                             </li>
-                                                                            <li class="list-item vertical">
-                                                                                <a class='item-text' href="#">
-                                                                                    Shipping &amp; Delivery
-                                                                                </a>
-                                                                            </li>
+                                                                         
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -3785,7 +3787,7 @@
 
         </footer>
 
-        </div>
+        }</div>
         </div>
         </div>
 

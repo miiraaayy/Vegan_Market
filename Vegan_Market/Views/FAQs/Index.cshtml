@@ -107,12 +107,12 @@
                                     </div>
                                 </th>
 
-                                <th class="min-w-200px">Image</th>
-                                <th class="text-end min-w-100px">Question</th>
-                                <th class="text-end min-w-70px"></th>
+                                <th class="min-w-200px">Question</th>
+                                <th class="text-end min-w-100px"></th>
+                                <th class="text-end min-w-70px">Answer</th>
 
                                 <th class="text-end min-w-100px"></th>
-                                <th class="text-end min-w-100px">Answer</th>
+                                <th class="text-end min-w-100px"></th>
                                 <th class="text-end min-w-100px"></th>
 
                                 <th class="text-end min-w-70px">Actions</th>
@@ -132,22 +132,21 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <!--begin::Thumbnail-->
-                                            <img src="@Url.Content(faq.image)" alt="IMAGES" width="80" height="80" />
-                                            <!--end::Thumbnail-->
+
+                                            @faq.question_txt
 
                                         </div>
                                     </td>
                                     <td class="text-end pe-0">
-                                        @faq.question_txt
+                                     
                                     </td>
                                     <td class="text-end pe-0" data-order="25">
-                                        <span class="fw-bold ms-3"></span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                    </td>
-                                    <td class="text-end pe-0">
                                         @faq.answer_txt
+                                    </td>
+                                    <td class="text-end pe-0">
+                                    </td>
+                                    <td class="text-end pe-0">
+                                      
                                     </td>
                                     <td class="text-end pe-0">
                                     </td>

@@ -118,6 +118,32 @@
                                     <!--end::Input-->
                                     <!--begin::Description-->
                                     <!--end::Description-->
+                                    <!--begin::Label-->
+                                    <label class="required form-label">Head Text -2</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    @Html.EditorFor(model => model.head_txt_2, new { htmlAttributes = new { @class = "form-control", placeholder = "Head Text" } })
+
+                                    <!--end::Input-->
+                                    <!--begin::Description-->
+                                    <!--end::Description-->
+                                    <!--begin::Label-->
+                                    <label class="required form-label">Descript Text -2</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    @Html.TextAreaFor(model => model.descript_txt_2, new { @class = "form-control", rows = "3" })
+                                    <!--end::Input-->
+                                    <!--begin::Description-->
+                                    <!--end::Description-->
+                                    <!--begin::Label-->
+                                    <label class="required form-label">Image -2 </label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    @Html.TextBox("files", "", new { type = "file", multiple = "multiple" })
+                                    @Html.ValidationMessageFor(model => model.image_1, "", new { @class = "text-danger" })
+                                    <!--end::Input-->
+                                    <!--begin::Description-->
+                                    <!--end::Description-->
 
 
                                 </div>
@@ -159,6 +185,25 @@
     }
     <script language="JavaScript">
         const images = document.getElementById("file"),
+            preview = document.getElementById("resim_goster");
+
+        images.addEventListener("change", function () {
+            preview.innerHTML = "";
+            [...this.files].map((file) => {
+                const reader = new FileReader();
+                reader.addEventListener("load", function () {
+                    const image = new Image();
+                    image.height = 100;
+                    image.title = file.name;
+                    image.src = this.result;
+                    preview.appendChild(image);
+                });
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
+    <script language="JavaScript">
+        const images = document.getElementById("files"),
             preview = document.getElementById("resim_goster");
 
         images.addEventListener("change", function () {

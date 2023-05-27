@@ -77,51 +77,49 @@
                     <p class="text-uppercase h6 hidden-sm-down">Filter By</p>
 
 
-                    <section class="facet clearfix">
-                        <p class="h6 facet-title hidden-sm-down">Mevcut Olan</p>
-                        <div class="title hidden-md-up" data-target="#facet_4120" data-toggle="collapse">
-                            <p class="h6 facet-title">Mevcut Olan</p>
-                            <span class="navbar-toggler collapse-icons">
-                                <i class="material-icons add">&#xE313;</i>
-                                <i class="material-icons remove">&#xE316;</i>
-                            </span>
-                        </div>
-                        <ul id="facet_4120" class="collapse">
-
-                            <li>
-                                <label class="facet-label" for="facet_input_4120_1">
-                                    <span class="custom-checkbox">
-                                        <input id="facet_input_4120_1" data-search-url="https://demo74.leotheme.com/prestashop/vt_oworganic/en/4-haircare?q=Availability-In+stock" type="checkbox">
-                                        <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-                                    </span>
-                                    <a href="@Url.Action("Instock_subs", "ViewModelW", new { id=ViewBag.sub_id })" class="category-link" rel="nofollow">
-                                        Stoktakiler
-
-                                    </a>
-                                </label>
-                            </li>
-                        </ul>
-                        <ul id="facet_17154" class="collapse">
+                    <form action="/ViewModelW/All_Filter_sub" method="post">
 
 
-                            <li>
-                                <label class="facet-label" for="facet_input_17154_1">
-                                    <span class="custom-checkbox">
-                                        <input id="facet_input_17154_1" type="checkbox">
-                                        <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-                                    </span>
+                        <section class="facet clearfix">
+                            <p class="h6 facet-title hidden-sm-down">Availability</p>
+                            <div class="title hidden-md-up" data-target="#facet_18373" data-toggle="collapse">
+                                <p class="h6 facet-title">Mevcut Olan</p>
+                                <span class="navbar-toggler collapse-icons">
+                                    <i class="material-icons add">&#xE313;</i>
+                                    <i class="material-icons remove">&#xE316;</i>
+                                </span>
+                            </div>
+                            <ul id="facet_18373" class="collapse">
+                                <li>
+                                    <label class="facet-label">
+                                        <span class="custom-checkbox">
+                                            <input id="facet_input_18373_1" name="stocks" type="checkbox" value="0">
+                                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                        </span>
+                                        <a href="@Url.Action("Instock", "ViewModelW", new { id = ViewBag.cate_id })" class="category-sub-link" rel="nofollow">
+                                            Stoktakiler
+                                        </a>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="facet-label">
+                                        <span class="custom-checkbox">
+                                            <input id="facet_input_18373_2" name="availability" type="checkbox" value="true">
+                                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                        </span>
+                                        <a href="@Url.Action("Sales", "ViewModelW", new { id = ViewBag.cate_id })" class="category-sub-link" rel="nofollow">
+                                            İndirimli Ürünler
+                                        </a>
+                                    </label>
+                                </li>
+                            </ul>
+                        </section>
 
 
-                                    <a href="@Url.Action("Sales_subs", "ViewModelW",new { id=ViewBag.sub_id})" class="category-link" rel="nofollow">
-                                        İndirimli Ürünler
-
-                                    </a>
+                        <input type="submit" value="Uygula" class="custom-button" />
 
 
-                                </label>
-                            </li>
-                        </ul>
-                    </section>
+                    </form>
                     <form action="/ViewModelW/Filters" method="post">
                         <input type="hidden" id="sub_id" name="sub_id" value="@ViewBag.sub_id" />
                         <p class="h6 facet-title">Fiyat</p>

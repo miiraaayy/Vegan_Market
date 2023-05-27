@@ -22,8 +22,7 @@ namespace Vegan_Market.Controllers
             return View(await db.Nav.ToListAsync());
         }
 
- 
-
+     
         // GET: Navs/Create
         public ActionResult Create()
         {
@@ -35,12 +34,10 @@ namespace Vegan_Market.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "NavId,head_txt,descript_txt,image")] Nav nav,HttpPostedFileBase file)
+        public async Task<ActionResult> Create([Bind(Include = "NavId,head_txt,descript_txt,image,image_1,head_txt_2,descript_txt_2")] Nav nav, HttpPostedFileBase file, HttpPostedFileBase files)
         {
             if (ModelState.IsValid)
             {
-                var dosya_adi = "";
-
                 if (file != null)
                 {
 
@@ -50,7 +47,7 @@ namespace Vegan_Market.Controllers
                         if (uzanti.Equals(".jpg") || uzanti.Equals(".jpeg") || uzanti.Equals(".jfif") || uzanti.Equals(".png"))
                         {
 
-                            dosya_adi = Path.GetFileName(file.FileName);
+                            var dosya_adi = Path.GetFileName(file.FileName);
                             String yol = Path.Combine(Server.MapPath("~/navimg"), dosya_adi);
                             file.SaveAs(yol);
                             nav.image = "/navimg/" + dosya_adi;
@@ -59,7 +56,33 @@ namespace Vegan_Market.Controllers
 
                     }
                 }
-                nav.image = dosya_adi;
+
+
+                if (files != null)
+                {
+
+                    if (files.ContentLength > 0)//dosya transfer olduysa
+                    {
+                        String uzanti = Path.GetExtension(files.FileName);
+                        if (uzanti.Equals(".jpg") || uzanti.Equals(".jpeg") || uzanti.Equals(".jfif") || uzanti.Equals(".png"))
+                        {
+
+                            var dosya_adi = Path.GetFileName(files.FileName);
+                            String yol = Path.Combine(Server.MapPath("~/navimg"), dosya_adi);
+                            files.SaveAs(yol);
+                            nav.image_1 = "/navimg/" + dosya_adi;
+                        }
+
+
+                    }
+                }
+
+
+
+
+
+
+
                 db.Nav.Add(nav);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -88,12 +111,10 @@ namespace Vegan_Market.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "NavId,head_txt,descript_txt,image")] Nav nav, HttpPostedFileBase file)
+        public async Task<ActionResult> Edit([Bind(Include = "NavId,head_txt,descript_txt,image,image_1,head_txt_2,descript_txt_2")] Nav nav, HttpPostedFileBase file, HttpPostedFileBase files)
         {
             if (ModelState.IsValid)
             {
-
-                var dosya_adi = "";
 
                 if (file != null)
                 {
@@ -104,7 +125,7 @@ namespace Vegan_Market.Controllers
                         if (uzanti.Equals(".jpg") || uzanti.Equals(".jpeg") || uzanti.Equals(".jfif") || uzanti.Equals(".png"))
                         {
 
-                            dosya_adi = Path.GetFileName(file.FileName);
+                            var dosya_adi = Path.GetFileName(file.FileName);
                             String yol = Path.Combine(Server.MapPath("~/navimg"), dosya_adi);
                             file.SaveAs(yol);
                             nav.image = "/navimg/" + dosya_adi;
@@ -113,7 +134,28 @@ namespace Vegan_Market.Controllers
 
                     }
                 }
-                nav.image = dosya_adi;
+
+
+                if (files != null)
+                {
+
+                    if (files.ContentLength > 0)//dosya transfer olduysa
+                    {
+                        String uzanti = Path.GetExtension(files.FileName);
+                        if (uzanti.Equals(".jpg") || uzanti.Equals(".jpeg") || uzanti.Equals(".jfif") || uzanti.Equals(".png"))
+                        {
+
+                            var dosya_adi = Path.GetFileName(files.FileName);
+                            String yol = Path.Combine(Server.MapPath("~/navimg"), dosya_adi);
+                            files.SaveAs(yol);
+                            nav.image = "/navimg/" + dosya_adi;
+                        }
+
+
+                    }
+                }
+
+
                 db.Entry(nav).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -121,7 +163,6 @@ namespace Vegan_Market.Controllers
             return View(nav);
         }
 
-      
         public async Task<ActionResult> Delete(int id)
         {
             Nav nav = await db.Nav.FindAsync(id);

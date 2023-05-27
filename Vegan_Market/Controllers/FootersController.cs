@@ -21,7 +21,8 @@ namespace Vegan_Market.Controllers
             return View(await db.Footer.ToListAsync());
         }
 
-    
+     
+
         // GET: Footers/Create
         public ActionResult Create()
         {
@@ -33,7 +34,7 @@ namespace Vegan_Market.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "FooterId,descript_txt,location_txt,location_head,account_txt,account_head,main_txt,main_head,footer_menu_txt,menu_head")] Footer footer)
+        public async Task<ActionResult> Create([Bind(Include = "FooterId,descript_txt,location_txt,location_head,account_txt,account_head,main_txt,main_head,footer_menu_txt,menu_head,account_txt_1,main_txt_1,main_txt_3,footer_menu_txt_1")] Footer footer)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +66,7 @@ namespace Vegan_Market.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "FooterId,descript_txt,location_txt,location_head,account_txt,account_head,main_txt,main_head,footer_menu_txt,menu_head")] Footer footer)
+        public async Task<ActionResult> Edit([Bind(Include = "FooterId,descript_txt,location_txt,location_head,account_txt,account_head,main_txt,main_head,footer_menu_txt,menu_head,account_txt_1,main_txt_1,main_txt_3,footer_menu_txt_1")] Footer footer)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +76,6 @@ namespace Vegan_Market.Controllers
             }
             return View(footer);
         }
-
 
         public async Task<ActionResult> Delete(int id)
         {

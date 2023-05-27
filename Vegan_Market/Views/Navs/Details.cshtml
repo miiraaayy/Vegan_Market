@@ -1,0 +1,67 @@
+﻿@model Vegan_Market.Models.Nav
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Nav</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.head_txt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.head_txt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descript_txt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descript_txt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.head_txt_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.head_txt_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descript_txt_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descript_txt_2)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NavId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

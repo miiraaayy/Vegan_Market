@@ -10,7 +10,7 @@ namespace Vegan_Market.Controllers
     public class ShoppingbagController : Controller
     {
         Aslan_Commerce_vtEntities db = new Aslan_Commerce_vtEntities();
-  
+        ViewModel vm = new ViewModel();
         public ActionResult AOrderList()
         {
             var orderlist = db.OrderT.ToList();
@@ -61,11 +61,17 @@ namespace Vegan_Market.Controllers
             return ourbag;
         }
         // GET: Shoppingcart
-        public ActionResult Index(string order_message)
+        public ActionResult Index(string order_message,int? product_id)
         {
+            var product_zero = db.Product.FirstOrDefault(x => x.product_id == product_id && x.product_num <= 0);
 
+            if(product_zero != null)
+            {
+                return RedirectToAction("Stock");
+            }
             ViewBag.customer_no = Session["customers"];
-          
+           
+
             ViewBag.order_message = order_message;
             return View(Bringthebag());
         }
@@ -130,6 +136,12 @@ namespace Vegan_Market.Controllers
             }
             return RedirectToAction("index");
         }
+
+       public ActionResult Stock()
+        {
+            ViewBag.Message = "Ürün stokta kalmamıştır.";
+            return View();
+        }
         public ActionResult Take_order()
         {
             var ourbag = (Shoppingcart)Session["ourbag"];
@@ -144,6 +156,15 @@ namespace Vegan_Market.Controllers
             }
             foreach (var register_bag in ourbag.Shoppingbag)
             {
+                int productId = register_bag.product.product_id;
+                int productNumber = register_bag.product_number;
+               
+                var product1 = db.Product.FirstOrDefault(x => x.product_id == productId);
+
+                if (product1 != null)
+                {
+                    product1.product_num -= productNumber;
+                }
                 OrderT bag_register = new OrderT
                 {
                     order_num = (int)new_order_num,
@@ -153,12 +174,18 @@ namespace Vegan_Market.Controllers
                     product_number = register_bag.product_number,
                     order_date = DateTime.Now,
                     price = Bringthebag().Sum_cart()
+
                     
                 };
+              
+               
                 db.OrderT.Add(bag_register);
                 db.SaveChanges();
            
             }
+
+          
+          
             Bringthebag().Clear_cart();
             string order_message = "Sipariş alındı Sipariş no=" + new_order_num;
 

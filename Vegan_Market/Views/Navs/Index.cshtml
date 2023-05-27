@@ -107,12 +107,13 @@
                                     </div>
                                 </th>
 
-                                <th class="min-w-200px">Image</th>
-                                <th class="text-end min-w-100px">Head Text</th>
-                                <th class="text-end min-w-70px"></th>
+                                <th class="min-w-200px">Image -1</th>
+                                <th class="min-w-200px">Image -2</th>
+                                <th class="text-end min-w-100px">Head Text-1</th>
+                                <th class="text-end min-w-70px">Description-1</th>
 
-                                <th class="text-end min-w-100px"></th>
-                                <th class="text-end min-w-100px">Description</th>
+                                <th class="text-end min-w-100px">Head Text-2</th>
+                                <th class="text-end min-w-100px">Description-2</th>
                                 <th class="text-end min-w-100px"></th>
 
                                 <th class="text-end min-w-70px">Actions</th>
@@ -133,27 +134,32 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <!--begin::Thumbnail-->
-                                            <img src="@Url.Content(nav.image)" alt="IMAGES" width="80" height="80" />
+                                            <img src="@nav.image" width="80" height="80" />
+                                            <!--end::Thumbnail-->
+                                            </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <!--begin::Thumbnail-->
+                                            <img src="@nav.image_1" width="80" height="80" />
                                             <!--end::Thumbnail-->
 
-                                        </div>
+                                            </div>
                                     </td>
                                     <td class="text-end pe-0">
                                         @nav.head_txt
                                     </td>
                                     <td class="text-end pe-0" data-order="25">
-                                        <span class="fw-bold ms-3"></span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                    </td>
-                                    <td class="text-end pe-0">
                                         @nav.descript_txt
                                     </td>
                                     <td class="text-end pe-0">
-                                        
+                                        @nav.head_txt_2
                                     </td>
-
-
+                                    <td class="text-end pe-0">
+                                        @nav.descript_txt_2
+                                    </td>
+                                    <td></td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                             Actions

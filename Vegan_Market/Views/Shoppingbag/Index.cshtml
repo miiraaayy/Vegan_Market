@@ -77,10 +77,11 @@
                                                         <th class="text-end min-w-70px">Sepeti Temizle</th>
                                                     </tr>
                                                 </thead>
+
                                                 @foreach (var item in Model.Shoppingbag)
                                                 {
 
-
+                                              
                                                     <tbody class="fw-semibold text-gray-600">
                                                         <tr>
                                                             <td>
@@ -141,12 +142,12 @@
 
                                                 <tr><td colspan="8" align="right">Sepet Toplamı=@Model.Sum_cart()</td></tr>
 
-                                               
 
-                                                  
-                                                        <tr><td colspan="8" align="right"><a href="@Url.Action("AddresCheck", "Addresses",new { customer_no =ViewBag.customer_no})" class="btn btn-primary btn-block">Sepeti Onayla</a></td></tr>
-                                                  
-                                               
+
+
+                                                <tr><td colspan="8" align="right"><a href="@Url.Action("AddresCheck", "Addresses",new { customer_no =ViewBag.customer_no})" class="btn btn-primary btn-block">Sepeti Onayla</a></td></tr>
+
+
 
 
 

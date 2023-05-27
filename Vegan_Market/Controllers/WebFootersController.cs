@@ -18,10 +18,11 @@ namespace Vegan_Market.Controllers
         // GET: WebFooters
         public async Task<ActionResult> Index()
         {
+         
             return View(await db.WebFooter.ToListAsync());
         }
 
-       
+     
 
         // GET: WebFooters/Create
         public ActionResult Create()
@@ -34,7 +35,7 @@ namespace Vegan_Market.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "WebId,contact_txt,support_txt,contact_head,support_head")] WebFooter webFooter)
+        public async Task<ActionResult> Create([Bind(Include = "WebId,contact_txt,support_txt,contact_head,support_head,support_txt_1")] WebFooter webFooter)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +67,7 @@ namespace Vegan_Market.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "WebId,contact_txt,support_txt,contact_head,support_head")] WebFooter webFooter)
+        public async Task<ActionResult> Edit([Bind(Include = "WebId,contact_txt,support_txt,contact_head,support_head,support_txt_1")] WebFooter webFooter)
         {
             if (ModelState.IsValid)
             {
@@ -77,6 +78,7 @@ namespace Vegan_Market.Controllers
             return View(webFooter);
         }
 
+       
         public async Task<ActionResult> Delete(int id)
         {
             WebFooter webFooter = await db.WebFooter.FindAsync(id);

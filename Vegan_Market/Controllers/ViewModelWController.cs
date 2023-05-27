@@ -24,9 +24,21 @@ namespace Vegan_Market.Controllers.Web_Controller
             ViewBag.catedescript = db.Category.FirstOrDefault<Category>(x => x.Cate_id == id).Cate_descript;
             ViewBag.productnum = db.Product.Where(x => x.cate_no == id).Count();
             ViewBag.cate_id = db.Category.FirstOrDefault(x => x.Cate_id == id).Cate_id;
-            
+            vm.WebFooters = db.WebFooter.ToList();
           
-           
+
+            return View(vm);
+        }
+
+
+      
+
+        public ActionResult All_Filter(int? sub_category_ids,int? stocks,bool? availability)
+        {
+            
+            vm.Sub_category = db.Sub_Category.ToList();
+            vm.Product = db.Product.Where(x => x.sub_no == sub_category_ids || x.product_num > stocks || x.product_discount == availability).ToList();
+            ViewBag.count= db.Product.Where(x => x.sub_no == sub_category_ids || x.product_num > stocks || x.product_discount == availability).Count();
             return View(vm);
         }
 
@@ -38,6 +50,7 @@ namespace Vegan_Market.Controllers.Web_Controller
             vm.Product = db.Product.Where(x => x.cate_no == id && x.product_num > 0).ToList();
             ViewBag.count = db.Product.Where(p =>p.cate_no ==id  && p.product_num > 0).Count();
             ViewBag.cate_id = db.Category.FirstOrDefault(x => x.Cate_id == id).Cate_id;
+            vm.WebFooters = db.WebFooter.ToList();
             return View(vm);
         }
 
@@ -49,6 +62,7 @@ namespace Vegan_Market.Controllers.Web_Controller
             vm.Product = db.Product.Where(p =>p.cate_no==id  && p.product_discount == true).ToList();
             ViewBag.count = db.Product.Where(p =>p.cate_no ==id    && p.product_discount == true).Count();
             ViewBag.cate_id = db.Category.FirstOrDefault(x => x.Cate_id == id).Cate_id;
+            vm.WebFooters = db.WebFooter.ToList();
             return View(vm);
 
         }
@@ -64,6 +78,7 @@ namespace Vegan_Market.Controllers.Web_Controller
            .Where(p =>p.cate_no == cate_id  && p.product_price >= minPrice && p.product_price <= maxPrice)
            .ToList();
             ViewBag.count = db.Product.Where(p => p.cate_no == cate_id && p.product_price >= minPrice && p.product_price <= maxPrice).Count();
+            vm.WebFooters = db.WebFooter.ToList();
             return View(vm);
         }
 
@@ -79,7 +94,15 @@ namespace Vegan_Market.Controllers.Web_Controller
             ViewBag.catename = db.Sub_Category.FirstOrDefault(x => x.sub_id == id).Category.Cate_name;
             ViewBag.cate_id= db.Sub_Category.FirstOrDefault(x => x.sub_id == id).Category.Cate_id;
             ViewBag.sub_id = db.Sub_Category.FirstOrDefault(x => x.sub_id == id).sub_id;
+            vm.WebFooters = db.WebFooter.ToList();
             return View(vm);
+        }
+
+        public ActionResult All_Filter_sub(int? stocks,bool? availability)
+        {
+            vm.Product = db.Product.Where(x => x.product_num < stocks || x.product_discount == availability).ToList();
+            ViewBag.count = db.Product.Where(x => x.product_num < stocks || x.product_discount == availability).Count();
+            return View();
         }
         public ActionResult Instock_subs(int id)
         {
@@ -94,6 +117,7 @@ namespace Vegan_Market.Controllers.Web_Controller
             ViewBag.catename = db.Sub_Category.FirstOrDefault(x => x.sub_id == id).Category.Cate_name;
             ViewBag.cate_id = db.Sub_Category.FirstOrDefault(x => x.sub_id == id).Category.Cate_id;
             ViewBag.sub_id = db.Sub_Category.FirstOrDefault(x => x.sub_id == id).sub_id;
+            vm.WebFooters = db.WebFooter.ToList();
             return View(vm);
         
         }
@@ -110,6 +134,7 @@ namespace Vegan_Market.Controllers.Web_Controller
             ViewBag.catename = db.Sub_Category.FirstOrDefault(x => x.sub_id == id).Category.Cate_name;
             ViewBag.cate_id = db.Sub_Category.FirstOrDefault(x => x.sub_id == id).Category.Cate_id;
             ViewBag.sub_id = db.Sub_Category.FirstOrDefault(x => x.sub_id == id).sub_id;
+            vm.WebFooters = db.WebFooter.ToList();
             return View(vm);
         }
         [HttpPost]
@@ -126,6 +151,7 @@ namespace Vegan_Market.Controllers.Web_Controller
             ViewBag.catename = db.Sub_Category.FirstOrDefault(x => x.sub_id == sub_id).Category.Cate_name;
             ViewBag.cate_id = db.Sub_Category.FirstOrDefault(x => x.sub_id == sub_id).Category.Cate_id;
             ViewBag.sub_id = db.Sub_Category.FirstOrDefault(x => x.sub_id == sub_id).sub_id;
+            vm.WebFooters = db.WebFooter.ToList();
             return View(vm);
         }
 
@@ -141,8 +167,25 @@ namespace Vegan_Market.Controllers.Web_Controller
             ViewBag.brand = db.Product.FirstOrDefault(x => x.product_id == id).Brand.brand_name;
             ViewBag.cate = db.Product.FirstOrDefault(x => x.product_id == id).Category.Cate_name;
             ViewBag.subcate = db.Product.FirstOrDefault(x => x.product_id == id).Sub_Category.sub_name;
+            var stock_num = db.Product.FirstOrDefault(x => x.product_id == id).product_num;
+            var product_id = db.Product.FirstOrDefault(x => x.product_id == id);
+            vm.WebFooters = db.WebFooter.ToList();
+    
            
-            Session["product_no"]= db.Product.FirstOrDefault(x=>x.product_id == id);
+           
+                var producti = product_id.product_num;
+                if (producti <= 0)
+                {
+                    ViewBag.toplam = "Stokta kalmamıştır.";
+                }
+                else
+                {
+                    ViewBag.toplam = product_id.product_num;
+                }
+            
+            
+
+      
 
             ViewBag.customer_no = Session["customer"];
             ViewBag.product_no = Session["product_no"];

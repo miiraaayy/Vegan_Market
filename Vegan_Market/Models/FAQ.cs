@@ -17,6 +17,5 @@ namespace Vegan_Market.Models
         public int FaqId { get; set; }
         public string question_txt { get; set; }
         public string answer_txt { get; set; }
-        public string image { get; set; }
     }
 }

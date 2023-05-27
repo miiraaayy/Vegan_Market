@@ -1,0 +1,352 @@
+﻿
+@model Vegan_Market.Models.ViewModel
+@{
+    ViewBag.Title = "NoResults";
+    Layout = "~/Views/Shared/_Web_Layout.cshtml";
+}
+
+
+<style>
+
+    .input-wrapper {
+        position: relative;
+    }
+
+        .input-wrapper input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+
+    .custom-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .checkbox-wrapper {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+        .checkbox-wrapper label {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+</style>
+<aside id="notifications">
+    <div class="notifications-container container">
+    </div>
+</aside>
+<div class="container">
+    <div data-depth="1" class="breadcrumb-bg center breadcrumb-full" style=" background-color:#f4f1eb;background-image: url(); min-height:65px; ">
+        <div class="container">
+            <nav data-depth="1" class="breadcrumb hidden-sm-down">
+                <ol>
+                    <li>
+                        <span>Home</span>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div id="left-column" class="sidebar col-xs-12 col-sm-12 col-md-4 col-lg-3">
+            <div class="block-categories block">
+                <p class="title_block text-uppercase h6 hidden-sm-down"><a href="@Url.Action("Index","Home")">Home</a></p>
+
+                @{ Html.RenderAction("catesub_list", "Home");}
+
+            </div>
+            <div id="search_filters_wrapper" class="hidden-sm-down">
+                <div id="search_filter_controls" class="hidden-md-up">
+                    <span id="_mobile_search_filters_clear_all"></span>
+                    <button class="btn btn-secondary ok">
+                        <i class="material-icons rtl-no-flip">&#xE876;</i>
+                        OK
+                    </button>
+                </div>
+                <div id="search_filters">
+                    <p class="text-uppercase h6 hidden-sm-down">Filter By</p>
+                    <form action="/Home/All_Filter" method="post">
+                        <section class="facet clearfix">
+                            <p class="h6 facet-title hidden-sm-down">Category</p>
+                            <div class="title hidden-md-up" data-target="#facet_62794" data-toggle="collapse">
+                                <p class="h6 facet-title">Category</p>
+                                <span class="navbar-toggler collapse-icons">
+                                    <i class="material-icons add">&#xE313;</i>
+                                    <i class="material-icons remove">&#xE316;</i>
+                                </span>
+                            </div>
+                            <ul id="facet_62794" class="collapse">
+                                @foreach (var category in Model.Category)
+                                {
+                                    <li>
+                                        <label class="facet-label">
+                                            <span class="custom-checkbox">
+                                                <input id="@category.Cate_id" name="category_ids" type="checkbox" value="@category.Cate_id">
+                                                <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                            </span>
+                                            <a href="@Url.Action("Filter_categories", "Home", new { id = category.Cate_id })" class="category-link" rel="nofollow">
+                                                @category.Cate_name
+                                            </a>
+                                        </label>
+                                    </li>
+                                }
+                            </ul>
+                        </section>
+
+                        <section class="facet clearfix">
+                            <p class="h6 facet-title hidden-sm-down">Availability</p>
+                            <div class="title hidden-md-up" data-target="#facet_17154" data-toggle="collapse">
+                                <p class="h6 facet-title">Mevcut Olan</p>
+                                <span class="navbar-toggler collapse-icons">
+                                    <i class="material-icons add">&#xE313;</i>
+                                    <i class="material-icons remove">&#xE316;</i>
+                                </span>
+                            </div>
+                            <ul id="facet_17154" class="collapse">
+                                <li>
+                                    <label class="facet-label" for="facet_input_17154_1">
+                                        <span class="custom-checkbox">
+                                            <input id="facet_input_17154_1" name="stocks" type="checkbox" value="0">
+                                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                        </span>
+                                        <a href="@Url.Action("Instock", "Home")" class="category-link" rel="nofollow">
+                                            Stoktakiler
+                                        </a>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="facet-label" for="facet_input_17154_2">
+                                        <span class="custom-checkbox">
+                                            <input id="facet_input_17154_2" name="availability" type="checkbox" value="true">
+                                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                        </span>
+                                        <a href="@Url.Action("Sales", "Home")" class="category-link" rel="nofollow">
+                                            İndirimli Ürünler
+                                        </a>
+                                    </label>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="facet clearfix">
+                            <p class="h6 facet-title hidden-sm-down">Brand</p>
+                            <div class="title hidden-md-up" data-target="#facet_86257" data-toggle="collapse">
+                                <p class="h6 facet-title">Brand</p>
+                                <span class="navbar-toggler collapse-icons">
+                                    <i class="material-icons add">&#xE313;</i>
+                                    <i class="material-icons remove">&#xE316;</i>
+                                </span>
+                            </div>
+                            <ul id="facet_86257" class="collapse">
+                                @foreach (var brand in Model.Brand)
+                                {
+                                    <li>
+                                        <label class="facet-label">
+                                            <span class="custom-checkbox">
+                                                <input id="@brand.brand_id" name="brand_ids" type="checkbox" value="@brand.brand_id">
+                                                <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                            </span>
+                                            <a href="@Url.Action("Filter_brand", "Home", new { id = brand.brand_id })" class="category-link" rel="nofollow">
+                                                @brand.brand_name
+                                            </a>
+                                        </label>
+                                    </li>
+                                }
+                            </ul>
+                        </section>
+                        <input type="submit" value="Uygula" class="custom-button" />
+                    </form>
+
+
+
+                    <form action="/Home/Filter" method="post">
+                        <p class="h6 facet-title">Fiyat</p>
+
+                        <div class="input-wrapper">
+                            <input type="text" id="min-price" name="minPrice" placeholder="Minimum Fiyat" />
+                        </div>
+                        <br />
+                        <div class="input-wrapper">
+                            <input type="text" id="max-price" name="maxPrice" placeholder="Maximum Fiyat" />
+                        </div>
+                        <br />
+
+                        <input type="submit" value="Filtrele" class="custom-button" />
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div id="content-wrapper" class="js-content-wrapper left-column col-xs-12 col-sm-12 col-md-8 col-lg-9">
+            <section id="main" class="category-1967383214">
+                <div id="js-product-list-header">
+                    <div class="block-category card card-block">
+                        <h1 class="h1">Home</h1>
+                        <div class="block-category-inner">
+                        </div>
+                    </div>
+                </div>
+                <div id="subcategories" class="card card-block hidden-sm-down">
+                    <h2 class="subcategory-heading"></h2>
+
+                </div>
+                <section id="products">
+                    <div id="js-product-list-top" class="products-selection">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 hidden-md-down total-products ">
+                                
+                            </div>
+                            <div class="col-md-6 col-lg-3" id="btn_view_product" data-mode="grid" data-col-xl="3" data-col-lg="3" data-col-md="2" data-col-sm="2" data-col-xs="1" data-col-sp="1">
+                                <span class="grid-select grid-select-list view-list" data-col="list"></span>
+                                <span class="grid-select grid-select-grid view-1" data-col="12"></span>
+                                <span class="grid-select grid-select-grid view-2" data-col="6"></span>
+                                <span class="grid-select grid-select-grid view-3 active" data-col="4"></span>
+                                <span class="grid-select grid-select-grid view-4" data-col="3"></span>
+                                <span class="grid-select grid-select-grid view-5" data-col="2-4"></span>
+                            </div>
+                            <div class="col-md-6 col-lg-6 grid-selecting">
+                                <div class="row sort-by-row">
+                                    <span class="col-sm-3 col-md-3 hidden-md-down sort-by">Sort by:</span>
+                                    <div class="col-sm-9 col-xs-8 col-md-12 products-sort-order dropdown">
+                                        <button class="btn-unstyle select-title" rel="nofollow" data-toggle="dropdown" aria-label="Sort by selection" aria-haspopup="true" aria-expanded="false">
+                                            Relevance <i class="material-icons float-xs-right">&#xE5C5;</i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a rel="nofollow" href="2-home0196.html?plist_key=plist1843727881&amp;order=product.sales.desc" class="select-list js-search-link">
+                                                Best sellers
+                                            </a>
+                                            <a rel="nofollow" href="2-home2458.html?plist_key=plist1843727881&amp;order=product.position.asc" class="select-list current js-search-link">
+                                                Relevance
+                                            </a>
+                                            <a rel="nofollow" href="2-homeb790.html?plist_key=plist1843727881&amp;order=product.name.asc" class="select-list js-search-link">
+                                                Name, A to Z
+                                            </a>
+                                            <a rel="nofollow" href="2-home9363.html?plist_key=plist1843727881&amp;order=product.name.desc" class="select-list js-search-link">
+                                                Name, Z to A
+                                            </a>
+                                            <a rel="nofollow" href="2-home4300.html?plist_key=plist1843727881&amp;order=product.price.asc" class="select-list js-search-link">
+                                                Price, low to high
+                                            </a>
+                                            <a rel="nofollow" href="2-home67f1.html?plist_key=plist1843727881&amp;order=product.price.desc" class="select-list js-search-link">
+                                                Price, high to low
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-4 hidden-md-up filter-button">
+                                        <button id="search_filter_toggler" class="btn btn-secondary js-search-toggler">
+                                            Filter
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 hidden-md-up text-sm-center text-xs-center showing">
+                                Showing 1-12 of 19 item(s)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden-sm-down">
+                        <section id="js-active-search-filters" class="hide">
+                            <p class="h6 hidden-xs-up">Active filters</p>
+                        </section>
+                    </div>
+                    <div id="js-product-list">
+                        <div class="products">
+
+                            <div class="product_list grid plist-4 ">
+                                <div class="row leo-product-ajax">
+                                  
+
+
+                                        <div class="ajax_block_product col-sp-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 first-in-line first-item-of-tablet-line last-item-of-mobile-line">
+                                            <article class="product-miniature js-product-miniature" data-id-product="1" data-id-product-attribute="1">
+                                                <div class="thumbnail-container">
+                                                   
+                                                       @ViewBag.Message
+                                                </div>
+                                            </article>
+                                        </div>
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="pagination" data-total="19">
+                            <div id="pagination_summary" class="col-md-4">
+
+                            </div>
+                            <div class="col-md-6 offset-md-2 pr-0">
+                                <ul class="page-list clearfix text-sm-right">
+                                    <li class="current">
+                                        <a rel="nofollow" href="2-home6c3b.html?plist_key=plist1843727881" class="disabled js-search-link">
+                                            1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a rel="nofollow" href="2-home8ad1.html?plist_key=plist1843727881&amp;page=2" class="js-search-link">
+                                            2
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a rel="next" href="2-home8ad1.html?plist_key=plist1843727881&amp;page=2" class="next js-search-link">
+                                            Next<i class="material-icons">&#xE315;</i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div id="js-product-list-bottom"></div>
+                </section>
+                <div id="js-product-list-footer">
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // Kategori checkbox'larına tıklandığında
+            $(".category-checkbox").change(function () {
+                // Seçilen kategori checkbox'larını toplayın
+                var selectedCategories = [];
+                $(".category-checkbox:checked").each(function () {
+                    selectedCategories.push($(this).data("category-id"));
+                });
+
+                // AJAX isteği göndererek filtreleme yapın ve sonuçları alın
+                $.ajax({
+                    url: "/Home/Filter_categories", // Filtreleme işlemini gerçekleştirecek Controller Action'ın URL'i
+                    type: "GET",
+                    data: { categoryIds: selectedCategories },
+                    success: function (data) {
+                        // Filtrelenmiş sonuçları göstermek için uygun bir alanı güncelleyin
+                        $("#filtered-results").html(data);
+                    },
+                    error: function () {
+                        alert("Filtreleme işlemi sırasında bir hata oluştu.");
+                    }
+                });
+            });
+        });
+
+
+
+
+
+
+    </script>
+
+</div>
+
+
+
+

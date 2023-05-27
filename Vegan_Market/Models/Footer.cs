@@ -24,5 +24,9 @@ namespace Vegan_Market.Models
         public string main_head { get; set; }
         public string footer_menu_txt { get; set; }
         public string menu_head { get; set; }
+        public string account_txt_1 { get; set; }
+        public string main_txt_1 { get; set; }
+        public string main_txt_3 { get; set; }
+        public string footer_menu_txt_1 { get; set; }
     }
 }

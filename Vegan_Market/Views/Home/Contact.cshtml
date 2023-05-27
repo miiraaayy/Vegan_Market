@@ -1,5 +1,5 @@
 ﻿
-
+@model IEnumerable<Vegan_Market.Models.Contact>
 @{
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_Web_Layout.cshtml";
@@ -26,18 +26,22 @@
     </div>
     <div class="row">
         <div id="left-column" class="col-xs-12 col-sm-4 col-md-3">
+            @foreach (var contact in Model)
+            {
+
+
             <div class="contact-rich">
                 <h4>Store information</h4>
                 <div class="block">
                     <div class="icon"><i class="material-icons">&#xE55F;</i></div>
-                    <div class="data">Oworganic<br />16, Main street 2nd floor<br />Paris, Hawaii 75002<br />United States</div>
+                    <div class="data">@contact.location_txt</div>
                 </div>
                 <hr />
                 <div class="block">
                     <div class="icon"><i class="material-icons">&#xE0CD;</i></div>
                     <div class="data">
                         <span>Call us:</span><br />
-                        <a href="tel:010203040598">010203040598</a>
+                        <a href="tel:010203040598">@contact.call_txt</a>
                     </div>
                 </div>
                 <hr />
@@ -45,19 +49,19 @@
                     <div class="icon"><i class="material-icons">&#xE0DF;</i></div>
                     <div class="data">
                         <span>Fax:</span><br />
-                        0102030405
+                        @contact.fax_txt
                     </div>
                 </div>
                 <hr />
                 <div class="block">
                     <div class="icon"><i class="material-icons">&#xE158;</i></div>
                     <div class="data email">
-                        <span>Email us: burcu.miray@gmail.com</span><br />
+                        <span>Email us: @contact.e_mail</span><br />
                         <script type="76c5ae4323d4dc9fbc98706f-text/javascript">document.write(unescape('%3c%61%20%68%72%65%66%3d%22%6d%61%69%6c%74%6f%3a%64%65%6d%6f%40%64%65%6d%6f%2e%63%6f%6d%22%20%3e%64%65%6d%6f%40%64%65%6d%6f%2e%63%6f%6d%3c%2f%61%3e'))</script>
                     </div>
                 </div>
             </div>
-        </div>
+            }  </div>
         <div id="content-wrapper" class="js-content-wrapper left-column col-xs-12 col-sm-12 col-md-8 col-lg-9">
             <section id="main">
                 <section id="content" class="page-content card card-block">

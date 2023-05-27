@@ -73,129 +73,114 @@
                 </div>
                 <div id="search_filters">
                     <p class="text-uppercase h6 hidden-sm-down">Filter By</p>
-                    <section class="facet clearfix">
-                        <p class="h6 facet-title hidden-sm-down">Categories</p>
-                        <div class="title hidden-md-up" data-target="#facet_62794" data-toggle="collapse">
-                            <p class="h6 facet-title">Categories</p>
-                            <span class="navbar-toggler collapse-icons">
-                                <i class="material-icons add">&#xE313;</i>
-                                <i class="material-icons remove">&#xE316;</i>
-                            </span>
-                        </div>
 
-                    
-        <ul id="facet_62794" class="collapse">
-            @foreach (var category in Model.Category)
-            {
-                <li>
-                    <label class="facet-label">
-                        <span class="custom-checkbox">
-                            <input id="facet_input_86257_0" data-search-url="https://demo74.leotheme.com/prestashop/vt_oworganic/en/2-home?plist_key=plist1843727881&amp;q=Brand-Graphic+Corner" type="checkbox">
-                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-                        </span>
-                        <a href="@Url.Action("Filter_categories","Home",new { id=category.Cate_id})" class="category-link" rel="nofollow">
-                            @category.Cate_name
+                    <form action="/Home/All_Filter" method="post">
+                        <section class="facet clearfix">
+                            <p class="h6 facet-title hidden-sm-down">Category</p>
+                            <div class="title hidden-md-up" data-target="#facet_62794" data-toggle="collapse">
+                                <p class="h6 facet-title">Category</p>
+                                <span class="navbar-toggler collapse-icons">
+                                    <i class="material-icons add">&#xE313;</i>
+                                    <i class="material-icons remove">&#xE316;</i>
+                                </span>
+                            </div>
+                            <ul id="facet_62794" class="collapse">
+                                @foreach (var category in Model.Category)
+                                {
+                                    <li>
+                                        <label class="facet-label">
+                                            <span class="custom-checkbox">
+                                                <input id="@category.Cate_id" name="category_ids" type="checkbox" value="@category.Cate_id">
+                                                <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                            </span>
+                                            <a href="@Url.Action("Filter_categories", "Home", new { id = category.Cate_id })" class="category-link" rel="nofollow">
+                                                @category.Cate_name
+                                            </a>
+                                        </label>
+                                    </li>
+                                }
+                            </ul>
+                        </section>
 
-                        </a>
-                    </label>
-                </li>
-            }
-        </ul>
-                    </section>
-                    <section class="facet clearfix">
-                        <p class="h6 facet-title hidden-sm-down">Availability</p>
-                        <div class="title hidden-md-up" data-target="#facet_17154" data-toggle="collapse">
-                            <p class="h6 facet-title">Mevcut Olan</p>
-                            <span class="navbar-toggler collapse-icons">
-                                <i class="material-icons add">&#xE313;</i>
-                                <i class="material-icons remove">&#xE316;</i>
-                            </span>
-                        </div>
-                        <ul id="facet_17154" class="collapse">
-
-
-                            <li>
-                                <label class="facet-label" for="facet_input_17154_1">
-                                    <span class="custom-checkbox">
-                                        <input id="facet_input_17154_1" type="checkbox">
-                                        <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-                                    </span>
-                                    <a href="@Url.Action("Instock","Home")" class="category-link" rel="nofollow">
-                                        Stoktakiler
-
-                                    </a>
-
-
-                                </label>
-                            </li>
-                        </ul>
-                        <ul id="facet_17154" class="collapse">
-
-
-                            <li>
-                                <label class="facet-label" for="facet_input_17154_1">
-                                    <span class="custom-checkbox">
-                                        <input id="facet_input_17154_1" type="checkbox">
-                                        <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-                                    </span>
-
-
-                                    <a href="@Url.Action("Sales", "Home")" class="category-link" rel="nofollow">
-                                        İndirimli Ürünler
-
-                                    </a>
-
-
-                                </label>
-                            </li>
-                        </ul>
-                    </section>
-                    <section class="facet clearfix">
-                        <p class="h6 facet-title hidden-sm-down">Brand</p>
-                        <div class="title hidden-md-up" data-target="#facet_86257" data-toggle="collapse">
-                            <p class="h6 facet-title">Brand</p>
-                            <span class="navbar-toggler collapse-icons">
-                                <i class="material-icons add">&#xE313;</i>
-                                <i class="material-icons remove">&#xE316;</i>
-                            </span>
-                        </div>
-                        <ul id="facet_86257" class="collapse">
-                            @foreach (var brand in Model.Brand)
-                            {
-
-
+                        <section class="facet clearfix">
+                            <p class="h6 facet-title hidden-sm-down">Availability</p>
+                            <div class="title hidden-md-up" data-target="#facet_17154" data-toggle="collapse">
+                                <p class="h6 facet-title">Mevcut Olan</p>
+                                <span class="navbar-toggler collapse-icons">
+                                    <i class="material-icons add">&#xE313;</i>
+                                    <i class="material-icons remove">&#xE316;</i>
+                                </span>
+                            </div>
+                            <ul id="facet_17154" class="collapse">
                                 <li>
-                                    <label class="facet-label" for="facet_input_86257_0">
+                                    <label class="facet-label" for="facet_input_17154_1">
                                         <span class="custom-checkbox">
-                                            <input id="facet_input_86257_0" data-search-url="https://demo74.leotheme.com/prestashop/vt_oworganic/en/2-home?plist_key=plist1843727881&amp;q=Brand-Graphic+Corner" type="checkbox">
+                                            <input id="facet_input_17154_1" name="stocks" type="checkbox" value="0">
                                             <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
                                         </span>
-                                        <a href="@Url.Action("Filter_brand","Home",new { id=brand.brand_id})" class="category-link" rel="nofollow">
-                                            @brand.brand_name
-
+                                        <a href="@Url.Action("Instock", "Home")" class="category-link" rel="nofollow">
+                                            Stoktakiler
                                         </a>
                                     </label>
                                 </li>
-                            }
-                        </ul>
-                    </section>
-                 
+                                <li>
+                                    <label class="facet-label" for="facet_input_17154_2">
+                                        <span class="custom-checkbox">
+                                            <input id="facet_input_17154_2" name="availability" type="checkbox" value="true">
+                                            <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                        </span>
+                                        <a href="@Url.Action("Sales", "Home")" class="category-link" rel="nofollow">
+                                            İndirimli Ürünler
+                                        </a>
+                                    </label>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="facet clearfix">
+                            <p class="h6 facet-title hidden-sm-down">Brand</p>
+                            <div class="title hidden-md-up" data-target="#facet_86257" data-toggle="collapse">
+                                <p class="h6 facet-title">Brand</p>
+                                <span class="navbar-toggler collapse-icons">
+                                    <i class="material-icons add">&#xE313;</i>
+                                    <i class="material-icons remove">&#xE316;</i>
+                                </span>
+                            </div>
+                            <ul id="facet_86257" class="collapse">
+                                @foreach (var brand in Model.Brand)
+                                {
+                                    <li>
+                                        <label class="facet-label">
+                                            <span class="custom-checkbox">
+                                                <input id="@brand.brand_id" name="brand_ids" type="checkbox" value="@brand.brand_id">
+                                                <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
+                                            </span>
+                                            <a href="@Url.Action("Filter_brand", "Home", new { id = brand.brand_id })" class="category-link" rel="nofollow">
+                                                @brand.brand_name
+                                            </a>
+                                        </label>
+                                    </li>
+                                }
+                            </ul>
+                        </section>
+                        <input type="submit" value="Uygula" class="custom-button" />
 
-                <form action="/Home/Filter" method="post">
-                    <p class="h6 facet-title">Fiyat</p>
+                    </form>
 
-                    <div class="input-wrapper">
-                        <input type="text" id="min-price" name="minPrice" placeholder="Minimum Fiyat" />
-                    </div>
-                     <br />
-                    <div class="input-wrapper">
-                        <input type="text" id="max-price" name="maxPrice" placeholder="Maximum Fiyat" />
-                    </div>
-                    <br />
-            
-                    <input type="submit" value="Filtrele" class="custom-button" />
-                </form>
+                    <form action="/Home/Filter" method="post">
+                        <p class="h6 facet-title">Fiyat</p>
 
+                        <div class="input-wrapper">
+                            <input type="text" id="min-price" name="minPrice" placeholder="Minimum Fiyat" />
+                        </div>
+                        <br />
+                        <div class="input-wrapper">
+                            <input type="text" id="max-price" name="maxPrice" placeholder="Maximum Fiyat" />
+                        </div>
+                        <br />
+
+                        <input type="submit" value="Filtrele" class="custom-button" />
+                    </form>
+                   
                 </div>
             </div>
         </div>
@@ -284,7 +269,7 @@
                                             <article class="product-miniature js-product-miniature" data-id-product="1" data-id-product-attribute="1">
                                                 <div class="thumbnail-container">
                                                     <div class="product-image">
-                                                        <a href="haircare/1-1-hummingbird-printed-t-shirt.html#/1-size-s/8-color-white" class="thumbnail product-thumbnail">
+                                                        <a href="@Url.Action("productlist","ViewModelW",new {id=product.product_id})" class="thumbnail product-thumbnail">
                                                             <img class="img-fluid" src="@product.picture_1">
                                                         </a>
                                                         @if (product.product_discount == true)
@@ -293,20 +278,47 @@
                                                                 <li class="product-flag discount">-@product.discount_text%</li>
 
                                                             </ul>}
-                                                        <a href="@Url.Action("Addto_cart","Shoppingbag",new { product_id = product.product_id } )" class="btn btn-primary btn-block" onClick="return GB_showCenter('sepetiniz',this.href,500,800)">ADD TO CART</a>
+
+                                                        @if (Session["customer"] != null)
+                                                        {
+                                                            <a href="@Url.Action("Addto_cart", "Shoppingbag", new { product_id = product.product_id })" class="btn btn-primary btn-block">ADD TO CART</a>
+                                                        }
+
+
+                                                        else
+                                                        {
+                                                            <a href="@Url.Action("login_customer", "Home")" class="btn btn-primary btn-block">ADD TO CART</a>
+                                                        }
+
                                                         <div class="functional-buttons clearfix">
                                                             <div class="wishlist">
-                                                                <a class="leo-wishlist-button btn-product btn-primary btn" href="javascript:void(0)" data-id-wishlist="" data-id-product="1" data-id-product-attribute="1" title="Add to Wishlist">
-                                                                    <span class="leo-wishlist-bt-loading cssload-speeding-wheel"></span>
-                                                                    <span class="leo-wishlist-bt-content">
-                                                                        <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
-                                                                        <span class="name-btn-product hidden hide text-remove">Remove from Wishlist</span>
-                                                                        <span class="name-btn-product text-add">Add to Wishlist</span>
-                                                                    </span>
-                                                                </a>
+                                                                @if (Session["customer"] != null)
+                                                                {
+                                                                    <a href="@Url.Action("Add_wish", "WishList", new { product_id = product.product_id })" title="Add to Wishlist">
+
+                                                                        <span class="leo-wishlist-bt-content">
+                                                                            <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
+
+                                                                        
+                                                                        </span>
+                                                                    </a>
+                                                                }
+
+                                                                else
+                                                                {
+                                                                    <a href="@Url.Action("login_customer", "Home")" title="Add to Wishlist">
+
+                                                                        <span class="leo-wishlist-bt-content">
+                                                                            <i class="icon-btn-product icon-wishlist material-icons">&#xE87D;</i>
+
+                                                                           
+                                                                        </span>
+                                                                    </a>
+                                                                }
+
                                                             </div>
-                                                         
-                                                         
+
+
                                                         </div>
                                                     </div>
                                                     <div class="product-meta">

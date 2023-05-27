@@ -48,7 +48,7 @@ namespace Vegan_Market.Controllers
             }
             else
             {
-                return RedirectToAction("AddresList", new { adres_id = customer_no });
+                return RedirectToAction("AddresList", new { id = customer_no });
             }
 
         }
@@ -58,6 +58,7 @@ namespace Vegan_Market.Controllers
         public ActionResult Create()
         {
             ViewBag.customer_no = Session["customers"];
+            ViewBag.customer = Session["custom"];
 
 
             return View();
@@ -76,7 +77,7 @@ namespace Vegan_Market.Controllers
                 db.Address.Add(address);
                 await db.SaveChangesAsync();
           
-                return RedirectToAction("AddresList",new { adres_id=address.customer_no});
+                return RedirectToAction("AddresList",new { id=address.customer_no});
 
             }
          
@@ -84,10 +85,10 @@ namespace Vegan_Market.Controllers
             return View(address);
         }
 
-        public async Task<ActionResult> AddresList(int adres_id)
+        public async Task<ActionResult> AddresList(int id)
         {
-            var address = db.Address.Where(x => x.customer_no == adres_id).ToList();
-
+            var address = db.Address.Where(x => x.customer_no == id).ToList();
+            
             return View(address);
         }
 
@@ -97,7 +98,7 @@ namespace Vegan_Market.Controllers
         public ActionResult New_Adres()
         {
             ViewBag.customer_no = Session["customers"];
-
+            ViewBag.customer = Session["custom"];
 
             return View();
         }
@@ -112,7 +113,7 @@ namespace Vegan_Market.Controllers
                 db.Address.Add(address);
                 await db.SaveChangesAsync();
 
-                return RedirectToAction("AdresList");
+                return RedirectToAction("AdresList", new { id = Session["customers"] });
 
             }
 
@@ -121,10 +122,10 @@ namespace Vegan_Market.Controllers
         }
 
 
-        public async Task<ActionResult> AdresList()
+        public async Task<ActionResult> AdresList(int id)
         {
-            var address = db.Address.Include(a => a.Customer);
-            return View(await address.ToListAsync());
+            var address = db.Address.Where(x => x.customer_no == id).ToList();
+            return View(address);
         }
 
      
@@ -134,13 +135,14 @@ namespace Vegan_Market.Controllers
             Address address = await db.Address.FindAsync(id);
             db.Address.Remove(address);
             await db.SaveChangesAsync();
-            return RedirectToAction("AdresList");
+            return RedirectToAction("AdresList", new { id=Session["customers"] });
         }
 
         // GET: Addresses/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             ViewBag.customer_no = Session["customers"];
+            ViewBag.customer = Session["custom"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -167,7 +169,7 @@ namespace Vegan_Market.Controllers
                 db.Entry(address).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                
-                return RedirectToAction("AddresList",new { adres_id=address.customer_no});
+                return RedirectToAction("AdresList",new { id=address.customer_no});
             }
     
             return View(address);

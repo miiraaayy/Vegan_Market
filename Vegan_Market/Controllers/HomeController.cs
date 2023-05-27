@@ -12,12 +12,16 @@ namespace Vegan_Market.Controllers
         Aslan_Commerce_vtEntities vegan_entities = new Aslan_Commerce_vtEntities();
         ViewModel vm = new ViewModel();
      
+
+       
         public ActionResult Index()
         {
             vm.Category = vegan_entities.Category.ToList();
             vm.Product = vegan_entities.Product.ToList();
             vm.Product_command = vegan_entities.Product_Command.ToList();
-
+            vm.Footers = vegan_entities.Footer.ToList();
+            vm.Navs = vegan_entities.Nav.ToList();
+            vm.SlideLogos = vegan_entities.SlideLogo.ToList();
             return View(vm);
         }
    
@@ -26,23 +30,59 @@ namespace Vegan_Market.Controllers
             vm.Category = vegan_entities.Category.ToList();
             vm.Sub_category = vegan_entities.Sub_Category.ToList();
             vm.Brand = vegan_entities.Brand.ToList();
+    
         }
         public ActionResult HomePage()
         {
             Lists();
             vm.Product = vegan_entities.Product.ToList();
             ViewBag.count = vegan_entities.Product.Count();
-           
+         
             return View(vm);
         }
 
-    
+        public ActionResult Search(string product_name)
+        {
+            Lists();
+            
+            if (string.IsNullOrEmpty(product_name))
+            {
+
+                ViewBag.Message = "Ürün adı giriniz.";
+                return View("NoResults",vm);
+            }
+
+            var results = vegan_entities.Product.Where(x => x.product_name == product_name || x.Category.Cate_name == product_name || x.Sub_Category.sub_name == product_name || x.Brand.brand_name == product_name).ToList();
+
+            ViewBag.count = vegan_entities.Product.Where(r => r.product_name.Contains(product_name)).Count();
+            if (results.Count == 0)
+            {
+                ViewBag.Message = "Bu ürün yoktur.";
+                return View("NoResults",vm);
+            }
+            vm.Product = results;
+           
+            return View(vm);
+        }
+        public ActionResult NoResults()
+        {
+            return View();
+        }
+
+        public ActionResult All_Filter(int? category_ids,int? brand_ids,bool? availability,int? stocks)
+        {
+            Lists();
+            vm.Product = vegan_entities.Product.Where(x => x.cate_no == category_ids || x.brand_no == brand_ids || x.product_discount == availability || x.product_num > stocks).ToList();
+            ViewBag.count = vegan_entities.Product.Where(x => x.cate_no == category_ids || x.brand_no == brand_ids || x.product_discount == availability || x.product_num > stocks).Count();
+            return View(vm);
+        }
+
         public ActionResult Filter_categories(int id)
         {
             Lists();
             vm.Product = vegan_entities.Product.Where(x =>x.cate_no==id).ToList();
             ViewBag.category_count = vegan_entities.Product.Where(x => x.cate_no == id).Count();
-
+     
             return View(vm);
         }
 
@@ -51,6 +91,7 @@ namespace Vegan_Market.Controllers
             Lists();
             vm.Product = vegan_entities.Product.Where(p => p.product_num >0).ToList();
             ViewBag.count = vegan_entities.Product.Where(p => p.product_num > 0).Count();
+   
             return View(vm);
         }
 
@@ -59,6 +100,7 @@ namespace Vegan_Market.Controllers
             Lists();
             vm.Product = vegan_entities.Product.Where(p => p.product_discount == true).ToList();
             ViewBag.count = vegan_entities.Product.Where(p => p.product_discount == true).Count();
+           
             return View(vm);
         }
         public ActionResult Filter_brand(int id)
@@ -66,6 +108,7 @@ namespace Vegan_Market.Controllers
             Lists();
             vm.Product = vegan_entities.Product.Where(x => x.brand_no == id).ToList();
             ViewBag.count = vegan_entities.Product.Where(x => x.brand_no == id).Count();
+
             return View(vm);
         }
         [HttpPost]
@@ -75,6 +118,7 @@ namespace Vegan_Market.Controllers
             vm.Product = vegan_entities.Product
            .Where(p => p.product_price >= minPrice && p.product_price <= maxPrice)
            .ToList();
+        
             return View(vm);
         }
         public ActionResult catesub_list()
@@ -85,40 +129,56 @@ namespace Vegan_Market.Controllers
         }
         public ActionResult Faq()
         {
-            return View();
+            var sss = vegan_entities.FAQ.ToList();
+
+            return View(sss);
         }
         public ActionResult Stores()
         {
-            return View();
+            var stores = vegan_entities.Stores.ToList();
+         
+            return View(stores);
         }
         public ActionResult Contact()
         {
-            return View();
+            var contact = vegan_entities.Contact.ToList();
+        
+            return View(contact);
         }
         public ActionResult categorylist()
         {
             var categories = vegan_entities.Category.ToList();
+        
             return PartialView(categories);
         }
         public ActionResult brand_image_listele()
         {
             
             var brand = vegan_entities.Brand.ToList();
+       
             return PartialView(brand);
         }
 
         public ActionResult categorieslist()
         {
             var categories = vegan_entities.Category.ToList();
+       
             return PartialView(categories);
         }
         public ActionResult About()
         {
+            vm.AboutUs = vegan_entities.AboutUs.ToList();
           
 
-            return View();
+            return View(vm);
         }
 
+
+        public ActionResult Return_Policy()
+        {
+           
+            return View();
+        }
         public ActionResult login_customer()
         {
             
@@ -196,6 +256,13 @@ namespace Vegan_Market.Controllers
             }
           
             return View(customer);
+        }
+
+
+        public ActionResult Web_Footer()
+        {
+            vm.WebFooters = vegan_entities.WebFooter.ToList();
+            return PartialView(vm);
         }
 
     }

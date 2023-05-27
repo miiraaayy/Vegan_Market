@@ -62,8 +62,8 @@
                 <div class="form-group">
                     @Html.Label("Üye Adı :", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                  
-                        @Html.Editor("customer_no", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.Hidden("customer_no")
+                        @Html.Editor("customer", new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                 </div>
 

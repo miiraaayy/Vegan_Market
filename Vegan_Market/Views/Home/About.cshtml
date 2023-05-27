@@ -1,4 +1,4 @@
-﻿
+﻿@model Vegan_Market.Models.ViewModel
 @{
     ViewBag.Title = "About";
     Layout = "~/Views/Shared/_Web_Layout.cshtml";
@@ -31,6 +31,10 @@
                         About us
                     </h1>
                 </header>
+                @foreach (var about in Model.AboutUs)
+                {
+
+
                 <section id="content" class="page-content page-cms page-cms-4">
                     <div class="container container-parent"></div> <div data-elementor-type="post" data-elementor-id="29" class="elementor elementor-29" data-elementor-settings="[]">
                         <div class="elementor-inner">
@@ -43,19 +47,19 @@
                                                     <div class="elementor-widget-wrap">
                                                         <div class="elementor-element elementor-element-4c7c06c elementor-widget elementor-widget-heading" data-id="4c7c06c" data-element_type="widget" data-widget_type="heading.default">
                                                             <div class="elementor-widget-container">
-                                                                <h2 class="elementor-heading-title elementor-size-default">AMACIMIZ</h2>
+                                                                <h2 class="elementor-heading-title elementor-size-default"></h2>
                                                             </div>
                                                         </div>
                                                        
                                                         <div class="elementor-element elementor-element-7bdd2ca elementor-widget elementor-widget-text-editor" data-id="7bdd2ca" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix"><p>"Vegan Dünyası olarak amacımız, hayvanların acı çekmesini ve öldürülmesini önlemek, doğal kaynakların sürdürülebilirliğini desteklemek ve insan sağlığını korumak için vegan ürünleri yaygınlaştırmaktır. Sizlere, yalnızca bitkisel bileşenler içeren, hayvanlar üzerinde test edilmeyen ve çevre dostu ürünler sunuyoruz. Vegan Dünyası olarak, tüm ürünlerimizi dikkatle seçiyoruz ve doğal, sürdürülebilir, etik ve yüksek kaliteli ürünler sunmaya özen gösteriyoruz. Sizlere daha adil, daha sürdürülebilir ve daha sağlıklı bir dünya için vegan ürünler sunmaktan gurur duyuyoruz."</p></div>
+                                                                <div class="elementor-text-editor elementor-clearfix"><p>@about.descript_txt_1</p></div>
                                                             </div>
                                                         </div>
                                                         <div class="elementor-element elementor-element-581b9a8 btn_theme elementor-widget elementor-widget-button" data-id="581b9a8" data-element_type="widget" data-widget_type="button.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-button-wrapper">
-                                                                    <a href="@Url.Action("HomePage","Home")" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+                                                                    <a href="@Url.Action("HomePage", "Home")" class="elementor-button-link elementor-button elementor-size-sm" role="button">
                                                                         <span class="elementor-button-content-wrapper">
                                                                             <span class="elementor-button-text">Ürünlerimize Göz Atın</span>
                                                                         </span>
@@ -72,7 +76,7 @@
                                                         <div class="elementor-element elementor-element-416a65d elementor-widget elementor-widget-image" data-id="416a65d" data-element_type="widget" data-widget_type="image.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-image">
-                                                                    <img src="~/image/girls.jpg" width="400" height="616" title="" alt="" />
+                                                                    <img src="@about.image_5" width="400" height="616" title="" alt="" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -84,16 +88,12 @@
                                                     <div class="elementor-widget-wrap">
                                                         <div class="elementor-element elementor-element-9fd0f10 elementor-widget elementor-widget-heading" data-id="9fd0f10" data-element_type="widget" data-widget_type="heading.default">
                                                             <div class="elementor-widget-container">
-                                                                <h2 class="elementor-heading-title elementor-size-default">VEGAN CİLT BAKIM</h2>
+                                                                <h2 class="elementor-heading-title elementor-size-default"></h2>
                                                             </div>
                                                         </div>
                                                         <div class="elementor-element elementor-element-59b3c77 elementor-widget elementor-widget-text-editor" data-id="59b3c77" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix"><p>
-    "Ürünlerimiz, cildinizin doğal dengesini koruyan antioksidanlar, vitaminler ve mineraller içerir. Ayrıca, cildinizi zararlı kimyasallardan koruyan ve cildinizi nemlendirip yenileyen doğal bileşenler içerir.
-
-    Vegan cilt bakım ürünleri, cildinize ve çevreye zarar vermeden, sağlıklı bir cilt için ihtiyacınız olan tüm özellikleri sunar. Bizler de bu nedenle, vegan cilt bakım ürünleri sunarak, tüm müşterilerimizin sağlıklı, doğal ve sürdürülebilir bir yaşam tarzını benimsemelerini destekliyoruz."
-</p></div>
+                                                                <div class="elementor-text-editor elementor-clearfix"><p>@about.descript_txt_2</p></div>
                                                             </div>
                                                         </div>
                                                       
@@ -113,7 +113,7 @@
                                                         <div class="elementor-element elementor-element-333f450 elementor-widget elementor-widget-image" data-id="333f450" data-element_type="widget" data-widget_type="image.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-image">
-                                                                    <img src="~/image/limon.jpg" width="420" height="594" title="" alt="" />
+                                                                    <img src="@about.image_2" width="420" height="594" title="" alt="" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -126,7 +126,7 @@
                                                         <div class="elementor-element elementor-element-92a6ed2 elementor-widget elementor-widget-image" data-id="92a6ed2" data-element_type="widget" data-widget_type="image.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-image">
-                                                                    <img src="~/image/organik.jpg" width="420" height="594" title="" alt="" />
+                                                                    <img src="@about.image_3" width="420" height="594" title="" alt="" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -139,7 +139,7 @@
                                                         <div class="elementor-element elementor-element-290c723 elementor-widget elementor-widget-image" data-id="290c723" data-element_type="widget" data-widget_type="image.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-image">
-                                                                    <img src="~/image/sari.jpg" width="420" height="594" title="" alt="" />
+                                                                    <img src="@about.image_4" width="420" height="594" title="" alt="" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -197,7 +197,7 @@
                                                         <div class="elementor-element elementor-element-e87291d elementor-widget elementor-widget-image" data-id="e87291d" data-element_type="widget" data-widget_type="image.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="elementor-image">
-                                                                    <img src="~/image/vegan_food.jpg" title="" alt="" />
+                                                                    <img src="@about.image_1" title="" alt="" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -215,17 +215,7 @@
                                                        
                                                         <div class="elementor-element elementor-element-258ecfe elementor-widget elementor-widget-text-editor" data-id="258ecfe" data-element_type="widget" data-widget_type="text-editor.default">
                                                             <div class="elementor-widget-container">
-                                                                <div class="elementor-text-editor elementor-clearfix"><p>
-    1- Sağlık: Vegan beslenme, birçok kronik hastalığın önlenmesinde etkili olabilir. Vegan diyeti kalp hastalıkları, diyabet, kanser ve obezite riskini azaltabilir. Ayrıca, vegan beslenme düşük kolesterol, düşük tansiyon ve daha iyi sindirim sağlayabilir.
-    <br />
-    2- Çevre: Hayvansal gıda üretimi, sera gazı emisyonlarının en büyük kaynaklarından biridir. Vegan beslenme, hayvansal gıda tüketiminin azaltılması yoluyla çevrenin korunmasına yardımcı olabilir.
-    <br />
-    3- Hayvan refahı: Vegan beslenme, hayvanların acı çekmesine neden olan hayvansal gıda endüstrisine katkıda bulunmaz. Bu, hayvanların daha insancıl bir şekilde muamele edilmesi için mücadele eden birçok hayvan hakları savunucusu için önemlidir.
-    <br />
-    4- Doğal bileşenler: Vegan cilt ürünleri genellikle doğal ve bitkisel bileşenler içerir. Bu, cildinize zararlı kimyasalların maruz kalmayacağı anlamına gelir.
-    <br />
-    5- Cilt sağlığı: Vegan cilt ürünleri, cildin doğal dengesini korumak ve ciltte tahrişe neden olabilecek bileşenler içermez. Vegan ürünler, cildin nem dengesini korumaya yardımcı olan antioksidanlar, vitaminler ve mineraller içerir.
-</p></div>
+                                                                <div class="elementor-text-editor elementor-clearfix"><p>@about.descript_txt_3</p></div>
                                                             </div>
                                                         </div>
                                                       
@@ -241,7 +231,7 @@
                 </section>
                 <footer class="page-footer">
                 </footer>
-            </section>
+                }   </section>
         </div>
     </div>
 </div>
