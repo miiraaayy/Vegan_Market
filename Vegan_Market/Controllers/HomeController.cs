@@ -71,10 +71,18 @@ namespace Vegan_Market.Controllers
 
         public ActionResult All_Filter(int? category_ids,int? brand_ids,bool? availability,int? stocks)
         {
-            Lists();
-            vm.Product = vegan_entities.Product.Where(x => x.cate_no == category_ids || x.brand_no == brand_ids || x.product_discount == availability || x.product_num > stocks).ToList();
-            ViewBag.count = vegan_entities.Product.Where(x => x.cate_no == category_ids || x.brand_no == brand_ids || x.product_discount == availability || x.product_num > stocks).Count();
-            return View(vm);
+          
+                Lists();
+                var products = vegan_entities.Product.Where(x =>
+                    (category_ids == null || x.cate_no == category_ids) &&
+                    (brand_ids == null || x.brand_no == brand_ids) &&
+                    (availability == null || x.product_discount == availability) &&
+                    (stocks == null || x.product_num > stocks)
+                ).ToList();
+                ViewBag.count = products.Count();
+                vm.Product = products;
+                return View(vm);
+         
         }
 
         public ActionResult Filter_categories(int id)
@@ -118,7 +126,9 @@ namespace Vegan_Market.Controllers
             vm.Product = vegan_entities.Product
            .Where(p => p.product_price >= minPrice && p.product_price <= maxPrice)
            .ToList();
-        
+            ViewBag.count=vegan_entities.Product
+           .Where(p => p.product_price >= minPrice && p.product_price <= maxPrice)
+           .Count();
             return View(vm);
         }
         public ActionResult catesub_list()
@@ -243,15 +253,22 @@ namespace Vegan_Market.Controllers
                 }
                 catch (Exception fault)
                 {
-                    
-                    int new_email = fault.InnerException.ToString().IndexOf("customer_email");
+                    var password = customer.customer_password;
+                    int new_email = -1;
+                    if (fault.InnerException != null)
+                    {
+                        new_email = fault.InnerException.ToString().IndexOf("customer_email");
+                    }
+                    if (password.Length > 12)
+                    {
+                        ViewBag.kayit_durum = "Şİfreniz en fazla 12 karakter olmalıdır.";
 
-                    if (new_email == -1)
-                     ViewBag.kayit_durum = "Böyle Email var Kayıt Yapılamıyor"; 
-                  
+                    }
+                    else if (new_email == -1)
+                    {
+                        ViewBag.kayit_durum = "Böyle Email var Kayıt Yapılamıyor";
+                    }
 
-                   
-               
                 }
             }
           

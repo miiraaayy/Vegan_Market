@@ -112,18 +112,18 @@ namespace Vegan_Market.Controllers
 
                     }
 
-
+                    
 
                     db.Product.Add(product);
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
 
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     
                     ViewBag.exception =" En fazla 4 fotoğraf seçebilirsiniz";
-                    
+                 
                 }
 
                

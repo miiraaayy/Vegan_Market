@@ -122,7 +122,7 @@ namespace Vegan_Market.Controllers
         }
 
 
-        public async Task<ActionResult> AdresList(int id)
+        public async Task<ActionResult> AdresList(int? id)
         {
             var address = db.Address.Where(x => x.customer_no == id).ToList();
             return View(address);

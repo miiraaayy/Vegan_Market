@@ -270,7 +270,18 @@
                                                                 <li class="product-flag discount">-@product.discount_text%</li>
 
                                                             </ul>}
-                                                        <a href="@Url.Action("Addto_cart","Shoppingbag",new { product_id = product.product_id } )" class="btn btn-primary btn-block" onClick="return GB_showCenter('sepetiniz',this.href,500,800)">ADD TO CART</a>
+
+                                                        @if (Session["customer"] != null)
+                                                        {
+                                                            foreach (var product1 in Model.Product)
+                                                            {
+                                                                <a href="@Url.Action("Addto_cart", "Shoppingbag", new { product_id = product1.product_id })" class="btn btn-primary btn-block">ADD TO CART</a>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="@Url.Action("login_customer", "Home")" class="btn btn-primary btn-block">ADD TO CART</a>
+                                                        }
                                                         <div class="functional-buttons clearfix">
                                                             <div class="wishlist">
                                                                 <a class="leo-wishlist-button btn-product btn-primary btn" href="javascript:void(0)" data-id-wishlist="" data-id-product="1" data-id-product-attribute="1" title="Add to Wishlist">

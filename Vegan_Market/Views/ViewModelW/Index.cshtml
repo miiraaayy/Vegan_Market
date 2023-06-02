@@ -88,6 +88,7 @@
                 <div id="search_filters">
                     <p class="text-uppercase h6 hidden-sm-down">Filter By</p>
                     <form action="/ViewModelW/All_Filter" method="post">
+                        <input type="hidden" id="cate_id" name="cate_id" value="@ViewBag.cate_id" />
                         <section class="facet clearfix">
                             <p class="h6 facet-title hidden-sm-down">Alt Kategoriler</p>
                             <div class="title hidden-md-up" data-target="#facet_65899" data-toggle="collapse">
@@ -101,6 +102,7 @@
                                 @foreach (var sub_cate in Model.Sub_category)
                                 {
                                     <li>
+
                                         <label class="facet-label">
                                             <span class="custom-checkbox">
                                                 <input id="@sub_cate.sub_id" name="sub_category_ids" type="checkbox" value="@sub_cate.sub_id">
@@ -155,13 +157,6 @@
 
 
                     </form>
-
-
-
-
-
-
-
 
 
 

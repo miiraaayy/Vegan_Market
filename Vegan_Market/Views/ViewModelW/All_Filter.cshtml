@@ -87,6 +87,8 @@
                 <div id="search_filters">
                     <p class="text-uppercase h6 hidden-sm-down">Filter By</p>
                     <form action="/ViewModelW/All_Filter" method="post">
+                        <input type="hidden" id="cate_id" name="cate_id" value="@ViewBag.cate_id" />
+
                         <section class="facet clearfix">
                             <p class="h6 facet-title hidden-sm-down">Alt Kategoriler</p>
                             <div class="title hidden-md-up" data-target="#facet_65899" data-toggle="collapse">
@@ -155,7 +157,7 @@
 
                     </form>
 
-                    <form action="/Home/Filter" method="post">
+                    <form action="/ViewModelW/Filter" method="post">
                         <input type="hidden" id="cate_id" name="cate_id" value="@ViewBag.cate_id" />
                         <p class="h6 facet-title hidden-sm-down">Fiyat</p>
 

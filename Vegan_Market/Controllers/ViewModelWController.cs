@@ -33,18 +33,23 @@ namespace Vegan_Market.Controllers.Web_Controller
 
       
 
-        public ActionResult All_Filter(int? sub_category_ids,int? stocks,bool? availability)
+        public ActionResult All_Filter(int? sub_category_ids,int? stocks,bool? availability,int cate_id)
         {
-            
-            vm.Sub_category = db.Sub_Category.ToList();
-            vm.Product = db.Product.Where(x => x.sub_no == sub_category_ids || x.product_num > stocks || x.product_discount == availability).ToList();
-            ViewBag.count= db.Product.Where(x => x.sub_no == sub_category_ids || x.product_num > stocks || x.product_discount == availability).Count();
+            var category = db.Category.FirstOrDefault(x => x.Cate_id == cate_id);
+            ViewBag.cate_id = category != null ? category.Cate_id : 0;
+
+            var subCategory = db.Sub_Category.FirstOrDefault(x => x.sub_id == sub_category_ids);
+            ViewBag.sub_id = subCategory != null ? subCategory.sub_id : 0;
+
+            vm.Sub_category = db.Sub_Category.Where(x => x.sub_id == sub_category_ids && x.cate_no1 == cate_id || x.cate_no1 == cate_id).ToList();
+            vm.Product = db.Product.Where(x => x.sub_no == sub_category_ids && x.cate_no == cate_id || x.product_num > stocks && x.cate_no == cate_id || x.product_discount == availability && x.cate_no == cate_id).ToList();
+            ViewBag.count= db.Product.Where(x => x.sub_no == sub_category_ids && x.cate_no == cate_id || x.product_num > stocks && x.cate_no == cate_id || x.product_discount == availability && x.cate_no == cate_id).Count();           
             return View(vm);
         }
 
         public ActionResult Instock(int id)
         {
-            vm.Category = db.Category.ToList();
+            vm.Category = db.Category.Where(x=>x.Cate_id == id).ToList();
             vm.Sub_category = db.Sub_Category.Where(x=>x.cate_no1 == id).ToList();
             vm.Brand = db.Brand.ToList();
             vm.Product = db.Product.Where(x => x.cate_no == id && x.product_num > 0).ToList();
@@ -98,11 +103,13 @@ namespace Vegan_Market.Controllers.Web_Controller
             return View(vm);
         }
 
-        public ActionResult All_Filter_sub(int? stocks,bool? availability)
+        public ActionResult All_Filter_sub(int? stocks,bool? availability,int sub_id)
         {
-            vm.Product = db.Product.Where(x => x.product_num < stocks || x.product_discount == availability).ToList();
-            ViewBag.count = db.Product.Where(x => x.product_num < stocks || x.product_discount == availability).Count();
-            return View();
+            vm.Product = db.Product.Where(x => x.product_num > stocks && x.sub_no == sub_id || x.product_discount == availability && x.sub_no == sub_id).ToList();
+            ViewBag.product_number = db.Product.Where(x => x.product_num > stocks && x.sub_no == sub_id || x.product_discount == availability && x.sub_no == sub_id).Count();
+            ViewBag.sub_id = db.Sub_Category.FirstOrDefault(x => x.sub_id == sub_id).sub_id;
+
+            return View(vm);
         }
         public ActionResult Instock_subs(int id)
         {
@@ -187,10 +194,10 @@ namespace Vegan_Market.Controllers.Web_Controller
 
       
 
-            ViewBag.customer_no = Session["customer"];
+            ViewBag.customer_no = Session["customers"];
             ViewBag.product_no = Session["product_no"];
 
-            if (Session["customer"] == null )
+            if (Session["customers"] == null )
             {
 
                     vm.Product_command = db.Product_Command.Where(x => x.product_no == id).ToList();
@@ -206,11 +213,11 @@ namespace Vegan_Market.Controllers.Web_Controller
                     vm.Product_command = db.Product_Command.Where(x => x.product_no == id).OrderByDescending(x => x.customer_no == customer_no).ToList();
 
                 }
-
                 else
                 {
                     vm.Product_command = db.Product_Command.Where(x => x.product_no == id).ToList();
                 }
+               
             }
            
             ViewBag.command_count = db.Product_Command.Where(x => x.product_no == id).Count();

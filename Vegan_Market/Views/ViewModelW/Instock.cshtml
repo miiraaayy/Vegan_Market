@@ -47,10 +47,7 @@
                     <li>
                         <a href="@Url.Action("HomePage", "Home")"><span>Home</span></a>
                     </li>
-                    <li>
-                        @ViewBag.catename
-                    </li>
-
+                 
                     <li>
                         <span>Stoktaki Ürünler</span>
                     </li>
@@ -159,7 +156,7 @@
 
 
                     </form>
-                    <form action="/Home/Filter" method="post">
+                    <form action="/ViewModelW/Filter" method="post">
                         <input type="hidden" id="cate_id" name="cate_id" value="@ViewBag.cate_id" />
                         <p class="h6 facet-title hidden-sm-down">Fiyat</p>
 

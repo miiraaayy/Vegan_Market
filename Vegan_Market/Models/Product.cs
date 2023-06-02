@@ -17,7 +17,6 @@ namespace Vegan_Market.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Favourites = new HashSet<Favourites>();
             this.OrderT = new HashSet<OrderT>();
             this.Product_Command = new HashSet<Product_Command>();
         }
@@ -41,8 +40,6 @@ namespace Vegan_Market.Models
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Favourites> Favourites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderT> OrderT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

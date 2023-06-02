@@ -167,7 +167,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     <div class="mb-1">
                                         <!--begin::Input wrapper-->
                                         <div class="position-relative mb-3">
-                                            @Html.EditorFor(model => model.admin_password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" ,@type="password" } })
+                                            @Html.EditorFor(model => model.admin_password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password" } })
                                             @Html.ValidationMessageFor(model => model.admin_password, "", new { @class = "text-danger" })
                                         
                                         </div>
@@ -180,12 +180,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 </div>
                                 <!--end::Input group--->
                                 <!--end::Input group--->
-                                <div class="fv-row mb-8">
-                                    <!--begin::Repeat Password-->
-                                    @Html.EditorFor(model => model.admin_repassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "RePassword" ,@type="password"} })
-                                    @Html.ValidationMessageFor(model => model.admin_repassword, "", new { @class = "text-danger" })
-                                    <!--end::Repeat Password-->
-                                </div>
+                              
                                 <!--end::Input group--->
                                 <!--begin::Submit button-->
                                 <div class="d-grid mb-10">
@@ -213,13 +208,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     </a>
                                 </div>
                                 <!--end::Sign up-->
-                    }   </form>
+                      </form>
                             <!--end::Form-->
 
                         </div>
                     <!--end::Wrapper-->
 
-                </div>
+                    }</div>
                 <!--end::Card-->
             </div>
             <!--end::Body-->

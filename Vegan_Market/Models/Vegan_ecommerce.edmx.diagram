@@ -4,12 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b43cf3f4a77f4a39aa54d9c16243948d" Name="Diagram1" ZoomLevel="59">
+      <Diagram DiagramId="b43cf3f4a77f4a39aa54d9c16243948d" Name="Diagram1" ZoomLevel="88">
         <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Address" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Brand" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Category" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Customer" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Favourites" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Aslan_Commerce_vtModel.OrderT" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Product" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Aslan_Commerce_vtModel.Product_Command" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
@@ -19,10 +18,8 @@
         <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Brand" ManuallyRouted="false" />
         <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Category" ManuallyRouted="false" />
         <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Sub_Category_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Favourites_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Order_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Command_Customer" ManuallyRouted="false" />
-        <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Favourites_Product" ManuallyRouted="false" />
         <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Order_Product" ManuallyRouted="false" />
         <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Command_Product" ManuallyRouted="false" />
         <AssociationConnector Association="Aslan_Commerce_vtModel.FK_Product_Sub_Category" ManuallyRouted="false" />

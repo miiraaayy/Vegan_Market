@@ -49,20 +49,6 @@ namespace Vegan_Market.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: AdminLogins/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AdminLogin adminLogin = await db.AdminLogin.FindAsync(id);
-            if (adminLogin == null)
-            {
-                return HttpNotFound();
-            }
-            return View(adminLogin);
-        }
 
         // GET: AdminLogins/Create
         public ActionResult Create()
@@ -75,7 +61,7 @@ namespace Vegan_Market.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "AdminLogin_id,admin_email,admin_password,admin_repassword")] AdminLogin adminLogin)
+        public async Task<ActionResult> Create([Bind(Include = "admin_email,admin_password")] AdminLogin adminLogin)
         {
             if (ModelState.IsValid)
             {

@@ -166,9 +166,6 @@
     <Compile Include="Models\FAQ.cs">
       <DependentUpon>Vegan_ecommerce.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Favourites.cs">
-      <DependentUpon>Vegan_ecommerce.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Footer.cs">
       <DependentUpon>Vegan_ecommerce.tt</DependentUpon>
     </Compile>

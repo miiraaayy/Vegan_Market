@@ -29,7 +29,6 @@ namespace Vegan_Market.Models
         public virtual DbSet<Brand> Brand { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<Favourites> Favourites { get; set; }
         public virtual DbSet<OrderT> OrderT { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Product_Command> Product_Command { get; set; }

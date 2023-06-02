@@ -34,7 +34,7 @@
           <Key>
             <PropertyRef Name="AdminLogin_id" />
           </Key>
-          <Property Name="AdminLogin_id" Type="int" Nullable="false" />
+          <Property Name="AdminLogin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="admin_email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="admin_password" Type="nvarchar" MaxLength="12" Nullable="false" />
         </EntityType>
@@ -82,14 +82,6 @@
           <Property Name="FaqId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="question_txt" Type="nvarchar(max)" />
           <Property Name="answer_txt" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="Favourites">
-          <Key>
-            <PropertyRef Name="favourite_id" />
-          </Key>
-          <Property Name="favourite_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="customer_no" Type="int" Nullable="false" />
-          <Property Name="product_no" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Footer">
           <Key>
@@ -231,34 +223,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Favourites_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="customer_id" />
-            </Principal>
-            <Dependent Role="Favourites">
-              <PropertyRef Name="customer_no" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Favourites_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="product_id" />
-            </Principal>
-            <Dependent Role="Favourites">
-              <PropertyRef Name="product_no" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Order_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="OrderT" Type="Self.OrderT" Multiplicity="*" />
@@ -376,7 +340,6 @@
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Favourites" EntityType="Self.Favourites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Footer" EntityType="Self.Footer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nav" EntityType="Self.Nav" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderT" EntityType="Self.OrderT" Schema="dbo" store:Type="Tables" />
@@ -390,14 +353,6 @@
           <AssociationSet Name="FK_Address_Customer1" Association="Self.FK_Address_Customer1">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Address" EntitySet="Address" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Favourites_Customer" Association="Self.FK_Favourites_Customer">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="Favourites" EntitySet="Favourites" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Favourites_Product" Association="Self.FK_Favourites_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Favourites" EntitySet="Favourites" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
             <End Role="Customer" EntitySet="Customer" />
@@ -478,19 +433,8 @@
           <Property Name="customer_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="customer_password" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK_Address_Customer1" FromRole="Customer" ToRole="Address" />
-          <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourites_Customer" FromRole="Customer" ToRole="Favourites" />
           <NavigationProperty Name="OrderT" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="OrderT" />
           <NavigationProperty Name="Product_Command" Relationship="Self.FK_Product_Command_Customer" FromRole="Customer" ToRole="Product_Command" />
-        </EntityType>
-        <EntityType Name="Favourites">
-          <Key>
-            <PropertyRef Name="favourite_id" />
-          </Key>
-          <Property Name="favourite_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="customer_no" Type="Int32" Nullable="false" />
-          <Property Name="product_no" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_Favourites_Customer" FromRole="Favourites" ToRole="Customer" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Favourites_Product" FromRole="Favourites" ToRole="Product" />
         </EntityType>
         <EntityType Name="OrderT">
           <Key>
@@ -525,7 +469,6 @@
           <Property Name="product_discount" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Brand" Relationship="Self.FK_Product_Brand" FromRole="Product" ToRole="Brand" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourites_Product" FromRole="Product" ToRole="Favourites" />
           <NavigationProperty Name="OrderT" Relationship="Self.FK_Order_Product" FromRole="Product" ToRole="OrderT" />
           <NavigationProperty Name="Product_Command" Relationship="Self.FK_Product_Command_Product" FromRole="Product" ToRole="Product_Command" />
           <NavigationProperty Name="Sub_Category" Relationship="Self.FK_Product_Sub_Category" FromRole="Product" ToRole="Sub_Category" />
@@ -620,20 +563,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Favourites_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="customer_id" />
-            </Principal>
-            <Dependent Role="Favourites">
-              <PropertyRef Name="customer_no" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Order_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="OrderT" Type="Self.OrderT" Multiplicity="*" />
@@ -657,20 +586,6 @@
             </Principal>
             <Dependent Role="Product_Command">
               <PropertyRef Name="customer_no" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Favourites_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="product_id" />
-            </Principal>
-            <Dependent Role="Favourites">
-              <PropertyRef Name="product_no" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -721,7 +636,6 @@
           <EntitySet Name="Brand" EntityType="Self.Brand" />
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Customer" EntityType="Self.Customer" />
-          <EntitySet Name="Favourites" EntityType="Self.Favourites" />
           <EntitySet Name="OrderT" EntityType="Self.OrderT" />
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="Product_Command" EntityType="Self.Product_Command" />
@@ -743,10 +657,6 @@
             <End Role="Category" EntitySet="Category" />
             <End Role="Sub_Category" EntitySet="Sub_Category" />
           </AssociationSet>
-          <AssociationSet Name="FK_Favourites_Customer" Association="Self.FK_Favourites_Customer">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="Favourites" EntitySet="Favourites" />
-          </AssociationSet>
           <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="OrderT" EntitySet="OrderT" />
@@ -754,10 +664,6 @@
           <AssociationSet Name="FK_Product_Command_Customer" Association="Self.FK_Product_Command_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Product_Command" EntitySet="Product_Command" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Favourites_Product" Association="Self.FK_Favourites_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Favourites" EntitySet="Favourites" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
             <End Role="Product" EntitySet="Product" />
@@ -928,15 +834,6 @@
                 <ScalarProperty Name="customer_phone" ColumnName="customer_phone" />
                 <ScalarProperty Name="customer_email" ColumnName="customer_email" />
                 <ScalarProperty Name="customer_password" ColumnName="customer_password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Favourites">
-            <EntityTypeMapping TypeName="Aslan_Commerce_vtModel.Favourites">
-              <MappingFragment StoreEntitySet="Favourites">
-                <ScalarProperty Name="favourite_id" ColumnName="favourite_id" />
-                <ScalarProperty Name="customer_no" ColumnName="customer_no" />
-                <ScalarProperty Name="product_no" ColumnName="product_no" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

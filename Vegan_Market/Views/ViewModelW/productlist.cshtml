@@ -161,7 +161,7 @@
                                         {
                                             foreach (var product1 in Model.Product)
                                             {
-                                                <a href="@Url.Action("Addto_cart", "Shoppingbag", new { product_id = product1.product_id })" class="btn btn-primary btn-block" onClick="return GB_showCenter('sepetiniz',this.href,500,800)">SEPETE EKLE</a>
+                                                <a href="@Url.Action("Addto_cart", "Shoppingbag", new { product_id = product1.product_id })" class="btn btn-primary btn-block" >SEPETE EKLE</a>
                                             }
                                         }
                                         else
@@ -323,7 +323,6 @@
                                                 {
                                                     @Html.AntiForgeryToken()
 
-
                                                     <div class="modal-body">
 
                                                         <div class="reviews_note clearfix">
@@ -377,5 +376,4 @@
     </footer>
     </section>
 </div>
-    </div>
-</div>
+ 

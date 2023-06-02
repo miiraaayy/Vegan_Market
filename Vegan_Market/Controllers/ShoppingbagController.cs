@@ -61,19 +61,14 @@ namespace Vegan_Market.Controllers
             return ourbag;
         }
         // GET: Shoppingcart
-        public ActionResult Index(string order_message,int? product_id)
+        public ActionResult Index(string order_message)
         {
-            var product_zero = db.Product.FirstOrDefault(x => x.product_id == product_id && x.product_num <= 0);
-
-            if(product_zero != null)
-            {
-                return RedirectToAction("Stock");
-            }
-            ViewBag.customer_no = Session["customers"];
-           
-
-            ViewBag.order_message = order_message;
-            return View(Bringthebag());
+          
+                ViewBag.customer_no = Session["customers"];
+                ViewBag.order_message = order_message;
+         
+                return View(Bringthebag());
+            
         }
 
         
@@ -83,17 +78,17 @@ namespace Vegan_Market.Controllers
         {
            
             var product_num = product_number ?? 0;
-            var product = db.Product.FirstOrDefault(x => x.product_id == product_id);
-
-            if(product != null)
+            var product = db.Product.FirstOrDefault(x => x.product_id == product_id && x.product_num > 0);
+          
+            if (product != null)
             {
                 Bringthebag().Add_cart(product,product_num);
             }
             else
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Stock");
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index",new { product_id =product_id});
         }
 
         public ActionResult remove_cart(int? product_id)
@@ -110,7 +105,7 @@ namespace Vegan_Market.Controllers
             return RedirectToAction("index");
         }
 
-        public ActionResult orderlist(int id)
+        public ActionResult orderlist(int? id)
         {
             var list_order = db.OrderT.Where(x => x.customer_no == id).ToList();
             return View(list_order);
@@ -138,10 +133,10 @@ namespace Vegan_Market.Controllers
         }
 
        public ActionResult Stock()
-        {
+       {
             ViewBag.Message = "Ürün stokta kalmamıştır.";
             return View();
-        }
+       }
         public ActionResult Take_order()
         {
             var ourbag = (Shoppingcart)Session["ourbag"];
